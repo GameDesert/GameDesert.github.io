@@ -1,2 +1,2 @@
-# GameDesert.github.io
-GameDesert Website
+# gamedesert.github.io
+GameDesert github.io webpage.
