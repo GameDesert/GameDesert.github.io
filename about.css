@@ -86,25 +86,3 @@ footer {
   background-color: #ffffff;
   padding: 10px;
 }
-
-.dark-modeImage2 {
-  background-color: #535353;
-  border: 1px solid #535353;
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-}
-.dark-modeText2 {
-  background-color: #535353;
-  border: 1px solid #535353)
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-  color: white;
-}
-.dark-mode2 {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: #535353;
-  padding: 10px;
-}
