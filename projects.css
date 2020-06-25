@@ -44,3 +44,24 @@ ul {
     width: 100%;
     height: 6rem;            /* Footer height */
   }
+
+  .creditsLink:link {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: help;
+  }
+  .creditsLink:visited {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: help;
+  }
+  .creditsLink:hover {
+    color: #535353;
+    text-decoration: underline;
+    cursor: help;
+  }
+  .creditsLink:active {
+    color: #ffffff;
+    text-decoration: underline;
+    cursor: help;
+  }
