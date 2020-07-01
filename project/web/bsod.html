@@ -30,44 +30,19 @@
     }
     </style>
 
-<script>
-    function bsodload10() {
-        document.getElementById("back").style.background-image = 'BSOD10pc.png';
-    }
-    function bsodload20() {
-        document.getElementById("back").style.background-image = "BSOD20pc.png";
-    }
-    function bsodload30() {
-        document.getElementById("back").style.background-image = "BSOD30pc.png";
-    }
-    function bsodload40() {
-        document.getElementById("back").style.background-image = "BSOD40pc.png";
-    }
-    function bsodload50() {
-        document.getElementById("back").style.background-image = "BSOD50pc.png";
-    }
-    function bsodload60() {
-        document.getElementById("back").style.background-image = "BSOD60pc.png";
-    }
-    function bsodload70() {
-        document.getElementById("back").style.background-image = "BSOD70pc.png";
-    }
-    function bsodload80() {
-        document.getElementById("back").style.background-image = "BSOD80pc.png";
-    }
-    function bsodload90() {
-        document.getElementById("back").style.background-image = "BSOD90pc.png";
-    }
-    window.setTimeout(bsodload10, 6000);
-    window.setTimeout(bsodload20, 10000);
-    window.setTimeout(bsodload30, 16000);
-    window.setTimeout(bsodload40, 22000);
-    window.setTimeout(bsodload50, 37000);
-    window.setTimeout(bsodload60, 60000);
-    window.setTimeout(bsodload70, 73000);
-    window.setTimeout(bsodload80, 89000);
-    window.setTimeout(bsodload90, 120000);
+<script type = "text/javascript">
+    var image = document.getElementById("back");
+    var currentPos = 0;
+    var images = ["BSOD10pc.png","BSOD20pc.png","BSOD30pc.png","BSOD40pc.png","BSOD50pc.png","BSOD60pc.png","BSOD70pc.png","BSOD80pc.png","BSOD90pc.png",]
 
+    function switchImage() {
+        if (++currentPos >= images.length)
+            currentPos = 0;
+
+        image.style.backgroundImage = images[currentPos];
+    }
+
+    setInterval(switchImage, 60000);
 </script>
 
 </body>
