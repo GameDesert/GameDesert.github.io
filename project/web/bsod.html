@@ -10,7 +10,7 @@
     
     .bg {
       /* The image used */
-      background-image: url("BSOD0pc.png");
+      background-image: url("BSOD20pc.png");
     
       /* Full height */
       height: 100%; 
@@ -26,24 +26,7 @@
 </head>
 <body>
 
-<div class="bg" id="back"></div>
-
-
-
-<script type = "text/javascript">
-    var image = document.getElementById("back");
-    var currentPos = 0;
-    var images = ["BSOD10pc.png","BSOD20pc.png","BSOD30pc.png","BSOD40pc.png","BSOD50pc.png","BSOD60pc.png","BSOD70pc.png","BSOD80pc.png","BSOD90pc.png",]
-
-    function switchImage() {
-        if (++currentPos >= images.length)
-            currentPos = 0;
-
-        image.style.backgroundImage = images[currentPos];
-    }
-
-    setInterval(switchImage, 6000);
-</script>
+<div class="bg"></div>
 
 </body>
 </html>
