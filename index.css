@@ -90,3 +90,7 @@ ul {
     text-decoration: underline;
     cursor: help;
   }
+  .MainBar {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+  }
