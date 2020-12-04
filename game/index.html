@@ -22,8 +22,16 @@
 <script type="text/javascript">
 function redeemCode(){
     var codeInput = document.getElementById('codeInput').value;
-    var lnk = document.getElementById('lnk');
     window.location = "https://www.itch.io/get-" + codeInput;
+}
+function checkCodeLength(){
+    var codeInput = document.getElementById('codeInput').value;
+    if (value.length != 12) {
+        return false;
+    }
+    else {
+        redeemCode()
+    }
 }
 </script>
 <body>
