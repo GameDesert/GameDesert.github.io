@@ -21,7 +21,8 @@
 </head>
 <script type="text/javascript">
 function redeemCode(){
-    var codeInput = document.getElementById('codeInput').value;
+    var codePreInput = document.getElementById('codeInput').value;
+    var codeInput = codePreInput.replace("-","")
     window.location = "https://www.itch.io/get-" + codeInput;
 }
 function checkCodeLength(){
