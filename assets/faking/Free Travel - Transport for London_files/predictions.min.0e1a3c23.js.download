@@ -1,0 +1,993 @@
+(function(o, $) {
+    "use strict";
+    tfl.logs.create("tfl.predictions: loaded");
+    var newItemsToShow, websocketConnection, timeoutLength, connectionError, noUpdatesError, stopDisruptedError, initialized, started, liveBoards;
+    o.allLineRooms = [];
+    function Prediction(id, naptanId, history, currentLocation, destinationName, destinationNaptanId, expectedArrival, timeToStation, lineId, lineName, platformName, towards, vehicleId, timing) {
+        this.id = id;
+        this.naptanId = naptanId;
+        this.history = history;
+        this.currentLocation = currentLocation;
+        this.destinationName = destinationName;
+        this.destinationNaptanId = destinationNaptanId;
+        this.expectedArrival = expectedArrival;
+        this.timeToStation = timeToStation;
+        this.lineId = lineId;
+        this.lineName = lineName;
+        this.platformName = platformName;
+        this.towards = towards;
+        this.vehicleId = vehicleId;
+        this.timing = timing;
+        this.vehicle = function() {
+            return this.lineName + " " + this.destinationName + " " + Math.floor(this.timeToStation / 60) + " " + this.vehicleId;
+        };
+    }
+    function Departure(id, history, mode, vehicleId, lineName, destinationName, destinationNaptanId, expectedArrival, timeToStation, currentLocation) {
+        var t = this;
+        t.id = ko.observable(id);
+        t.history = ko.observable(history);
+        t.lineName = ko.observable(lineName);
+        t.vehicleId = ko.observable(vehicleId);
+        t.lineClassName = ko.computed(function() {
+            var lineClassName;
+            if (mode === tfl.modeNameOverground) {
+                lineClassName = tfl.modeNameOverground;
+            } else if (mode === tfl.modeNameTflRail) {
+                lineClassName = tfl.modeNameTflRail;
+            } else {
+                lineClassName = lineName.indexOf(" ") !== -1 ? lineName.substring(0, lineName.indexOf(" ")).toLowerCase() : lineName.toLowerCase();
+            }
+            return lineClassName + " live-board-route line-text";
+        });
+        t.destinationName = ko.observable(destinationName);
+        t.destinationId = ko.observable(destinationNaptanId);
+        t.timeToStationSecs = timeToStation;
+        t.timeToStation = ko.computed(function() {
+            if (t.timeToStationSecs <= 60) {
+                return "Due";
+            }
+            var mins = Math.floor(t.timeToStationSecs / 60);
+            if (mins > 1) {
+                return "<span class='visually-hidden'>departing in </span>" + mins + " mins";
+            }
+            return "<span class='visually-hidden'>departing in </span>" + mins + " min";
+        });
+        t.currentLocation = ko.observable(currentLocation);
+    }
+    function Platform(name, data, mode, lineIds) {
+        var t = this;
+        t.name = ko.observable(name);
+        t.departures = ko.computed(function() {
+            var departures = [];
+            var filteredPredictions = ko.utils.arrayFilter(data, function(prediction) {
+                return prediction.platformName === name && lineIds.indexOf(prediction.lineId) !== -1;
+            });
+            ko.utils.arrayForEach(filteredPredictions, function(filteredPrediction) {
+                var destinationName = (mode === tfl.modeNameTube || mode === tfl.modeNameDlr || mode === tfl.modeNameOverground || mode === tfl.modeNameTflRail) && filteredPrediction.destinationNaptanId === filteredPrediction.naptanId ? "Check Front of Train" : mode === tfl.modeNameTube ? filteredPrediction.towards : filteredPrediction.destinationName;
+                departures.push(new Departure(filteredPrediction.id, filteredPrediction.history, mode, filteredPrediction.vehicleId, filteredPrediction.lineName, destinationName, filteredPrediction.destinationNaptanId, filteredPrediction.expectedArrival, filteredPrediction.timeToStation, filteredPrediction.currentLocation));
+            });
+            departures.sort(function(left, right) {
+                return left.timeToStationSecs === right.timeToStationSecs ? 0 : left.timeToStationSecs < right.timeToStationSecs ? -1 : 1;
+            });
+            return departures;
+        });
+    }
+    function ViewModel(mode, lineIds, nowTimeStamp, data) {
+        var t = this;
+        t.now = nowTimeStamp;
+        t.predictions = ko.observableArray(data);
+        t.stopPoints = ko.observableArray();
+        t.platformNames = ko.computed(function() {
+            var platforms = ko.utils.arrayMap(t.predictions(), function(prediction) {
+                if (lineIds.indexOf(prediction.lineId) !== -1) {
+                    return prediction.platformName;
+                }
+                return null;
+            });
+            return platforms.sort();
+        });
+        t.clearLine = function(lineId) {
+            t.predictions.remove(function(p) {
+                return p.lineId == lineId;
+            });
+        };
+        t.platforms = ko.computed(function() {
+            var platformNames = ko.utils.arrayGetDistinctValues(t.platformNames());
+            var platforms = [];
+            ko.utils.arrayForEach(platformNames, function(platformName) {
+                platforms.push(new Platform(platformName, t.predictions(), mode, lineIds));
+            });
+            return platforms;
+        });
+    }
+    function LiveBoard($wrapper, scope, boardType, origin) {
+        var t = this;
+        tfl.logs.create("tfl.predictions: Board create" + boardType);
+        t.$wrapper = $wrapper;
+        t.scope = scope;
+        t.mode = t.$wrapper.data("mode");
+        t.boardType = boardType;
+        t.origin = origin;
+        t.isHomePage = origin !== undefined && origin === "HomePage";
+        if (t.boardType === undefined || t.boardType === "live") {
+            t.naptanId = t.$wrapper.data("naptan-id");
+            if (t.naptanId !== undefined) {
+                t.naptanId = t.naptanId.toString();
+            }
+            t.lineId = t.$wrapper.data("line-id");
+            if (t.lineId !== undefined) {
+                t.lineId = t.lineId.toString();
+            }
+            t.lineIds = (t.lineId + "").split(",");
+            t.$wrapper.find(".initial-board-container").remove();
+            if (t.mode !== tfl.modeNameBus && t.lineIds.length === 1) {
+                t.lineRooms = [ {
+                    LineId: t.lineId,
+                    NaptanId: t.naptanId
+                } ];
+            } else {
+                if (t.lineIds.length === 0) {
+                    t.lineRooms = [ {
+                        NaptanId: t.naptanId
+                    } ];
+                } else {
+                    t.lineRooms = [];
+                    for (var i = 0, ilen = t.lineIds.length; i < ilen; i++) {
+                        t.lineRooms.push({
+                            LineId: t.lineIds[i],
+                            NaptanId: t.naptanId
+                        });
+                    }
+                }
+            }
+        } else {
+            t.naptanLineIds = t.$wrapper.data("naptan-line-ids").toString();
+            t.lineRooms = [];
+            var naptanLineIdItems = t.naptanLineIds.split(";");
+            for (var nid = 0, nidlen = naptanLineIdItems.length; nid < nidlen; nid++) {
+                var naptanLineItem = naptanLineIdItems[nid].split("|");
+                var naptanId = naptanLineItem[0];
+                var lineIds = naptanLineItem[1].split(",");
+                for (var j = 0, jlen = lineIds.length; j < jlen; j++) {
+                    t.lineRooms.push({
+                        LineId: lineIds[j],
+                        NaptanId: naptanId
+                    });
+                }
+            }
+        }
+        t.initialSetLoaded = false;
+        t.listening = false;
+        t.updateTimeout = 0;
+        t.predictionsViewModel = {};
+        t.isLinkedToPlatformSelect = $wrapper.closest(".station-details").length;
+        t.expandedBoards = [];
+        t.updateTimeout = setTimeout(function() {
+            t.displayError(noUpdatesError);
+        }, timeoutLength);
+        t.setupLoadMoreButton();
+        t.updateBoard(JSON.parse(t.$wrapper.find("#json-response").val()));
+        t.setupBusHomePage();
+    }
+    LiveBoard.prototype.displayError = function(error) {
+        var $errors = this.$wrapper.find(".field-validation-errors");
+        if (!$errors.length) {
+            $errors.empty();
+            this.$wrapper.find(".widget-message").after('<div class="widget-content"><ul class="field-validation-errors"></ul></div>');
+            $errors = this.$wrapper.find(".field-validation-errors");
+        }
+        $errors.append('<li class = "field-validation-suggestion">' + error + "</li>");
+    };
+    LiveBoard.prototype.removeError = function() {
+        this.$wrapper.find(".field-validation-errors").parent().remove();
+    };
+    LiveBoard.prototype.startListening = function() {
+        var t = this;
+        if (!t.listening && (!t.isHomePage || t.isHomePage && showBusOnHome())) {
+            t.listening = true;
+            var lineRoomsToAdd = addLineRooms(t.lineRooms);
+            if (lineRoomsToAdd.length > 0) {
+                websocketConnection.server.addLineRooms(lineRoomsToAdd).done(function() {
+                    tfl.logs.create("tfl.predictions: Invocation of addLineRooms succeeded");
+                }).fail(function(error) {
+                    tfl.logs.create("tfl.predictions: Invocation of addLineRooms failed. Error: " + error);
+                    t.displayError(connectionError);
+                    t.listening = false;
+                });
+            }
+        }
+    };
+    LiveBoard.prototype.stopListening = function() {
+        var t = this;
+        if (t.listening) {
+            t.listening = false;
+            if (t.updateTimeout) {
+                clearTimeout(t.updateTimeout);
+                t.updateTimeout = 0;
+            }
+            var lineRoomsToRemove = removeLineRooms(t.lineRooms);
+            if (lineRoomsToRemove.length > 0) {
+                websocketConnection.server.removeLineRooms(lineRoomsToRemove).done(function() {
+                    tfl.logs.create("tfl.predictions: Invocation of removeLineRooms succeeded");
+                    t.listening = true;
+                }).fail(function(error) {
+                    tfl.logs.create("tfl.predictions: Invocation of removeLineRooms failed. Error: " + error);
+                });
+            }
+        }
+    };
+    LiveBoard.prototype.updateBoard = function(data) {
+        var t = this;
+        var newPrediction;
+        var lineId;
+        t.removeError();
+        clearTimeout(t.updateTimeout);
+        t.updateTimeout = 0;
+        t.updateTimeout = setTimeout(function() {
+            t.displayError(noUpdatesError);
+        }, timeoutLength);
+        var now = new Date();
+        t.$wrapper.parent().parent().find(".live-board-last-updated").html(tfl.tools.getTimeWithSeconds(now));
+        if (data !== undefined && data !== null) {
+            t.$wrapper.find(".live-board-subboard.expanded").each(function() {
+                t.expandedBoards.push($(this).data("platform-id"));
+            });
+            if (!t.initialSetLoaded) {
+                tfl.logs.create("tfl.predictions.update: timestamp : " + tfl.tools.getTimeWithSeconds(new Date()));
+                t.loadInitialSet(data, now);
+                if (t.boardType === "live" || t.boardType === "fav" && t.$wrapper.find(".initial-board-container").length > 0) {
+                    ko.applyBindings(t.predictionsViewModel, t.$wrapper[0]);
+                }
+                t.$wrapper.find(".initial-board-container").remove();
+                t.$wrapper.find(".live-board-container").removeClass("hidden");
+                t.initialSetLoaded = true;
+            } else {
+                t.predictionsViewModel.now = now;
+                var utcFormatted = getUtcFormattedDate(now);
+                if (t.mode === tfl.modeNameTube || t.mode === tfl.modeNameDlr || t.mode === tfl.modeNameOverground || t.mode === tfl.modeNameTflRail) {
+                    var firstUpdateIndex = -1;
+                    for (var j = 0, jlen = data.length; j < jlen; j++) {
+                        newPrediction = data[j];
+                        if (newPrediction.OperationType === 1) {
+                            firstUpdateIndex = j;
+                            lineId = newPrediction.LineId;
+                            break;
+                        }
+                    }
+                    if (firstUpdateIndex !== -1) {
+                        t.predictionsViewModel.clearLine(lineId);
+                        for (var ii = firstUpdateIndex, iilen = data.length; ii < iilen; ii++) {
+                            newPrediction = data[ii];
+                            newPrediction = updateTimestampReceived(newPrediction, utcFormatted);
+                            if (newPrediction.OperationType === 1) {
+                                t.predictionsViewModel.predictions.push(new Prediction(newPrediction.Id, newPrediction.NaptanId, buildDebugHistory(newPrediction.ExpectedArrival, newPrediction.Timing, newPrediction.TimeToStation), newPrediction.CurrentLocation, newPrediction.DestinationName, newPrediction.DestinationNaptanId, newPrediction.ExpectedArrival, newPrediction.TimeToStation, newPrediction.LineId, newPrediction.LineName, newPrediction.PlatformName, newPrediction.Towards, newPrediction.VehicleId));
+                            }
+                        }
+                    }
+                } else {
+                    var currPrediction;
+                    var newPredictions = [];
+                    var timeStamp;
+                    for (var p = 0; p < data.length; p++) {
+                        newPrediction = data[p];
+                        var history = "";
+                        var newTimeStamp = new Date(newPrediction.Timestamp);
+                        if (timeStamp === undefined || timeStamp < newTimeStamp) {
+                            timeStamp = newTimeStamp;
+                        }
+                        newPrediction = updateTimestampReceived(newPrediction, utcFormatted);
+                        if (t.boardType === undefined || t.boardType === "live") {
+                            if (newPrediction.NaptanId === t.naptanId) {
+                                var matchedPredictionIndex = -1;
+                                for (var y = 0, ylen = t.predictionsViewModel.predictions().length; y < ylen; y++) {
+                                    currPrediction = t.predictionsViewModel.predictions()[y];
+                                    if (currPrediction.id === newPrediction.Id) {
+                                        matchedPredictionIndex = y;
+                                        break;
+                                    }
+                                }
+                                var removed = false;
+                                if (matchedPredictionIndex > -1) {
+                                    history = buildDebugHistory(newPrediction.ExpectedArrival, newPrediction.Timing, newPrediction.TimeToStation, t.predictionsViewModel.predictions()[matchedPredictionIndex].history);
+                                    t.predictionsViewModel.predictions.splice(matchedPredictionIndex, 1);
+                                    removed = true;
+                                } else {
+                                    history = buildDebugHistory(newPrediction.ExpectedArrival, newPrediction.Timing, newPrediction.TimeToStation);
+                                }
+                                if (newPrediction.OperationType === 1) {
+                                    var addPrediction = new Prediction(newPrediction.Id, newPrediction.NaptanId, history, newPrediction.CurrentLocation, newPrediction.DestinationName, newPrediction.DestinationNaptanId, newPrediction.ExpectedArrival, newPrediction.TimeToStation, newPrediction.LineId, newPrediction.LineName, newPrediction.PlatformName, newPrediction.Towards, newPrediction.VehicleId, newPrediction.Timing);
+                                    t.predictionsViewModel.predictions.push(addPrediction);
+                                    tfl.logs.create("tfl.predictions.update: live " + (removed ? "update" : "add   ") + " : " + addPrediction.vehicle() + " => " + (timeStamp.getTime() - new Date(addPrediction.expectedArrival).getTime()));
+                                } else {
+                                    if (removed) {
+                                        tfl.logs.create("tfl.predictions.update: live remove : " + currPrediction.vehicle() + " => " + (timeStamp.getTime() - new Date(currPrediction.expectedArrival).getTime()));
+                                    }
+                                }
+                            }
+                        } else {
+                            newPredictions.push(new Prediction(newPrediction.Id, newPrediction.NaptanId, history, newPrediction.CurrentLocation, newPrediction.DestinationName, newPrediction.DestinationNaptanId, newPrediction.ExpectedArrival, newPrediction.OperationType === 1 ? newPrediction.TimeToStation : 0, newPrediction.LineId, newPrediction.LineName, newPrediction.PlatformName, newPrediction.Towards, newPrediction.VehicleId, newPrediction.Timing));
+                        }
+                    }
+                    if (t.boardType === undefined || t.boardType === "live") {
+                        if (timeStamp !== undefined) {
+                            var x = t.predictionsViewModel.predictions().length;
+                            while (x--) {
+                                currPrediction = t.predictionsViewModel.predictions()[x];
+                                if (timeStamp.getTime() - new Date(currPrediction.expectedArrival).getTime() > 3e4) {
+                                    tfl.logs.create("tfl.predictions.update: live stale  : " + currPrediction.vehicle() + " => " + (timeStamp.getTime() - new Date(currPrediction.expectedArrival).getTime()));
+                                    t.predictionsViewModel.predictions.splice(x, 1);
+                                }
+                            }
+                        }
+                    } else {
+                        if (!t.isHomePage || t.isHomePage && showBusOnHome()) {
+                            t.processPredictions(newPredictions);
+                            t.removeStaleArrivals(timeStamp);
+                        }
+                    }
+                }
+            }
+            if (t.mode === tfl.modeNameBus && tfl.busOptions && (t.boardType === undefined || t.boardType === "live")) {
+                tfl.busOptions.init(t.scope, true);
+            }
+            if (t.isLinkedToPlatformSelect) {
+                $('#route-selector .routes-list:not(".current-platform") .selected a').trigger("click");
+            }
+            if (t.mode !== tfl.modeNameBus) {
+                t.setupLoadMoreButton();
+            }
+        }
+    };
+    LiveBoard.prototype.loadInitialSet = function(data, now) {
+        var t = this;
+        var newPrediction;
+        var addPrediction;
+        var utcFormatted = getUtcFormattedDate(now);
+        if (t.boardType === undefined || t.boardType === "live") {
+            var initialSet = [];
+            for (var i = 0, len = data.length; i < len; i++) {
+                newPrediction = data[i];
+                newPrediction = updateTimestampReceived(newPrediction, utcFormatted);
+                addPrediction = new Prediction(newPrediction.id, newPrediction.naptanId, buildDebugHistory(newPrediction.expectedArrival, newPrediction.Timing, newPrediction.timeToStation), newPrediction.currentLocation, newPrediction.destinationName, newPrediction.destinationNaptanId, newPrediction.expectedArrival, newPrediction.timeToStation, newPrediction.lineId, newPrediction.lineName, newPrediction.platformName, newPrediction.towards, newPrediction.vehicleId);
+                initialSet.push(addPrediction);
+                tfl.logs.create("tfl.predictions.update: live create : " + addPrediction.vehicle() + " => " + (now.getTime() - new Date(addPrediction.expectedArrival).getTime()));
+            }
+            t.predictionsViewModel = new ViewModel(t.mode, t.lineIds, now, initialSet);
+        } else {
+            t.predictionsViewModel = new ViewModel("bus", null, now, null);
+            t.loadViewModelData(data);
+        }
+    };
+    LiveBoard.prototype.loadViewModelData = function(data) {
+        var t = this;
+        var stopPoints = [];
+        for (var stopPoint = 0, stopPointLen = data.length; stopPoint < stopPointLen; stopPoint++) {
+            var sp = data[stopPoint];
+            if (sp.NaptanId !== undefined) {
+                var newStopPoint = new StopPoint(sp.NaptanId, sp.StopName, sp.StopLetter, sp.SspPage, [], sp.HideItem);
+                for (var busLine = 0, busLineLen = sp.BusLines.length; busLine < busLineLen; busLine++) {
+                    var bl = sp.BusLines[busLine];
+                    if (bl.LineId !== undefined) {
+                        var newBusLine = new BusLine(bl.LineId, [], bl.HideItem);
+                        for (var busDestination = 0, busDestinationLen = bl.BusDestinations.length; busDestination < busDestinationLen; busDestination++) {
+                            var bd = bl.BusDestinations[busDestination];
+                            if (bd.DestinationName !== undefined) {
+                                var newBusDestination = new BusDestination(sp.NaptanId, bd.DestinationName, [], bd.HideItem, t.isHomePage, bd.IsStopDisrupted);
+                                if (bd.BusArrivals) {
+                                    for (var busArrival = 0, busArrivalLen = bd.BusArrivals.length; busArrival < busArrivalLen; busArrival++) {
+                                        var ba = bd.BusArrivals[busArrival];
+                                        if (ba.Id !== undefined) {
+                                            var newBusArrival = new BusArrival(ba.Id, ba.VehicleId, ba.TimeToStation, ba.ExpectedArrival);
+                                            newBusDestination.busArrivals.push(newBusArrival);
+                                            tfl.logs.create("tfl.predictions.update: fav  create : " + bl.LineId + " " + bd.DestinationName + " " + Math.floor(ba.TimeToStation / 60) + " " + ba.VehicleId + " => " + (new Date().getTime() - new Date(ba.ExpectedArrival).getTime()));
+                                        }
+                                    }
+                                }
+                                newBusLine.busDestinations.push(newBusDestination);
+                            }
+                        }
+                        newStopPoint.busLines.push(newBusLine);
+                    }
+                }
+                stopPoints.push(newStopPoint);
+            }
+        }
+        t.predictionsViewModel.stopPoints = stopPoints;
+    };
+    LiveBoard.prototype.setupLoadMoreButton = function() {
+        var t = this;
+        t.$wrapper.find(".live-board-subboard").each(function() {
+            var $this = $(this);
+            if (t.expandedBoards.indexOf($this.data("platform-id")) > -1) {
+                $this.addClass("expanded");
+                $this.find(".live-board-link").remove();
+            } else {
+                var $shown = $this.find('.live-board-feed-item:not(".hidden")');
+                if ($shown.length > 3) {
+                    $shown.eq(2).nextAll().addClass("paginate-hidden");
+                    $this.find(".live-board-link").removeClass("hidden");
+                } else {
+                    $this.find(".live-board-link").addClass("hidden");
+                }
+            }
+        });
+        var tabbables = $(":tabbable");
+        var numMoreBtns = t.$wrapper.find(".live-board-link").length;
+        var moreBtnsIndex = tabbables.index(t.$wrapper.find(".live-board-link").first());
+        t.$wrapper.find(".live-board-link").off("click").on("click", function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            $this.closest(".live-board-subboard").addClass("expanded");
+            tabbables[moreBtnsIndex + numMoreBtns].focus();
+            if (numMoreBtns > 1) {
+                moreBtnsIndex++;
+            }
+            $this.remove();
+        });
+    };
+    LiveBoard.prototype.setupBusHomePage = function() {
+        var t = this;
+        if (t.boardType !== "fav" && !t.isHomePage) {
+            return;
+        }
+        t.$wrapper.find(".view-bus-status").on("click", function(e) {
+            e.preventDefault();
+            tfl.favouritesPanel.openStatusFavouritesPanel("bus");
+            var offsetFromTop = $("#fav-status-tube-dlr-overground-tflrail-tram").is(":visible") ? $("#fav-status-tube-dlr-overground-tflrail-tram").height() + $(".fav-panel-header").height() : 0;
+            document.getElementById("fav-panel-status").scrollTop = offsetFromTop;
+        });
+    };
+    LiveBoard.prototype.processPredictions = function(predictions) {
+        var t = this;
+        if (predictions && predictions !== null && predictions.length > 0) {
+            for (var i = 0, len = predictions.length; i < len; i++) {
+                var newArrival = new BusArrival(predictions[i].id, predictions[i].vehicleId, predictions[i].timeToStation, predictions[i].expectedArrival);
+                var newDestination = new BusDestination(predictions[i].naptanId, predictions[i].destinationName, [ newArrival ], false, t.isHomePage);
+                var newLine = new BusLine(predictions[i].lineId, [ newDestination ]);
+                for (var sp = 0, splen = t.predictionsViewModel.stopPoints.length; sp < splen; sp++) {
+                    if (t.predictionsViewModel.stopPoints[sp].naptanId === predictions[i].naptanId) {
+                        t.updateArrivalForStopPoint(predictions[i], sp, newLine, newDestination, newArrival);
+                        break;
+                    }
+                }
+            }
+        }
+    };
+    LiveBoard.prototype.updateArrivalForStopPoint = function(prediction, sp, newLine, newDestination, newArrival) {
+        var t = this;
+        var exists = false;
+        for (var bl = 0, len = t.predictionsViewModel.stopPoints[sp].busLines().length; bl < len; bl++) {
+            if (t.predictionsViewModel.stopPoints[sp].busLines()[bl].lineId.toUpperCase() === prediction.lineId.toUpperCase()) {
+                t.updateArrivalForLine(prediction, sp, bl, newDestination, newArrival);
+                exists = true;
+                break;
+            }
+        }
+    };
+    LiveBoard.prototype.updateArrivalForLine = function(prediction, sp, bl, newDestination, newArrival) {
+        var t = this;
+        var exists = false;
+        for (var bd = 0, len = t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations().length; bd < len; bd++) {
+            if (t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].destinationName === prediction.destinationName) {
+                t.updateArrivalForDestination(prediction, sp, bl, bd, newArrival);
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations.push(newDestination);
+            tfl.logs.create("tfl.predictions.update: fav  add    : " + prediction.vehicle() + " => " + (new Date().getTime() - new Date(prediction.expectedArrival).getTime()));
+        }
+    };
+    LiveBoard.prototype.updateArrivalForDestination = function(prediction, sp, bl, bd, newArrival) {
+        var t = this;
+        var removed = false;
+        for (var ba = 0, len = t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals().length; ba < len; ba++) {
+            if (t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals()[ba].vehicleId === prediction.vehicleId) {
+                t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals.remove(t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals()[ba]);
+                removed = true;
+                break;
+            }
+        }
+        if (newArrival.timeToStation > 0) {
+            t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals.push(newArrival);
+            tfl.logs.create("tfl.predictions.update: fav  " + (removed ? "update" : "add   ") + " : " + prediction.vehicle() + " => " + (new Date().getTime() - new Date(prediction.expectedArrival).getTime()));
+        } else {
+            if (removed) {
+                tfl.logs.create("tfl.predictions.update: fav  remove  : " + prediction.vehicle() + " => " + (new Date().getTime() - new Date(prediction.expectedArrival).getTime()));
+            }
+        }
+    };
+    LiveBoard.prototype.removeStaleArrivals = function(timeStamp) {
+        var t = this;
+        if (timeStamp !== undefined && t.predictionsViewModel.stopPoints.length > 0) {
+            var currentArrival;
+            for (var sp = 0, splen = t.predictionsViewModel.stopPoints.length; sp < splen; sp++) {
+                for (var bl = 0, bllen = t.predictionsViewModel.stopPoints[sp].busLines().length; bl < bllen; bl++) {
+                    for (var bd = 0, bdlen = t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations().length; bd < bdlen; bd++) {
+                        var ba = t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals().length;
+                        while (ba--) {
+                            currentArrival = t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals()[ba];
+                            if (timeStamp.getTime() - new Date(currentArrival.expectedArrival).getTime() > 3e4) {
+                                tfl.logs.create("tfl.predictions.update: fav  stale  : " + t.predictionsViewModel.stopPoints[sp].busLines()[bl].lineId + " " + t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].destinationName + " " + Math.floor(currentArrival.timeToStation / 60) + " " + currentArrival.vehicleId + " => " + (new Date().getTime() - new Date(currentArrival.expectedArrival).getTime()));
+                                t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].busArrivals.splice(ba, 1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+    LiveBoard.prototype.updateStopDisrupted = function(diruptedStops) {
+        var t = this;
+        if (t.predictionsViewModel.stopPoints.length > 0) {
+            for (var sp = 0, splen = t.predictionsViewModel.stopPoints.length; sp < splen; sp++) {
+                var isDisrupted = isStopPointDisrupted(t.predictionsViewModel.stopPoints[sp].naptanId, diruptedStops);
+                for (var bl = 0, bllen = t.predictionsViewModel.stopPoints[sp].busLines().length; bl < bllen; bl++) {
+                    for (var bd = 0, bdlen = t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations().length; bd < bdlen; bd++) {
+                        t.predictionsViewModel.stopPoints[sp].busLines()[bl].busDestinations()[bd].isStopDisrupted(isDisrupted);
+                    }
+                }
+            }
+        }
+        function isStopPointDisrupted(naptanId, diruptedStops) {
+            if (!naptanId) {
+                return false;
+            }
+            var stop = diruptedStops.find(function(stop) {
+                return stop.id === naptanId.toLowerCase();
+            });
+            return stop && stopIsClosed() && disruptionIsRealtimeOrPlanned();
+            function stopIsClosed() {
+                return stop.status.toLowerCase() === "closure";
+            }
+            function disruptionIsRealtimeOrPlanned() {
+                return stop.appearance.toLowerCase() === "realtime" || stop.appearance.toLowerCase() === "plannedwork";
+            }
+        }
+    };
+    function pad(num, size) {
+        var s = "000000000" + num;
+        return s.substr(s.length - size);
+    }
+    function showBusOnHome() {
+        return tfl.showBusStatusOnHomePage === undefined || tfl.showBusStatusOnHomePage;
+    }
+    function buildDebugHistory(expectedArrival, timing, timeToStation, existingHistory) {
+        if (!timing) {
+            timing = {
+                Source: "",
+                Insert: "",
+                Read: "",
+                Sent: "",
+                Received: ""
+            };
+        }
+        var message = tfl.utils.stringFormat("exp:{0};src:{1};ins:{2};rd:{3};snt:{4};rcvd:{5};tts:{6}s<br />", displayTimeOnly(expectedArrival), displayTimeOnly(timing.Source), displayTimeOnly(timing.Insert), displayTimeOnly(timing.Read), displayTimeOnly(timing.Sent), displayTimeOnly(timing.Received), timeToStation);
+        if (existingHistory) {
+            message += existingHistory;
+        }
+        return message;
+    }
+    function displayTimeOnly(dateTimeAsString) {
+        if (!dateTimeAsString) return "";
+        return dateTimeAsString.substring(11, 19);
+    }
+    function LineRoom(lineRoomKey) {
+        this.lineRoomKey = lineRoomKey;
+        this.count = 0;
+    }
+    function addLineRooms(lineRoomsToAdd) {
+        if (!lineRoomsToAdd) {
+            return undefined;
+        }
+        var includeLineRooms = [];
+        for (var i = 0, len = lineRoomsToAdd.length; i < len; i++) {
+            var lineRoomKey = (lineRoomsToAdd[i].NaptanId + "|" + lineRoomsToAdd[i].LineId).toUpperCase();
+            var lineRoom = getLineRoom(lineRoomKey);
+            lineRoom.count++;
+            if (lineRoom.count > 1) {
+                tfl.logs.create("tfl.predictions.addLineRooms: skip " + lineRoomKey);
+            } else {
+                tfl.logs.create("tfl.predictions.addLineRooms: add  " + lineRoomKey);
+                includeLineRooms.push(lineRoomsToAdd[i]);
+            }
+        }
+        return includeLineRooms;
+    }
+    function removeLineRooms(lineRoomsToRemove) {
+        if (!lineRoomsToRemove) {
+            return undefined;
+        }
+        var excludeLineRooms = [];
+        for (var i = 0, len = lineRoomsToRemove.length; i < len; i++) {
+            var lineRoomKey = (lineRoomsToRemove[i].NaptanId + "|" + lineRoomsToRemove[i].LineId).toUpperCase();
+            var lineRoom = getLineRoom(lineRoomKey);
+            lineRoom.count--;
+            if (lineRoom.count > 0) {
+                tfl.logs.create("tfl.predictions.removeLineRooms: skip " + lineRoomKey);
+            } else {
+                tfl.logs.create("tfl.predictions.removeLineRooms: rem  " + lineRoomKey);
+                excludeLineRooms.push(lineRoomsToRemove[i]);
+                removeLineRoom(lineRoomKey);
+            }
+        }
+        return excludeLineRooms;
+    }
+    function getLineRoom(lineRoomKey) {
+        var lineRoom = findLineRoom(lineRoomKey);
+        if (!lineRoom) {
+            lineRoom = new LineRoom(lineRoomKey);
+            tfl.predictions.allLineRooms.push(lineRoom);
+        }
+        return lineRoom;
+    }
+    function findLineRoom(lineRoomKey) {
+        for (var i = 0, len = tfl.predictions.allLineRooms.length; i < len; i++) {
+            if (tfl.predictions.allLineRooms[i].lineRoomKey === lineRoomKey) {
+                return tfl.predictions.allLineRooms[i];
+            }
+        }
+    }
+    function removeLineRoom(lineRoomKey) {
+        for (var i = 0, len = tfl.predictions.allLineRooms.length; i < len; i++) {
+            if (tfl.predictions.allLineRooms[i].lineRoomKey === lineRoomKey) {
+                tfl.predictions.allLineRooms.splice(i, 1);
+                return;
+            }
+        }
+    }
+    function start() {
+        $.connection.hub.start().done(function() {
+            if (websocketConnection === null) {
+                started = false;
+                broadcastToBoards("displayError", connectionError);
+                tfl.logs.create("tfl.predictions: predictions signalr connection failed to start");
+                return;
+            } else {
+                started = true;
+                broadcastToBoards("startListening");
+            }
+        });
+    }
+    function init() {
+        $.connection.hub.logging = true;
+        $.connection.hub.url = tfl.pushApiUrl + "signalr";
+        websocketConnection = $.connection.predictionsRoomHub;
+        websocketConnection.client.OnConnectError = function(errMsg) {
+            tfl.logs.create("tfl.predictions: Connection failed. Error: " + errMsg);
+            broadcastToBoards("displayError", connectionError);
+            broadcastToBoards("stopListening");
+        };
+        websocketConnection.client.showPredictions = function(data) {
+            o.refreshStopStatuses();
+            if (!data.length) {
+                tfl.logs.create("tfl.predictions: predictions returned from signalr with no data");
+                return false;
+            }
+            var naptanReturned = data[0].NaptanId;
+            if (naptanReturned === null || naptanReturned === undefined || naptanReturned === "") {
+                tfl.logs.create("tfl.predictions: predictions returned from signalr with no naptanId");
+                return false;
+            }
+            tfl.logs.create("tfl.predictions.update: timestamp : " + tfl.tools.getTimeWithSeconds(new Date()));
+            if (liveBoards.hasOwnProperty(naptanReturned)) {
+                liveBoards[naptanReturned].updateBoard(data);
+            }
+            for (var board in liveBoards) {
+                if (liveBoards[board].boardType === "fav") {
+                    liveBoards[board].updateBoard(data);
+                }
+            }
+        };
+        newItemsToShow = 10;
+        timeoutLength = 12e4;
+        connectionError = "Automatic departure updates are not currently available. Please reload the page for further departure updates.";
+        noUpdatesError = "This departure information is out of date. Please try reloading the page.";
+        stopDisruptedError = "Yo stop is disrupted -:(";
+        liveBoards = {};
+        started = false;
+        initialized = true;
+    }
+    function broadcastToBoards(action, options) {
+        for (var board in liveBoards) {
+            if (liveBoards.hasOwnProperty(board)) {
+                liveBoards[board][action](options);
+            }
+        }
+    }
+    function StopPoint(naptanId, stopName, stopLetter, sspPage, busLines, hideItem) {
+        this.naptanId = naptanId;
+        this.stopName = stopName;
+        this.stopLetter = stopLetter;
+        this.sspPage = sspPage;
+        this.busLines = ko.observableArray(busLines);
+        this.hideItem = hideItem;
+        this.stopLetterStyle = function() {
+            return this.stopLetter === undefined || this.stopLetter === null ? "bus-stop-icon" : "blank-bus-stop-icon";
+        };
+    }
+    function BusLine(lineId, busDestinations, hideItem) {
+        this.lineId = lineId;
+        this.busDestinations = ko.observableArray(busDestinations);
+        this.hideItem = hideItem;
+        this.sortName = function() {
+            var alphaValue = this.lineId.match(/[A-Z]/);
+            var numericValue = this.lineId.match(/\d+/);
+            if (alphaValue === null) {
+                return pad(numericValue, 5);
+            }
+            return alphaValue + pad(numericValue, 4);
+        };
+    }
+    function BusDestination(stopId, destinationName, busArrivals, hideItem, isHomePage, isStopDisrupted) {
+        this.destinationName = destinationName;
+        this.count = 10;
+        this.busArrivals = ko.observableArray(busArrivals);
+        this.hideItem = hideItem;
+        this.isHomePage = isHomePage;
+        this.stopId = stopId;
+        this.isStopDisrupted = ko.observable(isStopDisrupted);
+        this.nextArrivals = ko.computed(function(origin) {
+            if (this.isHomePage && !showBusOnHome()) {
+                return '<a href="javascript:void(0);" class="view-bus-status">Check arrivals</a>';
+            }
+            if (this.isStopDisrupted()) {
+                return "<span>Bus stop closed</span>";
+            }
+            if (this.busArrivals().length === 0) {
+                return "<span>No arrivals due</span>";
+            }
+            if (this.busArrivals().length === 1) {
+                var expected = this.busArrivals()[0].expected();
+                if (expected === "Due") {
+                    return "<span>Due</span>";
+                } else if (expected === 1) {
+                    return "<span>1 min</span>";
+                } else {
+                    return "<span>" + expected + " mins</span>";
+                }
+            }
+            var numberToTake = this.busArrivals().length;
+            if (numberToTake > 3) {
+                numberToTake = 3;
+            }
+            return "<span>" + this.busArrivals().sort(function(l, r) {
+                return l.timeToStation > r.timeToStation ? 1 : -1;
+            }).slice(0, numberToTake).map(function(elem) {
+                return elem.expected();
+            }).join(", ") + " mins</span>";
+        }, this);
+    }
+    function BusArrival(id, vehicleId, timeToStation, expectedArrival) {
+        this.id = id;
+        this.vehicleId = vehicleId;
+        this.timeToStation = timeToStation;
+        this.expectedArrival = expectedArrival;
+        this.expected = function() {
+            if (this.timeToStation <= 60) {
+                return "Due";
+            }
+            return Math.floor(this.timeToStation / 60);
+        };
+    }
+    o.init = function(scope, shutdown) {
+        tfl.logs.create("tfl.predictions.init: init called");
+        if (!initialized && !shutdown) {
+            init();
+        }
+        initActiveNaptans();
+        var activeNaptans = [];
+        var activeBoards = [];
+        $(".live-box").each(function() {
+            var $this = $(this);
+            var naptanId = $this.data("naptan-id");
+            if (naptanId !== undefined) {
+                naptanId = naptanId.toString();
+            }
+            var origin = $this.data("origin");
+            var key;
+            var boardType;
+            if (naptanId !== undefined && naptanId !== "") {
+                activeNaptans.push(naptanId);
+                key = naptanId;
+                boardType = "live";
+            } else if (origin !== undefined && origin !== "") {
+                activeBoards.push(origin);
+                key = origin;
+                boardType = "fav";
+            }
+            if (key !== undefined) {
+                if (!liveBoards.hasOwnProperty(key) || liveBoards[key].scope === scope) {
+                    if ($this.find(".live-board-container").length) {
+                        liveBoards[key] = new LiveBoard($this, scope, boardType, origin);
+                        if (started) {
+                            liveBoards[key].startListening();
+                        }
+                    }
+                } else if ($(".live-board-link", $this).length) {
+                    o.manageLoadMoreButton($this);
+                }
+            }
+        });
+        o.manageLoadMoreButton = function(obj) {
+            var t = obj;
+            t.find(".live-board-subboard").each(function(index) {
+                var $this = $(this);
+                var $shown = $this.find('.live-board-feed-item:not(".hidden")');
+                if ($shown.length > 3) {
+                    $shown.eq(2).nextAll().addClass("paginate-hidden");
+                    $this.find(".live-board-link").removeClass("hidden");
+                } else {
+                    $this.find(".live-board-link").addClass("hidden");
+                }
+            });
+            var tabbables = $(":tabbable");
+            var numMoreBtns = t.find(".live-board-link").length;
+            var moreBtnsIndex = tabbables.index(t.find(".live-board-link").first());
+            t.find(".live-board-link").off("click").on("click", function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                $this.closest(".live-board-subboard").addClass("expanded");
+                tabbables[moreBtnsIndex + numMoreBtns].focus();
+                if (numMoreBtns > 1) {
+                    moreBtnsIndex++;
+                }
+                $this.remove();
+            });
+        };
+        function activeBoardsShowStatus() {
+            return activeBoards.length === 1 && activeBoards[0] === "HomePage" ? showBusOnHome() : activeBoards.length > 0;
+        }
+        if (!started && (activeNaptans.length > 0 || activeBoardsShowStatus())) {
+            start();
+        }
+        if (started) {
+            for (var board in liveBoards) {
+                if (liveBoards.hasOwnProperty(board)) {
+                    if (activeBoards.indexOf(board) < 0 && activeNaptans.indexOf(liveBoards[board].naptanId) < 0) {
+                        liveBoards[board].stopListening();
+                        delete liveBoards[board];
+                    }
+                }
+            }
+        }
+    };
+    o.activeNaptans = [];
+    o.activeBoards = [];
+    o.stopStatuses = [];
+    o.debug = {
+        toggleAllStopsStatus: false
+    };
+    o.ajaxUrlStopPointsDisruptions = function(naptanIds) {
+        return tfl.utils.stringFormat(tfl.api.StopPointsDisruptions, naptanIds.join(","), "false", "true");
+    };
+    o.refreshStopStatuses = function refreshStopStatuses() {
+        stopStatusHelper.triggerRefresh();
+    };
+    var stopStatusHelper = {
+        initAjax: function(msg) {
+            tfl.logs.create("stopStatusHelper.initAjax : " + this.timeoutID);
+            ajaxStopStatus();
+            this.timeoutID = undefined;
+        },
+        triggerRefresh: function() {
+            if (typeof this.timeoutID === "number") {
+                this.cancelRefresh();
+            }
+            this.timeoutID = window.setTimeout(function(msg) {
+                this.initAjax(msg);
+            }.bind(this), 5e3, "Go get stop status!");
+        },
+        cancelRefresh: function() {
+            window.clearTimeout(this.timeoutID);
+            tfl.logs.create("stopStatusHelper.cancelRefresh : " + this.timeoutID);
+            this.timeoutID = undefined;
+        }
+    };
+    function ajaxStopStatus() {
+        tfl.ajax({
+            url: o.ajaxUrlStopPointsDisruptions(o.activeNaptans),
+            beforeSend: function(jqXHR, settings) {
+                return true;
+            },
+            success: function(data, textStatus, jqXHR) {
+                ajaxStopStatusSuccess(data, textStatus, jqXHR);
+            },
+            autoRefreshInterval: null,
+            autoRefreshId: "arrivalsStopStatus",
+            dataType: "json",
+            error: function(jqXhr, textStatus, errorThrown) {
+                return true;
+            }
+        });
+    }
+    function ajaxStopStatusSuccess(response, textStatus, jqXHR) {
+        if (!response.length) return;
+        var stopStatuses = [];
+        response.forEach(function(data) {
+            stopStatuses.push({
+                id: data.atcoCode.toLowerCase(),
+                name: data.commonName.toLowerCase(),
+                status: data.type.toLowerCase(),
+                appearance: data.appearance.toLowerCase()
+            });
+        });
+        for (var board in liveBoards) {
+            if (liveBoards[board].boardType === "fav") {
+                liveBoards[board].updateStopDisrupted(stopStatuses);
+            }
+        }
+    }
+    function initActiveNaptans(params) {
+        $(".live-box").each(function() {
+            var $this = $(this);
+            var origin = $this.data("origin");
+            var naptanId;
+            var key;
+            var lineIds;
+            var lineRooms;
+            var boardType;
+            var naptanLineIds;
+            var naptanLineItem;
+            var naptanLineIdItems;
+            naptanId = $this.data("naptan-id");
+            if (naptanId !== undefined && naptanId !== "") {
+                naptanId = naptanId.toString();
+                key = naptanId;
+                boardType = "live";
+                o.activeNaptans.push(naptanId);
+            } else {
+                lineRooms = [];
+                naptanLineIds = $this.data("naptan-line-ids").split(";");
+                lineRooms = extractFavLineRooms(naptanLineIds);
+                o.activeNaptans = lineRooms.activeNaptans;
+            }
+            if (origin !== undefined && origin !== "") {
+                o.activeBoards.push(origin);
+                key = origin;
+                boardType = "fav";
+            }
+        });
+    }
+    function extractFavLineRooms(naptanLineIdItems) {
+        var lineIds;
+        var naptanId;
+        var lineRooms = [];
+        var naptanLineItem;
+        var naptans = [];
+        if (naptanLineIdItems.indexOf(";") > -1) {
+            naptanLineIdItems = naptanLineIdItems.split(";");
+        }
+        for (var nid = 0, nidlen = naptanLineIdItems.length; nid < nidlen; nid++) {
+            naptanLineItem = naptanLineIdItems[nid].split("|");
+            naptanId = naptanLineItem[0];
+            lineIds = naptanLineItem[1].split(",");
+            for (var j = 0, jlen = lineIds.length; j < jlen; j++) {
+                lineRooms.push({
+                    LineId: lineIds[j],
+                    NaptanId: naptanId
+                });
+            }
+            naptans.push(naptanId);
+        }
+        lineRooms.activeNaptans = naptans;
+        return lineRooms;
+    }
+    function getUtcFormattedDate(date) {
+        return date.getUTCFullYear() + "-" + ("0" + (date.getUTCMonth() + 1)).slice(-2) + "-" + ("0" + date.getUTCDate()).slice(-2) + "T" + ("0" + date.getUTCHours()).slice(-2) + ":" + ("0" + date.getUTCMinutes()).slice(-2) + ":" + ("0" + date.getUTCSeconds()).slice(-2);
+    }
+    function updateTimestampReceived(prediction, utcFormatted) {
+        if (!prediction.Timing) {
+            prediction.Timing = {
+                Source: "0000-00-00T00:00:00",
+                Insert: "0000-00-00T00:00:00",
+                Read: "0000-00-00T00:00:00",
+                Sent: "0000-00-00T00:00:00",
+                Received: "0000-00-00T00:00:00"
+            };
+        }
+        prediction.Timing.Received = utcFormatted;
+        return prediction;
+    }
+})(window.tfl.predictions = window.tfl.predictions || {}, $);
