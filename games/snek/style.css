@@ -1,0 +1,36 @@
+body {
+      background-color: black;
+      font-family: raleway;
+      color: white;
+      cursor: cell;
+    }
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.creditsLink:hover {
+    color: #adadad;
+    text-decoration: underline;
+    cursor: help;
+  }
+
+.discord {
+  color: #ffffff;
+}
+
+.discord:hover {
+  color: #7289DA;
+  text-decoration: underline;
+  cursor: alias;
+}
+
+.operaLink {
+  color: #ffffff;
+}
+
+.operaLink:hover {
+  color: #FA1E4E;
+  text-decoration: underline;
+  cursor: alias;
+}
