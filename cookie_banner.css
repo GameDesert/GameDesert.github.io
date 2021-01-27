@@ -1,4 +1,4 @@
-#myCookieConsent {
+.myCookieConsent {
     z-index: 999;
     min-height: 20px;
     font-family: OpenSans, arial, "sans-serif";
@@ -15,18 +15,18 @@
     font-size: 15px;
     font-weight: bold;
 }
-#myCookieConsent div {
+.myCookieConsent div {
     padding: 5px 0 0;
 }
-#myCookieConsent a {
+.myCookieConsent a {
     color: #ffba55;
     display: inline-block;
     padding: 0 10px;
 }
-#myCookieConsent a:hover {
+.myCookieConsent a:hover {
 	color: #fda016;
 }
-#myCookieConsent a#cookieButton {
+.myCookieConsent a.cookieButton {
     display: inline-block;
     color: #000000;
     font-size: 1.1em;
@@ -34,10 +34,9 @@
     text-decoration: none;
     cursor: pointer;
     padding: 2px 20px;
-    float: right;
     border-radius: 20px;
 }
-#myCookieConsent a#cookieButton:hover {
+.myCookieConsent a.cookieButton:hover {
     background: #fda016;
 	color: #000;
 }
