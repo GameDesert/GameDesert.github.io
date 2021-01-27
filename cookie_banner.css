@@ -1,0 +1,22 @@
+.cookie-banner {
+    position: fixed;
+    bottom: 40px;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    padding: 5px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  .close {
+    height: 20px;
+    background-color: #323031;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+  }
