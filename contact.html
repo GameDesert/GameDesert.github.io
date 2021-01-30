@@ -10,18 +10,21 @@
     </script>
   </head>
   <body>
-    <form action="?" method="POST">
-      <div id="html_element"></div>
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script>
     <script>
+        function SubmitCaptcha() {
+        document.getElementById("CaptchaSubmission").submit();
         var CaptchaResponse = grecaptcha.getResponse();
         console.log(CaptchaResponse);
         alert(CaptchaResponse);
+        }
+    </script>
+    <form action="?" method="POST" id="CaptchaSubmission">
+      <div id="html_element"></div>
+      <br>
+      <input type="submit" value="Submit" onclick="SubmitCaptcha()">
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
     </script>
   </body>
 </html>
