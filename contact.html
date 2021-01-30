@@ -24,9 +24,28 @@
         document.getElementById("CaptchaSubmission").submit();
         var CaptchaResponse = grecaptcha.getResponse();
         console.log(CaptchaResponse);
-        alert("https://www.google.com/recaptcha/api/siteverify?secret=6LeatkIaAAAAAARYWxgW6AocXj_IB7Bg6L8-m2qq?response=" + CaptchaResponse);
-        window.location.assign("https://www.google.com/recaptcha/api/siteverify?secret=6LeatkIaAAAAAARYWxgW6AocXj_IB7Bg6L8-m2qq?response=" + CaptchaResponse);
+        var posturl = 'https://www.google.com/recaptcha/api/siteverify';
+
+        // post body data 
+        const postdata = {
+            secret: '6LeatkIaAAAAAARYWxgW6AocXj_IB7Bg6L8-m2qq"',
+            response: CaptchaResponse,
+        };
+
+        // request options
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(postdata),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
+
+        // send POST request
+        fetch(posturl, options)
+            .then(res => res.json())
+            .then(res => console.log(res));
+                }
     </script>
   </body>
 </html>
