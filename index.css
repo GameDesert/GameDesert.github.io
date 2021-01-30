@@ -55,7 +55,7 @@ ul {
     background-color: #000000;
     padding: 10px;
   }
-  footer {
+  .page_footer {
     text-align: center;
     padding: 3px;
     background-color: rgb(0, 0, 0);
