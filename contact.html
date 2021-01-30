@@ -24,8 +24,7 @@
         var CaptchaResponse = grecaptcha.getResponse();
         console.log(CaptchaResponse);
         alert(CaptchaResponse);
-        var ConfirmResponseURL = "https://www.google.com/recaptcha/api/siteverify?secret=6LeatkIaAAAAAARYWxgW6AocXj_IB7Bg6L8-m2qq?response=" + CaptchaResponse;
-        window.location.href = ConfirmResponseURL;
+        window.location.assign("https://www.google.com/recaptcha/api/siteverify?secret=6LeatkIaAAAAAARYWxgW6AocXj_IB7Bg6L8-m2qq?response=" + CaptchaResponse);
         }
     </script>
   </body>
