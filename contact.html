@@ -15,7 +15,7 @@
       function recaptcha_callback() {
         console.log(EncodedImage);
         document.getElementById("ok_img").removeAttribute("hidden");
-        var img_source_unform = atob(EncodedImage);
+        var img_source_unform = window.atob(EncodedImage);
         console.log(img_source_unform);
         var img_source_formatted = "data:image/png;base64," + img_source_formatted;
         console.log(img_source_formatted);
