@@ -17,7 +17,7 @@
         document.getElementById("ok_img").removeAttribute("hidden");
         var img_source_unform = window.atob(EncodedImage);
         console.log(img_source_unform);
-        var img_source_formatted = "data:image/png;base64," + img_source_formatted;
+        var img_source_formatted = img_source_unform.concat("data:image/png;base64,",img_source_formatted);
         console.log(img_source_formatted);
         document.getElementById("ok_img").src = img_source_formatted;
       };
