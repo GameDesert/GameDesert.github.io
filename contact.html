@@ -17,7 +17,7 @@
         document.getElementById("ok_img").removeAttribute("hidden");
         var img_source_unform = window.atob(EncodedImage);
         console.log(img_source_unform);
-        document.getElementById("ok_img").src = img_source_unform.concat("data:image/png;base64,",img_source_formatted);
+        document.getElementById("ok_img").src = "data:image/png;base64," + img_source_formatted;
       };
     </script>
   
