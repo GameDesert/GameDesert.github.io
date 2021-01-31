@@ -3,13 +3,13 @@ var img = [
 'https://kotla.eu/assets/puzzle/stars.png',
 'https://kotla.eu/assets/puzzle/vaporwave.png'
 ]
-var old = 5
+var old = 2
 var clicks = 0
 function randomize() {
   let root = document.documentElement
   root.style.setProperty('--image','url('+img[old]+')')
   old++
-  if(old > 5) {
+  if(old > 2) {
     old = 0
   }  
   var ul = document.querySelectorAll('#puzz i');
