@@ -1,15 +1,11 @@
-var img = [
-'/puzzle/ocean.png',
-'/puzzle/stars.png',
-'/puzzle/vaporwave.png'
-]
-var old = 2
+var img = ['https://media.gettyimages.com/photos/cat-headphones-wearing-sunglasses-relaxing-in-the-grass-picture-id512291806?s=2048x2048','https://media.gettyimages.com/vectors/cute-cartoon-dachshunds-in-love-vector-id865392634?s=2048x2048','https://media.gettyimages.com/vectors/heart-shaped-sea-otters-in-love-vector-graphics-vector-id1183276814?s=2048x2048','https://media.gettyimages.com/vectors/funny-no-prob-llama-vector-illustration-vector-id1089951888?s=2048x2048','https://media.gettyimages.com/vectors/cute-sloth-sitting-in-lotus-yoga-pose-cartoon-sloth-bear-vector-vector-id1076571820?s=2048x2048','https://media.gettyimages.com/vectors/hand-drawing-hipster-fantasy-animal-unicorn-illustration-vector-id1065322868?s=2048x2048']
+var old = 5
 var clicks = 0
 function randomize() {
   let root = document.documentElement
   root.style.setProperty('--image','url('+img[old]+')')
   old++
-  if(old > 2) {
+  if(old > 5) {
     old = 0
   }  
   var ul = document.querySelectorAll('#puzz i');
