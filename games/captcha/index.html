@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
         <p id="point_count">Points: 0</p>
@@ -30,9 +30,7 @@
         </style>
         <script>
             var points = 0;
-            function onloadCallback() {
-                document.getElementById("point_count").innerHTML = "Points: " + points;
-            }
+            document.getElementById("point_count").innerHTML = "Points: " + points;
             function captcha_callback() {
                 grecaptcha.reset();
                 points++;
