@@ -1,7 +1,7 @@
 var img = [
-'https://kotla.eu/assets/puzzle/ocean.png',
-'https://kotla.eu/assets/puzzle/stars.png',
-'https://kotla.eu/assets/puzzle/vaporwave.png'
+'/puzzle/ocean.png',
+'/puzzle/stars.png',
+'/puzzle/vaporwave.png'
 ]
 var old = 2
 var clicks = 0
