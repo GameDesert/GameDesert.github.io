@@ -2,9 +2,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     </head>
     <body>
+        <p id="point_count">Points: 0</p>
         <div class="captcha-form">
             <div id="recaptcha" class="g-recaptcha" data-sitekey="6LeatkIaAAAAAI_ZoufZWf3U-W818FL1wUocxPht" data-callback="captcha_callback" data-size="normal" data-expired-callback="captcha_expired" data-error-callback="captcha_error" data-theme="dark"></div>
         </div>
@@ -28,8 +29,14 @@
             }
         </style>
         <script>
-            function captcha_callback() {window.location.reload(true);}
-            function captcha_expired() {window.location.reload(true);}
+            var points = 0;
+            document.getElementById("point_count").innerHTML = "Points: " + points;
+            function captcha_callback() {
+                grecaptcha.reset();
+                points++;
+                document.getElementById("point_count").innerHTML = "Points: " + points;
+            }
+            function captcha_expired() {grecaptcha.reset();}
         </script>
     </body>
 </html>
