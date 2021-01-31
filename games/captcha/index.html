@@ -42,7 +42,8 @@
                 }
                 var element = document.body;
                 element.classList.toggle("dark-mode");
-                document.getElementById("recaptcha").data-theme = mode;
+                var captcha = document.getElementsByClassName("g-recaptcha");
+                captcha.data-theme = mode;
             }
             function captcha_callback() {"window.location.reload(true)"}
             function captcha_expired() {"window.location.reload(true)"}
