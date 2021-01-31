@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+    </head>
+    <body>
+        <div class="captcha-form">
+            <div id="recaptcha" class="g-recaptcha" data-sitekey="6LeatkIaAAAAAI_ZoufZWf3U-W818FL1wUocxPht" data-callback="captcha_callback" data-size="normal" data-expired-callback="captcha_expired" data-error-callback="captcha_error" data-theme="light"></div>
+        </div>
+
+        <button onclick="load_theme()" class="middle-align">Toggle dark mode</button>
+
+        <style>
+            .captcha-form {
+                display: table-cell;
+                height: 300px;
+                text-align: center;
+                width: 300px;
+                vertical-align: middle;
+            }
+
+            .middle-align {
+                margin: 10px auto 20px;
+                display: block;
+            }
+            body {
+                background-color: white;
+                color: black;
+            }
+            .dark-mode {
+                background-color:#2e2e2e;
+                color: white;
+            }
+        </style>
+        <script>
+            function load_theme() {
+                if (mode = "dark") {
+                    var mode = "light";
+                } else {
+                    var mode = "dark";
+                }
+                var element = document.body;
+                element.classList.toggle("dark-mode");
+                document.getElementById("recaptcha").data-theme = mode;
+            }
+            function captcha_callback() {"window.location.reload(true)"}
+            function captcha_expired() {"window.location.reload(true)"}
+        </script>
+    </body>
+</html>
