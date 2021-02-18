@@ -7,19 +7,6 @@
         <input type="text" placeholder="Var1">
         <p onclick="writeToConfig()">Update</p>
         <script>
-            
-            const fs = require('fs') 
-            
-            // Data which will write in a file. 
-            let data = '{"Var1":"Bleep"}'
-            function writeToConfig() {
-                // Write data in 'Output.txt' . 
-                fs.writeFile('Output.txt', data, (err) => { 
-                
-                    // In case of a error throw err. 
-                    if (err) throw err; 
-                }) 
-            }
         </script>
     </body>
 </html>
