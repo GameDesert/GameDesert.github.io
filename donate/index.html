@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta encoding="UTF-8">
         <title>Donate money...</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
@@ -12,20 +13,49 @@
                 background-position: center; /* Center the image */
                 background-repeat: no-repeat; /* Do not repeat the image */
             }
+
+            /*
+            details > summary {
+                list-style-type: none;
+            }
+
+            details > summary::-webkit-details-marker {
+                display: none;
+            }
+
+            details > summary::before {
+                content: '▷';
+            }
+
+            details[open] > summary::before {
+                content: '▽';
+            }
+            */
+            details {
+                border: 1px solid gray;
+                border-radius: 0.2rem;
+                padding: 0.5rem;
+            }
+
+            details[open] > summary {
+                margin-bottom: 0.5rem;
+            }
         </style>
     </head>
     <body onload="auto_open()">
         <h1 style="text-align: center; font-family: 'Raleway', sans-serif; font-weight: 800; color: #ffffff;">Pick your donation method...</h1>
-        <details id="btc"><summary style="font-size: 24px; text-align: center; font-family: 'Raleway', sans-serif; font-weight: 800; color: #ffffff;"><i class="fab fa-bitcoin"></i> Bitcoin</summary>
+        <details id="btc"><summary style="font-size: 24px; text-align: center; font-family: 'Raleway', sans-serif; font-weight: 800; color: #ffffff;"><i class="fab fa-bitcoin"></i> Bitcoin <i>BTC</i></summary>
             <div style="background-color: #ffffff; padding: 1px;">
                 <h1 style="text-align: center; font-family: 'Raleway', sans-serif; font-weight: 800; color: #000000;">Donate Bitcoin</h1>
                 <p style="text-align: center; font-family: 'Raleway', sans-serif; font-weight: 400; color: #000000;">Warning: This donation is a direct P2P Bitcoin transfer. It is up to you to check if the transaction has processed to the correct address.</p>
                 <img src="/assets/btc_donate.png" style="height: 250px; width: auto; display: block; margin-left: auto; margin-right: auto;">
                 <!--Address obfuscated for my safety-->
                 <!--sse--><h3 style="text-align: center;"><a style="font-family: 'IBM Plex Mono', monospace; color: #000000; text-decoration: none;" href="&#98;&#105;&#116;&#99;&#111;&#105;&#110;&#58;&#98;&#99;&#49;&#113;&#55;&#119;&#113;&#114;&#110;&#120;&#116;&#114;&#103;&#53;&#110;&#100;&#110;&#53;&#112;&#106;&#99;&#119;&#51;&#104;&#110;&#50;&#118;&#113;&#57;&#101;&#118;&#50;&#117;&#97;&#115;&#55;&#57;&#50;&#122;&#101;&#113;&#51;"><i class="fab fa-bitcoin"></i>&#32;&#98;&#99;&#49;&#113;&#55;&#119;&#113;&#114;&#110;&#120;&#116;&#114;&#103;&#53;&#110;&#100;&#110;&#53;&#112;&#106;&#99;&#119;&#51;&#104;&#110;&#50;&#118;&#113;&#57;&#101;&#118;&#50;&#117;&#97;&#115;&#55;&#57;&#50;&#122;&#101;&#113;&#51;</a></h3><!--/sse-->
+                <p style="font-size: 18px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-weight: 400; color: #000000;" id="BTC_Price"></p>
+                <p style="font-size: 14px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-weight: 400; color: #000000;">Exchange rate display powered by CoinDesk. Data may not be entirely accurate, always double-check beofre you send Bitcoin.</p>
             </div>
         </details><br>
-        <details id="bch"><summary style="font-size: 24px; text-align: center; font-family: 'Raleway', sans-serif; font-weight: 800; color: #ffffff;"><i class="fas fa-money-bill-wave"></i> Bitcoin Cash</summary>
+        <details id="bch"><summary style="font-size: 24px; text-align: center; font-family: 'Raleway', sans-serif; font-weight: 800; color: #ffffff;"><i class="fas fa-money-bill-wave"></i> Bitcoin Cash <i>BCH</i></summary>
             <div style="background-color: #ffffff; padding: 1px;">
                 <h1 style="text-align: center; font-family: 'Raleway', sans-serif; font-weight: 800; color: #000000;">Donate Bitcoin Cash</h1>
                 <p style="text-align: center; font-family: 'Raleway', sans-serif; font-weight: 400; color: #000000;">Warning: This donation is a direct P2P Bitcoin transfer. It is up to you to check if the transaction has processed to the correct address.</p><br><p style="text-align: center; font-family: 'Raleway', sans-serif; font-weight: 400; color: #970000;"><b>While Bitcoin Cash has significantly cheaper fees than standard Bitcoin, standard Bitcoin transactions are preferred due to wallet security.</b></p>
@@ -42,6 +72,21 @@
                 console.log(urlParams.get("currency"))
                 var input_currency = urlParams.get("currency");
                 document.getElementById(input_currency).open = true;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            var url = "https://api.coindesk.com/v1/bpi/currentprice.json";
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myArr = JSON.parse(this.responseText);
+                    myFunction(myArr);
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            function myFunction(arr) {
+                document.getElementById("BTC_Price").innerHTML = "1 BTC = " + arr.bpi.GBP.rate + " GBP";
             }
         </script>
     </body>
