@@ -4,12 +4,18 @@
         <title>HTML5 Tetris</title>
         <link rel='stylesheet' href='style.css' />
     </head>
-    <body>
-        <audio id="clearsound" src="sound/pop.ogg" preload="auto"></audio>
+    <body style="background-color: #323031;">
         <canvas width='300' height='600'></canvas>
         <button id="playbutton" onclick="playButtonClicked();">Play</button>
         <script src='js/tetris.js'></script>
         <script src='js/controller.js'></script>
         <script src='js/render.js'></script>
+        <details><summary>How to play...</summary>
+            <ul>
+                <li>Use the left and right arrow keys to move the block left and right.</li>
+                <li>Use the up arrow key to rotate the block.</li>
+                <li>Use the down arrow to make the block move down faster.</li>
+            </ul>
+        </details>
     </body>
 </html>
