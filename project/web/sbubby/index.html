@@ -61,12 +61,24 @@
                 width: 100%;
                 border-style: inset;
             }
+            p {
+              font-size: 1.5vw;
+            }
+            figcaption {
+              font-size: 1vw;
+            }
 
                 /* Responsive layout - makes a two column-layout instead of four columns */
             @media screen and (max-width: 800px) {
                 .column {
                     flex: 50%;
                     max-width: 50%;
+                }
+                figcaption {
+                  font-size: 3vw;
+                }
+                p {
+                  font-size: 3vw;
                 }
             }
 
@@ -76,10 +88,14 @@
                     flex: 100%;
                     max-width: 100%;
                 }
+                figcaption {
+                  font-size: 3vw;
+                }
+                p {
+                  font-size: 3vw;
+                }
             }
-            p {
-              font-size: 1.5vw;
-            }
+
 
         </style>
     </head>
