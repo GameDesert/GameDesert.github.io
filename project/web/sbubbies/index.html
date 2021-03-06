@@ -1,41 +1,194 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
         <title>Sbubbies | GameDesert</title>
         <style>
-            .section {
+            figcaption {
+                color: #000000;
+            }
+            details {
+                border: 1px solid gray;
+                border-radius: 0.2rem;
+                padding: 0.5rem;
+            }
 
+            details[open] > summary {
+                margin-bottom: 0.5rem;
+            }
+            .section {
+                background-color: #ffffff;
             }
             .explicit_section {
-
+                background-color: #ffffff;
             }
-            .explicit_img {
-                border: 1px solid #ddd;
+            .explicit_section img {
+                border: 1px solid rgb(255, 33, 33);
                 border-radius: 4px;
                 padding: 5px;
                 width: 150px;
-                filter: blur(2px);
-                -webkit-filter: blur(2px);
+                filter: blur(5px);
+                -webkit-filter: blur(5px);
             }
 
-            .explicit_img:hover {
-                box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-                filter: blur(1px);
-                -webkit-filter: blur(1px);
+            .explicit_section img:hover {
+                box-shadow: 0 0 2px 1px rgba(255, 33, 33, 0.5);
+                filter: blur(0px);
+                -webkit-filter: blur(0px);
+            }
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 4px;
+            }
+
+                /* Create four equal columns that sits next to each other */
+            .column {
+                flex: 25%;
+                max-width: 23%;
+                padding: 0 4px;
+            }
+
+            .column img {
+                margin-top: 8px;
+                vertical-align: middle;
+                width: 100%;
+                border-style: inset;
+            }
+
+                /* Responsive layout - makes a two column-layout instead of four columns */
+            @media screen and (max-width: 800px) {
+                .column {
+                    flex: 50%;
+                    max-width: 50%;
+                }
+            }
+
+                /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 600px) {
+                .column {
+                    flex: 100%;
+                    max-width: 100%;
+                }
             }
 
         </style>
     </head>
-    <body style="background-color: #323031; color: #ffffff;">
-        <h1 style="text-align: center;">The GameDesert Sbubby Collection</h1>
-        <details><summary>Individual Sbubbies</summary>
-            <div class="section"></div>
+    <body style="background-color: #323031; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 400;">
+        <h1 style="text-align: center; font-weight: 800;">The GameDesert Sbubby Collection</h1>
+        <details><summary style="font-size: 20px;">Individual Sbubbies</summary>
+            <div class="section">
+                <div class="row">
+                    <div class="column">
+                      <figure>
+                      <img alt="Airbender Shopping" src="assets/aang.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the new Amazon Shopping logo.</figcaption>
+                    </figure>
+                      <figure>
+                      <img alt="Hello, thank you for calling tech support." src="assets/hello.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Halo game logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lwl87i/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                    <figure>
+                        <img alt="E" src="assets/eyy.png">
+                        <figcaption>"Eaten Fresh" Sbubby - Based on the Call of Duty: Black Ops 2 game logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/llm3wb/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                      </figure>
+                      <figure>
+                      <img alt="Traffic Problems - AAAAAAA..." src="assets/traffic-problems.jpg">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Cities: Skylines Game logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lbfldf/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                    </div>
+                    <div class="column">
+                      <figure>
+                      <img alt="adididididi" src="assets/adididididi.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Adidas logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lr3q5r/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                      <figure>
+                      <img alt="The Good Dinosaur" src="assets/the-good-dinosaur.png">
+                      <figcaption>"Logoswap" Sbubby - Based on the GoodFellas film poster. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lwl87i/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                      <figure>
+                      <img alt="Trains" src="assets/trains.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Steam games store logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lglxub/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                    </div>
+                    <div class="column">
+                      <figure>
+                      <img alt="Cyberchonk - 2077 lbs" src="assets/cyberchonk.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Cyberpunk 2077 game logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/llm3wb/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                      <figure>
+                      <img alt="The Idiots" src="assets/the-idiots.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on The Office television show logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lr3q5r/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a></figcaption>
+                    </figure>
+                      <figure>
+                      <img alt="Uno, Dos, Tres, Cuatro" src="assets/u-d-t-c.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the UNO card game logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lwl87i/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                    </div>
+                    <div class="column">
+                      <figure>
+                      <img alt="Extortionate - Now Pay Up" src="assets/extortionate.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the EA Sports logo.</figcaption>
+                    </figure>
+                      <figure>
+                      <img alt="James May • Richard Hammond • Jeremy Clarkson - Top Gear" src="assets/top-gear.png">
+                      <figcaption>"Logoswap" Sbubby - Based on the Top Gun logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lwl87i/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                    </div>
+                </div>
+            </div>
         </details>
-        <details><summary>Sbubby Collections</summary>
-            <div class="section"></div>
+        <br>
+        <details><summary style="font-size: 20px;">Sbubby Collections</summary>
+            <div class="section">
+                <div class="row">
+                    <div class="column">
+                      <figure>
+                      <img alt="Australian Open - Canada Goose - Star Trek, To Boldly Post - Mammon" src="assets/deliver-collection-1.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Australia Post, Canada Post, United States Postal Service, and Amazon logo.</figcaption>
+                    </figure>
+                    </div>
+                    <div class="column">
+                      <figure>
+                      <img alt="Dumb - Duh - FedUp - Oops - Royal Pain" src="assets/deliver-collection-2.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the DPD, DHL, FedEx, UPS, and Royal Mail logos.</figcaption>
+                    </figure>
+                    </div>
+                </div>
+            </div>
         </details>
-        <details><summary style="color: #ff5858;">Explicit Sbubbies</summary>
-            <div class="explicit_section"></div>
+        <br>
+        <details><summary style="color: #ff5858; font-size: 20px;">Explicit Sbubbies</summary>
+            <div class="explicit_section">
+                <p style="color: black; font-size: 16px;">To view an image, hover over it. <abbr title="This is so you can avoid viewing any overly explicit images by accident.">Why?</abbr></p>
+                <div class="row">
+                    <div class="column">
+                      <figure>
+                      <img alt="Onlychild" src="assets/explicit/onlychild.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the OnlyFans logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lwl87i/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                    </div>
+                    <div class="column">
+                      <figure>
+                      <img alt="N*nce" src="assets/explicit/nonce.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Monster Energy drinks can. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/lwl87i/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                    </figure>
+                    </div>
+                    <div class="column">
+                      <figure>
+                      <img alt="Dumba*s" src="assets/explicit/dumbass.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Discord logo. The first Sbubby I created.</figcaption>
+                    </figure>
+                    </div>
+                    <div class="column">
+                      <figure>
+                      <img alt="Diarrhea" src="assets/explicit/diarrhea.png">
+                      <figcaption>"Eaten Fresh" Sbubby - Based on the Taco Bell logo. Made on request for the <a href="https://www.reddit.com/r/sbubby/comments/llm3wb/weekly_request_post_put_your_sbubby_requests_here/">r/Sbubby Weekly Suggestion thread</a>.</figcaption>
+                      </figure>
+                    </div>
+                </div>
+            </div>
         </details>
     </body>
 </html>
