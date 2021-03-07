@@ -278,8 +278,11 @@
       <p>The <b>Eef Freef Spirit</b> is when a sbubby uses nonsense words or gibberish instead of real text.</p>
     </details>
     <script>
-      var hide = document.getElementById("to_hide")
-      hide.setAttribute("hidden", "true");
+      function hide() {
+        var hide = document.getElementById("to_hide");
+        hide.setAttribute("hidden", "true");
+        console.log("hidden");
+      }
     </script>
   </body>
 </html>
