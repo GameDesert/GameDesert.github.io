@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <title>GameDesert Studios | Games</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!--<link rel="stylesheet" type="text/css" href="https://kotla.eu/cookie_banner.min.css"/><script src="https://kotla.eu/cookie_banner.min.js" defer></script><script>window.addEventListener("load", function(){window.wpcc.init({"colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#f9f9f9"},"button":{"background":"#f9f9f9","text":"#000000"}},"position":"top","pushdown":true,"padding":"large","fontsize":"large","content":{"href":"https://kotla.eu/cookie-policy","message":"This website uses necessary cookies. Do you accept these cookies?","button":"Yes","link":"No (Learn More)."}})});</script>
+<h1 style="text-align: center;font-family: Raleway;font-weight: 700;">Redeem a game code...</h1>
+<div style = "text-align: center;margin: 0 auto; width:250px;"><input type='text' id='codeInput' value='' autocomplete="off"/></div>
+<div style = "text-align: center;margin: 0 auto; width:250px;"><input type='submit' onclick='checkCodeLength()' value='Redeem' style="font-family: Raleway;font-weight: 400;"/></div>
+<p style="text-align: center;font-family: Raleway;font-weight: 400;font-size: 12px;">Upon clicking the "Redeem" button, you will be redirected to the appropriate webpage. Your code should be 12 characters long. This input is case-sensitive.</p>-->
+
+<div style="font-family:Raleway;font-weight:400;" id="game-nav">
+<h2 style="text-align:center;">Pick A Game</h2>
+<ul style="font-size: 20px;">
+    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/snek">Play Snek&#32;&#32;</a><abbr title="Eat fruits to earn points. Use the arrow keys to move."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
+    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/canvas-tetris/index.html">Play Tetris&#32;&#32;</a><abbr title="Stack a full row to make it disappear."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
+    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/Hextris/index.html">Play Hextris&#32;&#32;</a><abbr title="Stack 3 blocks of the same colour to make them disappear. Use left and right to rotate the circle."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
+    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/adarkroom/index.html">Play A Dark Room&#32;&#32;</a><abbr title="A text adventure."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
+    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/2048/index.html">Play 2048&#32;&#32;</a><abbr title="Slide identical blocks into each other to add them. Reach 2048 to win."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
+</ul>
+<p>These games aren't mine, they're just self-hosted and open-source so I added them. Hover over the help icon to see a brief description of each game.</p>
+</div>
+<script>
+    function hide() {
+        var hideable = document.getElementById("game-nav");
+        hideable.setAttribute("hidden", "true");
+        console.log("Hidden");
+    }
+    function unhide() {
+            var hideable = document.getElementById("game-nav");
+            hideable.removeAttribute("hidden");
+            console.log("Unhidden");
+    }
+</script>
+</body>
+</html>

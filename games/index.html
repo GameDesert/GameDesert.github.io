@@ -1,40 +1,154 @@
 <!DOCTYPE html>
-<head>
-    <title>GameDesert Studios | Games</title>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
-</head>
-<body>
-<!--<link rel="stylesheet" type="text/css" href="https://kotla.eu/cookie_banner.min.css"/><script src="https://kotla.eu/cookie_banner.min.js" defer></script><script>window.addEventListener("load", function(){window.wpcc.init({"colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#f9f9f9"},"button":{"background":"#f9f9f9","text":"#000000"}},"position":"top","pushdown":true,"padding":"large","fontsize":"large","content":{"href":"https://kotla.eu/cookie-policy","message":"This website uses necessary cookies. Do you accept these cookies?","button":"Yes","link":"No (Learn More)."}})});</script>
-<h1 style="text-align: center;font-family: Raleway;font-weight: 700;">Redeem a game code...</h1>
-<div style = "text-align: center;margin: 0 auto; width:250px;"><input type='text' id='codeInput' value='' autocomplete="off"/></div>
-<div style = "text-align: center;margin: 0 auto; width:250px;"><input type='submit' onclick='checkCodeLength()' value='Redeem' style="font-family: Raleway;font-weight: 400;"/></div>
-<p style="text-align: center;font-family: Raleway;font-weight: 400;font-size: 12px;">Upon clicking the "Redeem" button, you will be redirected to the appropriate webpage. Your code should be 12 characters long. This input is case-sensitive.</p>-->
+<html>
+    <head>
+        <meta encoding="UTF-8">
+        <title>Template Page</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
 
-<div style="font-family:Raleway;font-weight:400;" id="game-nav">
-<h2 style="text-align:center;">Pick A Game</h2>
-<ul style="font-size: 20px;">
-    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/snek">Play Snek&#32;&#32;</a><abbr title="Eat fruits to earn points. Use the arrow keys to move."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
-    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/canvas-tetris/index.html">Play Tetris&#32;&#32;</a><abbr title="Stack a full row to make it disappear."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
-    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/Hextris/index.html">Play Hextris&#32;&#32;</a><abbr title="Stack 3 blocks of the same colour to make them disappear. Use left and right to rotate the circle."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
-    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/adarkroom/index.html">Play A Dark Room&#32;&#32;</a><abbr title="A text adventure."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
-    <li><a style="color: #000000; text-decoration: none; cursor: alias;" href="https://kotla.eu/games/2048/index.html">Play 2048&#32;&#32;</a><abbr title="Slide identical blocks into each other to add them. Reach 2048 to win."><i style="cursor: help;" class="far fa-question-circle"></i></abbr></li>
-</ul>
-<p>These games aren't mine, they're just self-hosted and open-source so I added them. Hover over the help icon to see a brief description of each game.</p>
-</div>
-<script>
-    function hide() {
-        var hideable = document.getElementById("game-nav");
-        hideable.setAttribute("hidden", "true");
-        console.log("Hidden");
-    }
-    function unhide() {
-            var hideable = document.getElementById("game-nav");
-            hideable.removeAttribute("hidden");
-            console.log("Unhidden");
-    }
-</script>
-</body>
+        <meta property="og:title" content="Games"/>
+        <meta property="og:description" content="Welcome to the kotla.eu Games page! Select a game to start..."/>
+        <meta property="og:url" content="http://kotla.eu/games/index.html"/>
+        <meta property="og:image" content="http://kotla.eu/games/assets/preview.png"/>
+        <meta property="og:locale" content="en_GB"/>
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:title" content="Games"/>
+        <meta name="twitter:description" content="Welcome to the kotla.eu Games page! Select a game to start..."/>
+        <meta name="twitter:image" content="http://kotla.eu/games/assets/preview.png"/>
+        <meta name="twitter:image:alt" content="Games Icon"/>
+
+        <style>
+            body  {
+                background-image: url("https://kotla.eu/assets/Night-Geometry.png");
+                background-color: #323031;
+                background-position: center; /* Center the image */
+                background-repeat: no-repeat; /* Do not repeat the image */
+            }
+            details {
+                border: 1px solid gray;
+                border-radius: 0.2rem;
+                padding: 0.5rem;
+                background-color: #ffffff;
+            }
+
+            details[open] > summary {
+                margin-bottom: 0.5rem;
+            }
+            h1, h2 {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 800;
+                text-align: center;
+                color: #ffffff;
+            }
+            .info {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 400;
+                text-align: left;
+                color: #ffffff;
+            }
+            summary {
+                font-size: 24px;
+                text-align: center;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 800;
+                color: #ffffff;
+            }
+            ul.no-bullets {
+                list-style-type: none;
+            }
+            hr {
+                width: 100%;
+                text-align: centre;
+                color: #ffffff;
+                background-color: #ffffff;
+            }
+            .link-list {
+                list-style-type: none;
+            }
+            .link-block {
+                background-color: rgba(100, 100, 100, 0.815);
+                opacity: 50;
+                width: 25%;
+                height: 100%;
+                color: #ffffff;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 12px;
+                font-size: 28px;
+            }
+            .link-block h3 {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 600;
+            }
+            .link-block p {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 400;
+            }
+            .link-block:hover {
+                background-color: rgb(100, 100, 100);
+                opacity: 100;
+            }
+            a {
+                text-decoration: none;
+            }
+            a > div {
+                border: none;
+                box-shadow: 0 9px rgb(41, 41, 41);
+            }
+            a:active > div {
+                box-shadow: 0 5px rgb(20, 20, 20);
+                transform: translateY(4px);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Select a Game to play it...</h1>
+        <hr>
+        <p class="info">These games aren't mine, they're just self-hosted and open-source so I added them.</p>
+        <hr>
+        <ul class="link-list">
+            <a href="Hextris/index.html"><div class="link-block" id="hextris" onmouseover="info('hextris')"><li>
+                <h3 style="text-align: center;">Hextris</h3>
+            </li></div></a>
+            <a href="adarkroom/index.html"><div class="link-block" id="darkroom" onmouseover="info('darkroom')"><li>
+                <h3 style="text-align: center;">A Dark Room</h3>
+            </li></div></a>
+            <a href="canvas-tetris/index.html"><div class="link-block" id="tetris" onmouseover="info('tetris')"><li>
+                <h3 style="text-align: center;">Tetris</h3>
+            </li></div></a>
+            <a href="2048/index.html"><div class="link-block" id="tfe" onmouseover="info('tfe')"><li>
+                <h3 style="text-align: center;">2048</h3>
+            </li></div></a>
+            <a href="snek/index.html"><div class="link-block" id="snek" onmouseover="info('snek')"><li>
+                <h3 style="text-align: center;">Snek</h3>
+            </li></div></a>
+        </ul>
+        <hr>
+        <h2 style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 600;">Game Info</h2>
+        <p style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 20px;" id="info"><b>Hover over a game to see a brief description of it.</b></p>
+        <script>
+            const default_text = "<b>Hover over a game to see a brief description of it.</b>";
+            const hextris_text = "<b>Hextris:</b> Stack 3 blocks of the same colour to make them disappear. Use left and right to rotate the hexagon.";
+            const darkroom_text = "<b>A Dark Room:</b> A text adventure. Build a small village, explore the wilderness, and reach for the stars...";
+            const tetris_text = "<b>Tetris:</b> Stack a full row to make it disappear.";
+            const tfe_text = "<b>2048:</b> Slide identical blocks into each other to add them. Reach 2048 to win.";
+            const snek_text = "<b>Snek:</b> Eat fruits to earn points. Use the arrow keys to move.";
+            function info(id) {
+                var source = document.getElementById("info");
+                if (id == "hextris") {
+                    source.innerHTML = hextris_text;
+                } else if (id == "darkroom") {
+                    source.innerHTML = darkroom_text;
+                } else if (id == "tetris") {
+                    source.innerHTML = tetris_text;
+                } else if (id == "tfe") {
+                    source.innerHTML = tfe_text;
+                } else if (id == "snek") {
+                    source.innerHTML = snek_text;
+                } else {console.log("Stop messing around.");}
+            }
+        </script>
+    </body>
 </html>
