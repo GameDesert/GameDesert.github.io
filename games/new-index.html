@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta encoding="UTF-8">
+        <title>Template Page</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
+        <style>
+            body  {
+                background-image: url("https://kotla.eu/assets/Night-Geometry.png");
+                background-color: #323031;
+                background-position: center; /* Center the image */
+                background-repeat: no-repeat; /* Do not repeat the image */
+            }
+            details {
+                border: 1px solid gray;
+                border-radius: 0.2rem;
+                padding: 0.5rem;
+                background-color: #ffffff;
+            }
+
+            details[open] > summary {
+                margin-bottom: 0.5rem;
+            }
+            h1, h2 {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 800;
+                text-align: center;
+                color: #ffffff;
+            }
+            .info {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 400;
+                text-align: left;
+                color: #ffffff;
+            }
+            summary {
+                font-size: 24px;
+                text-align: center;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 800;
+                color: #ffffff;
+            }
+            ul.no-bullets {
+                list-style-type: none;
+            }
+            hr {
+                width: 100%;
+                text-align: centre;
+                color: #ffffff;
+                background-color: #ffffff;
+            }
+            .link-list {
+                list-style-type: none;
+            }
+            .link-block {
+                background-color: rgba(255, 255, 255, 0.815);
+                opacity: 50;
+                width: 25%;
+                height: 100%;
+                color: #323031;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 12px;
+                font-size: 28px;
+            }
+            .link-block h3 {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 800;
+            }
+            .link-block p {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 400;
+            }
+            .link-block:hover {
+                background-color: rgb(255, 255, 255);
+                opacity: 100;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to the Game menu...</h1>
+        <hr>
+        <p class="info">Select a game from the list to play it. To learn more about each game, hover over the "<abbr title="Not this one, idiot."><i style="cursor: help;" class="far fa-question-circle"></i></abbr>" icon.</p>
+        <hr>
+        <ul class="link-list">
+            <div class="link-block" id="hextris"><li>
+                <h3 style="text-align: center;">Hextris</h3>
+            </li></div>
+            <div class="link-block" id="darkroom"><li>
+                <h3 style="text-align: center;">A Dark Room</h3>
+            </li></div>
+            <div class="link-block" id="tetris"><li>
+                <h3 style="text-align: center;">Tetris</h3>
+            </li></div>
+            <div class="link-block" id="2048"><li>
+                <h3 style="text-align: center;">2048</h3>
+            </li></div>
+            <div class="link-block" id="snek"><li>
+                <h3 style="text-align: center;">Snek</h3>
+            </li></div>
+        </ul>
+    </body>
+</html>

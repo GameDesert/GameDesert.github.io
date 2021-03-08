@@ -112,7 +112,7 @@
 
         </style>
     </head>
-  <body style="color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 400;" onload="hide()">
+  <body style="color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 400;">
     <h1 style="text-align: center; font-weight: 800;">The GameDesert Sbubby Collection</h1>
     <details><summary style="font-size: 20px;"><i class="fas fa-square"></i>&#32;Individual Sbubbies</summary>
         <div class="section">
@@ -287,6 +287,21 @@
             var hideable = document.getElementById("to_hide");
             hideable.removeAttribute("hidden");
             console.log("Unhidden");
+        }
+
+        var hideable = document.getElementById("to_hide");
+        hideable.setAttribute("hidden", "true");
+        console.log("Hidden");
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var command = urlParams.get("cmd");
+        console.log(command);
+        if (command == "unhide") {
+          var hideable = document.getElementById("to_hide");
+          hideable.removeAttribute("hidden");
+          console.log("Unhidden");
+        } else {
+          console.log("Denied");
         }
     </script>
   </body>
