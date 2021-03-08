@@ -6,24 +6,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
 </head>
-<script type="text/javascript">
-//==REMOVED FOR DEVELOPMENT== or lack thereof
-/*
-function redeemCode(){
-    var codeInput = document.getElementById('codeInput').value;
-    window.location = "https://www.itch.io/get-" + codeInput;
-}
-function checkCodeLength(){
-    var codeInput = document.getElementById('codeInput').value;
-    if (codeInput.length != 15) {
-        return false;
-    }
-    else {
-        redeemCode()
-    }
-}
-*/
-</script>
 <body>
 <!--<link rel="stylesheet" type="text/css" href="https://kotla.eu/cookie_banner.min.css"/><script src="https://kotla.eu/cookie_banner.min.js" defer></script><script>window.addEventListener("load", function(){window.wpcc.init({"colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#f9f9f9"},"button":{"background":"#f9f9f9","text":"#000000"}},"position":"top","pushdown":true,"padding":"large","fontsize":"large","content":{"href":"https://kotla.eu/cookie-policy","message":"This website uses necessary cookies. Do you accept these cookies?","button":"Yes","link":"No (Learn More)."}})});</script>
 <h1 style="text-align: center;font-family: Raleway;font-weight: 700;">Redeem a game code...</h1>
@@ -42,5 +24,17 @@ function checkCodeLength(){
 </ul>
 <p>These games aren't mine, they're just self-hosted and open-source so I added them. Hover over the help icon to see a brief description of each game.</p>
 </div>
+<script>
+    function hide() {
+        var hideable = document.getElementById("game-nav");
+        hideable.setAttribute("hidden", "true");
+        console.log("Hidden");
+    }
+    function unhide() {
+            var hideable = document.getElementById("game-nav");
+            hideable.removeAttribute("hidden");
+            console.log("Unhidden");
+    }
+</script>
 </body>
 </html>
