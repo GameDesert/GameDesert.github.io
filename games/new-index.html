@@ -4,8 +4,20 @@
         <meta encoding="UTF-8">
         <title>Template Page</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
+
+        <meta property="og:title" content="Games"/>
+        <meta property="og:description" content="Welcome to the kotla.eu Games page! Select a game to start..."/>
+        <meta property="og:url" content="http://kotla.eu/games/index.html"/>
+        <meta property="og:image" content="http://kotla.eu/games/assets/preview.png"/>
+        <meta property="og:locale" content="en_GB"/>
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:title" content="Games"/>
+        <meta name="twitter:description" content="Welcome to the kotla.eu Games page! Select a game to start..."/>
+        <meta name="twitter:image" content="http://kotla.eu/games/assets/preview.png"/>
+        <meta name="twitter:image:alt" content="Games Icon"/>
+
         <style>
             body  {
                 background-image: url("https://kotla.eu/assets/Night-Geometry.png");
@@ -55,11 +67,11 @@
                 list-style-type: none;
             }
             .link-block {
-                background-color: rgba(255, 255, 255, 0.815);
+                background-color: rgba(100, 100, 100, 0.815);
                 opacity: 50;
                 width: 25%;
                 height: 100%;
-                color: #323031;
+                color: #ffffff;
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
@@ -68,39 +80,50 @@
             }
             .link-block h3 {
                 font-family: 'Raleway', sans-serif;
-                font-weight: 800;
+                font-weight: 600;
             }
             .link-block p {
                 font-family: 'Raleway', sans-serif;
                 font-weight: 400;
             }
             .link-block:hover {
-                background-color: rgb(255, 255, 255);
+                background-color: rgb(100, 100, 100);
                 opacity: 100;
+            }
+            a {
+                text-decoration: none;
+            }
+            a > div {
+                border: none;
+                box-shadow: 0 9px rgb(41, 41, 41);
+            }
+            a:active > div {
+                box-shadow: 0 5px rgb(20, 20, 20);
+                transform: translateY(4px);
             }
         </style>
     </head>
     <body>
-        <h1>Welcome to the Game menu...</h1>
+        <h1>Select a Game to play it...</h1>
         <hr>
-        <p class="info">Select a game from the list to play it. To learn more about each game, hover over the "<abbr title="Not this one, idiot."><i style="cursor: help;" class="far fa-question-circle"></i></abbr>" icon.</p>
+        <p class="info">These games aren't mine, they're just self-hosted and open-source so I added them.</p>
         <hr>
         <ul class="link-list">
-            <div class="link-block" id="hextris"><li>
+            <a href="Hextris/index.html"><div class="link-block" id="hextris"><li>
                 <h3 style="text-align: center;">Hextris</h3>
-            </li></div>
-            <div class="link-block" id="darkroom"><li>
+            </li></div></a>
+            <a href="adarkroom/index.html"><div class="link-block" id="darkroom"><li>
                 <h3 style="text-align: center;">A Dark Room</h3>
-            </li></div>
-            <div class="link-block" id="tetris"><li>
+            </li></div></a>
+            <a href="tetris/index.html"><div class="link-block" id="tetris"><li>
                 <h3 style="text-align: center;">Tetris</h3>
-            </li></div>
-            <div class="link-block" id="2048"><li>
+            </li></div></a>
+            <a href="2048/index.html"><div class="link-block" id="2048"><li>
                 <h3 style="text-align: center;">2048</h3>
-            </li></div>
-            <div class="link-block" id="snek"><li>
+            </li></div></a>
+            <a href="snek/index.html"><div class="link-block" id="snek"><li>
                 <h3 style="text-align: center;">Snek</h3>
-            </li></div>
+            </li></div></a>
         </ul>
     </body>
 </html>
