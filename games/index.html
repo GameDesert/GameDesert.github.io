@@ -134,6 +134,9 @@
             <a href="chess/index.html"><div class="link-block" id="chess" onmouseover="info('chess')"><li>
                 <h3 style="text-align: center;"><i class="fas fa-chess-knight"></i>&#32;Chess</h3>
             </li></div></a>
+            <a href="asteroids/index.html"><div class="link-block" id="asteroids" onmouseover="info('asteroids')"><li>
+                <h3 style="text-align: center;"><i class="fas fa-rocket"></i>&#32;Asteroids</h3>
+            </li></div></a>
         </ul>
         <hr>
         <h2 style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 600;">Game Info</h2>
@@ -146,6 +149,7 @@
             const tfe_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;2048:</b> Slide identical blocks into each other to add them. Reach 2048 to win.";
             const snek_text = "<b><i class='fas fa-laptop'></i>&#32;-&#32;Snek:</b> Eat fruit to earn points. Use the arrow keys to move.";
             const chess_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;Chess:</b> Classic local multiplayer chess, with 3D graphics.";
+            const asteroid_text = "<b><i class='fas fa-laptop'></i>&#32;-&#32;Asteroids:</b> The first game with vector graphics, now adapted to HTML5.";
             function info(id) {
                 var source = document.getElementById("info");
                 if (id == "hextris") {
@@ -160,6 +164,8 @@
                     source.innerHTML = snek_text;
                 } else if (id == "chess") {
                     source.innerHTML = chess_text;
+                } else if (id == "asteroids") {
+                    source.innerHTML = asteroid_text;
                 } else {console.log("Stop messing around.");}
             }
         </script>
