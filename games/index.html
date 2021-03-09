@@ -127,9 +127,6 @@
             <a href="chess/index.html"><div class="link-block" id="chess" onmouseover="info('chess')"><li>
                 <h3 style="text-align: center;"><i class="fas fa-chess-knight"></i>&#32;Chess</h3>
             </li></div></a>
-            <a href="quantum-game/index.html"><div class="link-block" id="quantum" onmouseover="info('quantum')"><li>
-                <h3 style="text-align: center;"><i class="fas fa-atom"></i>&#32;The Quantum Game</h3>
-            </li></div></a>
         </ul>
         <hr>
         <h2 style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 600;">Game Info</h2>
@@ -142,7 +139,6 @@
             const tfe_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;2048:</b> Slide identical blocks into each other to add them. Reach 2048 to win.";
             const snek_text = "<b><i class='fas fa-laptop'></i>&#32;-&#32;Snek:</b> Eat fruit to earn points. Use the arrow keys to move.";
             const chess_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;Chess:</b> Classic chess, with 3D graphics.";
-            const quantum_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;The Quantum Game:</b> Use the provided objects to bounce the photon beam into the photon sensors.";
             function info(id) {
                 var source = document.getElementById("info");
                 if (id == "hextris") {
@@ -157,8 +153,6 @@
                     source.innerHTML = snek_text;
                 } else if (id == "chess") {
                     source.innerHTML = chess_text;
-                } else if (id == "quantum") {
-                    source.innerHTML = quantum_text;
                 } else {console.log("Stop messing around.");}
             }
         </script>
