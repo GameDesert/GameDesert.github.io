@@ -139,6 +139,8 @@
             </li></div></a>
             <a href="javascript-racer/index.html"><div class="link-block" id="racer" onmouseover="info('racer')"><li><h3 style="text-align: center;"><i class="fas fa-car"></i>&#32;Racer</h3>
             </li></div></a>
+            <a href="emoji-minesweeper/index.html"><div class="link-block" id="minesweeper" onmouseover="info('minesweeper')"><li><h3 style="text-align: center;"><i class="fas fa-bomb"></i>&#32;Minesweeper</h3>
+            </li></div></a>
         </ul>
         <hr>
         <h2 style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 600;">Game Info</h2>
@@ -153,6 +155,7 @@
             const chess_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;Chess:</b> Classic local multiplayer chess, with 3D graphics.";
             const asteroid_text = "<b><i class='fas fa-laptop'></i>&#32;-&#32;Asteroids:</b> The first game with vector graphics, now adapted to HTML5.";
             const racer_text = "<b><i class='fas fa-laptop'></i>&#32;-&#32;Racer:</b> An outrun-style racing game, with editable settings!";
+            const minesweeper_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;Minesweeper:</b> It's minesweeper, but with Emoji instead.";
             function info(id) {
                 var source = document.getElementById("info");
                 if (id == "hextris") {
@@ -171,6 +174,8 @@
                     source.innerHTML = asteroid_text;
                 } else if (id == "racer") {
                     source.innerHTML = racer_text;
+                } else if (id == "minesweeper") {
+                    source.innerHTML = minesweeper_text;
                 } else {console.log("Stop messing around and get out of ma console!");}
             }
         </script>
