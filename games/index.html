@@ -143,6 +143,8 @@
             </li></div></a>
             <a href="pcraft/index.html"><div class="link-block" id="pcraft" onmouseover="info('pcraft')"><li><h3 style="text-align: center;"><i class="fas fa-leaf"></i>&#32;P.Craft</h3>
             </li></div></a>
+            <a href="SpaceCompany/index.html"><div class="link-block" id="spacecompany" onmouseover="info('spacecompany')"><li><h3 style="text-align: center;"><i class="fas fa-space-shuttle"></i>&#32;SpaceCompany</h3>
+            </li></div></a>
         </ul>
         <hr>
         <h2 style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 600;">Game Info</h2>
@@ -159,6 +161,7 @@
             const racer_text = "<b><i class='fas fa-laptop'></i>&#32;-&#32;Racer:</b> An outrun-style racing game, with editable settings!";
             const minesweeper_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;Minesweeper:</b> It's minesweeper, but with Emoji instead.";
             const pcraft_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;P.Craft:</b> P.Craft is an 8-bit survival game. It was originally called 'Stranded Isle'. <sub>You're welcome, Michael.</sub>";
+            const spacecompany_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;SpaceCompany:</b> A space-based tycoon game. Click to gather elements and buy workers.";
             function info(id) {
                 var source = document.getElementById("info");
                 if (id == "hextris") {
@@ -181,6 +184,8 @@
                     source.innerHTML = minesweeper_text;
                 } else if (id == "pcraft") {
                     source.innerHTML = pcraft_text;
+                } else if (id == "spacecompany") {
+                    source.innerHTML = spacecompany_text;
                 } else {console.log("Stop messing around and get out of ma console!");}
             }
         </script>
