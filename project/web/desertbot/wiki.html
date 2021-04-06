@@ -159,6 +159,7 @@
                 </div>
             </section>
             <br>
+            <br>
                 <!--
                 <textarea rows="1" class="line-code" disabled="true" wrap="hard">
 +help
@@ -190,13 +191,19 @@
                 </dl>
             </section>
             <br>
+            <br>
             <section>
                 <h3 id="minecraft-commands">Minecraft Commands</h3>
                 <dl>
                     <a class="permalink" href="#mcstatus"><dt id="mcstatus"><kbd>+mcstatus</kbd></dt></a>
                     <dd>The <kbd>+mcstatus</kbd> command can be used to view the statuses of most of the servers that Minecraft relies on.</dd>
                     <a class="permalink" href="#hypixel"><dt id="hypixel"><kbd>+hypixel <i>[username]</i></kbd></dt></a>
-                    <dd>The <kbd>+hypixel</kbd> command lists the Hypixel Minecraft server profile details of the user whose username is passed as the <kbd><i>[username]</i></kbd> argument.</dd>
+                    <dd>The <kbd>+hypixel</kbd> command lists the Hypixel Minecraft server profile details of the user whose username is passed as the <kbd><i>[username]</i></kbd> argument.<br>
+                        <h4>Example:</h4>
+                        <textarea rows="1" class="line-code" disabled="true" wrap="hard">
++hypixel GameDesert
+                        </textarea>
+                    </dd>
                     <a class="permalink" href="#mc"><dt id="mc"><kbd>+mc <i>[username]</i></kbd></dt></a>
                     <dd>The <kbd>+mc</kbd> command lists the profile information of the Minecraft user whose username is passed as the <kbd><i>[username]</i></kbd> argument. This information includes:
                     <ul>
@@ -204,17 +211,27 @@
                         <li>The user's Hypixel & HiveMC ranks.</li>
                         <li>The date the user last played on Hypixel or HiveMC.</li>
                         <li>An image of the user's skin.</li>
-                    </ul>
+                    </ul><br>
+                    <h4>Example:</h4>
+                    <textarea rows="1" class="line-code" disabled="true" wrap="hard">
++mc GameDesert
+                    </textarea>
                     </dd>
                 </dl>
                 <p><b style="color: #850000;">Please Note: Only currently active Minecraft: Java Edition player names can be passed to these commands. All other usernames - for example, those from Minecraft: Bedrock Edition - will be rejected with an error message.</b></p>
             </section>
             <br>
+            <br>
             <section>
                 <h3 id="fortnite-commands">Fortnite Commands</h3>
                 <dl>
                     <a class="permalink" href="#fnquests"><dt id="fnquests"><kbd>+fnquests <i>[week number]</i></kbd></dt></a>
-                    <dd>The <kbd>+fnquests</kbd> command lists all the quests in Fortnite for the week number passed as the <kbd><i>[week number]</i></kbd>. The week number can be as large as you want, but quests will not display properly for invalid numbers.</dd>
+                    <dd>The <kbd>+fnquests</kbd> command lists all the quests in Fortnite for the week number passed as the <kbd><i>[week number]</i></kbd>. The week number can be as large as you want, but quests will not display properly for invalid numbers.<br>
+                        <h4>Example:</h4>
+                        <textarea rows="1" class="line-code" disabled="true" wrap="hard">
++fnquests 3
+                        </textarea>
+                    </dd>
                     <a class="permalink" href="#fnmap"><dt id="fnmap"><kbd>+fnmap</kbd></dt></a>
                     <dd>The <kbd>+fnmap</kbd> command displays the latest map of the Fortnite island.</dd>
                 </dl>
