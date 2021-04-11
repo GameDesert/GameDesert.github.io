@@ -1,0 +1,88 @@
+/*
+    font-family: 'Raleway', sans-serif;
+
+    100, 100I, 200, 200I, 300, 300I, 400, 400I, 500, 500I, 600, 600I, 700, 700I, 800, 800I, 900, 900I
+
+
+    font-family: 'Source Code Pro', monospace;
+
+    200, 200I, 300, 300I, 400, 400I, 500, 500I, 600, 600I, 700, 700I, 800, 800I, 900, 900I
+
+
+    font-family: 'Source Sans Pro', sans-serif;
+
+    200, 200I, 300, 300I, 400, 400I, 500, 500I, 600, 600I, 700, 700I, 800, 800I, 900, 900I
+
+
+    font-family: 'Source Serif Pro', serif;
+
+    200, 200I, 300, 300I, 400, 400I, 500, 500I, 600, 600I, 700, 700I, 800, 800I, 900, 900I
+
+
+    font-family: 'Train One', cursive;
+
+    400
+
+
+    font-family: 'Ubuntu', sans-serif;
+
+    300, 300I, 400, 400I, 500, 500I, 700, 700I
+*/
+
+body {
+    /*padding: 0%;*/
+    margin: 0%;
+    background-color: #fff;
+    background-image: linear-gradient(#fff, rgb(200, 200, 200));
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px
+}
+.section {
+    padding: 20px;
+}
+.section .heading {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    font-size: 42px;
+}
+.section p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 24px;
+}
+.sec-1 {
+    background-color: #323031;
+    background-image: linear-gradient(to bottom right, #323031, #494748);
+    color: #fff;
+}
+.sec-2 {
+    color: #323031;
+}
+.sec-3 {
+    background-color: #323031;
+    background-image: linear-gradient(to bottom right, #323031, #494748);
+    color: #fff;
+}
+footer {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    background-color: rgb(187, 187, 187);
+    background-image: linear-gradient(to bottom right, #fff, rgb(187, 187, 187));
+    color: #323031;
+    text-decoration: none;
+    text-align: left;
+}
+footer .footer-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+footer .column {
+    display: inline-grid;
+    grid-column-gap: 10px;
+}
