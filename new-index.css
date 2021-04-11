@@ -33,7 +33,7 @@ body {
     /*padding: 0%;*/
     margin: 0%;
     background-color: #fff;
-    background-image: linear-gradient(#fff, rgb(200, 200, 200));
+    background-image: linear-gradient(#fff, rgb(114, 114, 114));
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ body {
 }
 .sec-1 {
     background-color: #323031;
-    background-image: linear-gradient(to bottom right, #323031, #494748);
+    background-image: linear-gradient(to bottom right, #c7162d, #850042, #1b0677, #0f7dbd);
     color: #fff;
 }
 .sec-2 {
@@ -72,8 +72,8 @@ footer {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 24px;
-    background-color: rgb(187, 187, 187);
-    background-image: linear-gradient(to bottom right, #fff, rgb(187, 187, 187));
+    background-color: rgb(114, 114, 114);
+    background-image: linear-gradient(to bottom right, #fff, rgb(114, 114, 114));
     color: #323031;
     text-decoration: none;
     text-align: left;
@@ -81,8 +81,21 @@ footer {
 footer .footer-grid {
     display: grid;
     grid-template-columns: auto auto auto;
+    column-gap: 1px;
+    grid-column-gap: 1px;
+    grid-template-columns: repeat(5, 1fr)
 }
 footer .column {
     display: inline-grid;
-    grid-column-gap: 10px;
+    padding: 5px;
+}
+footer .footer-nav {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+footer .footer-nav a {
+    color: #323031;
+    text-decoration: none;
+    text-align: left;
 }
