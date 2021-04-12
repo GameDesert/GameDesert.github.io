@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta encoding="UTF-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="../isotope.pkgd.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Games</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -31,6 +33,7 @@
                 background-color: #323031;
                 background-position: center;
                 background-repeat: no-repeat;
+                margin: 0%;
             }
             details {
                 border: 1px solid gray;
@@ -65,25 +68,38 @@
                 list-style-type: none;
             }
             hr {
-                width: 100%;
+                margin: 0%;
+                padding: 0%;
+                width: 99%;
                 text-align: centre;
                 color: #ffffff;
                 background-color: #ffffff;
             }
             .link-list {
-                list-style-type: none;
+                display: grid;
+                grid-template-columns: auto auto auto;
+                column-gap: 1px;
+                grid-column-gap: 1px;
+                row-gap: 20px;
+                grid-row-gap: 20px;
+                width: 50%;
+                margin: auto;
+                grid-template-columns: repeat(1, 1fr)
             }
             .link-block {
                 background-color: rgba(100, 100, 100, 0.815);
                 opacity: 50;
-                width: 25%;
+                width: 100%;
                 height: 100%;
                 color: #ffffff;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
+                margin: auto;
+                display: inline-grid;
                 border-radius: 12px;
                 font-size: 28px;
+            }
+            .link-list a {
+                margin: auto;
+                width: 99%;
             }
             .link-block h3 {
                 font-family: 'Raleway', sans-serif;
@@ -108,6 +124,14 @@
                 box-shadow: 0 5px rgb(20, 20, 20);
                 transform: translateY(4px);
             }
+            .info-block {
+                overflow: hidden;
+                background-color: #323031;
+                height: 15%;
+                position: fixed; /* Set the navbar to fixed position */
+                top: 85%; /* Position the navbar at the top of the page */
+                width: 100%; /* Full width */
+            }
         </style>
     </head>
     <body>
@@ -115,42 +139,56 @@
         <hr>
         <p class="info">These games aren't mine, they're just open-source. All these games are used under their respective licences, which can be viewed <a href="licences.html">here</a>.</p>
         <hr>
-        <ul class="link-list">
-            <a href="Hextris/index.html"><div class="link-block" id="hextris" onmouseover="info('hextris')"><li>
+        <br>
+        <br>
+        <!--
+            Categories:
+            - Puzzle: Hext., Tet., 2048, Minesweeper, Chess, Typer
+            - Arcade: Snek, Asteroids, Tetris, Racer, Minesweeper
+            - Survival: Pcraft, Darkroom, Spacecompany
+        -->
+        <p class="info" style="text-align: center; font-size: 32px;"><i class="fas fa-chevron-down"></i>&#32;Scroll down to see more games...</p>
+        <p><b onclick="showall()">All</b> | <b onclick="showpuzzle()">Puzzle</b> | <b onclick="showarcade()">Arcade</b> | <b onclick="showsurvival()">Survival</b></p>
+        <div class="link-list">
+            <a href="Hextris/index.html"><div class="link-block puzzle" id="hextris" onmouseover="info('hextris')">
                 <h3 style="text-align: center;"><i class="fas fa-asterisk"></i>&#32;Hextris</h3>
-            </li></div></a>
-            <a href="adarkroom/index.html"><div class="link-block" id="darkroom" onmouseover="info('darkroom')"><li>
+            </div></a>
+            <a href="adarkroom/index.html"><div class="link-block survival" id="darkroom" onmouseover="info('darkroom')">
                 <h3 style="text-align: center;"><i class="fas fa-moon"></i>&#32;A Dark Room</h3>
-            </li></div></a>
-            <a href="canvas-tetris/index.html"><div class="link-block" id="tetris" onmouseover="info('tetris')"><li>
+            </div></a>
+            <a href="canvas-tetris/index.html"><div class="link-block arcade puzzle" id="tetris" onmouseover="info('tetris')">
                 <h3 style="text-align: center;"><i class="fas fa-cubes"></i>&#32;Tetris</h3>
-            </li></div></a>
-            <a href="2048/index.html"><div class="link-block" id="tfe" onmouseover="info('tfe')"><li>
+            </div></a>
+            <a href="2048/index.html"><div class="link-block puzzle" id="tfe" onmouseover="info('tfe')">
                 <h3 style="text-align: center;"><i class="fas fa-th"></i>&#32;2048</h3>
-            </li></div></a>
-            <a href="snek/index.html"><div class="link-block" id="snek" onmouseover="info('snek')"><li>
+            </div></a>
+            <a href="snek/index.html"><div class="link-block arcade" id="snek" onmouseover="info('snek')">
                 <h3 style="text-align: center;"><i class="fas fa-apple-alt"></i>&#32;Snek</h3>
-            </li></div></a>
-            <a href="chess/index.html"><div class="link-block" id="chess" onmouseover="info('chess')"><li>
+            </div></a>
+            <a href="chess/index.html"><div class="link-block puzzle" id="chess" onmouseover="info('chess')">
                 <h3 style="text-align: center;"><i class="fas fa-chess-knight"></i>&#32;Chess</h3>
-            </li></div></a>
-            <a href="asteroids/index.html"><div class="link-block" id="asteroids" onmouseover="info('asteroids')"><li>
+            </div></a>
+            <a href="asteroids/index.html"><div class="link-block arcade" id="asteroids" onmouseover="info('asteroids')">
                 <h3 style="text-align: center;"><i class="fas fa-rocket"></i>&#32;Asteroids</h3>
-            </li></div></a>
-            <a href="javascript-racer/index.html"><div class="link-block" id="racer" onmouseover="info('racer')"><li><h3 style="text-align: center;"><i class="fas fa-car"></i>&#32;Racer</h3>
-            </li></div></a>
-            <a href="emoji-minesweeper/index.html"><div class="link-block" id="minesweeper" onmouseover="info('minesweeper')"><li><h3 style="text-align: center;"><i class="fas fa-bomb"></i>&#32;Minesweeper</h3>
-            </li></div></a>
-            <a href="pcraft/index.html"><div class="link-block" id="pcraft" onmouseover="info('pcraft')"><li><h3 style="text-align: center;"><i class="fas fa-leaf"></i>&#32;P.Craft</h3>
-            </li></div></a>
-            <a href="SpaceCompany/index.html"><div class="link-block" id="spacecompany" onmouseover="info('spacecompany')"><li><h3 style="text-align: center;"><i class="fas fa-space-shuttle"></i>&#32;SpaceCompany</h3>
-            </li></div></a>
-            <a href="typer/index.html"><div class="link-block" id="typer" onmouseover="info('typer')"><li><h3 style="text-align: center;"><i class="fas fa-keyboard"></i>&#32;Typer</h3>
-            </li></div></a>
-        </ul>
+            </div></a>
+            <a href="javascript-racer/index.html"><div class="link-block arcade" id="racer" onmouseover="info('racer')"><h3 style="text-align: center;"><i class="fas fa-car"></i>&#32;Racer</h3>
+            </div></a>
+            <a href="emoji-minesweeper/index.html"><div class="link-block arcade puzzle" id="minesweeper" onmouseover="info('minesweeper')"><h3 style="text-align: center;"><i class="fas fa-bomb"></i>&#32;Minesweeper</h3>
+            </div></a>
+            <a href="pcraft/index.html"><div class="link-block survival" id="pcraft" onmouseover="info('pcraft')"><h3 style="text-align: center;"><i class="fas fa-leaf"></i>&#32;P.Craft</h3>
+            </div></a>
+            <a href="SpaceCompany/index.html"><div class="link-block survival" id="spacecompany" onmouseover="info('spacecompany')"><h3 style="text-align: center;"><i class="fas fa-space-shuttle"></i>&#32;SpaceCompany</h3>
+            </div></a>
+            <a href="typer/index.html"><div class="link-block puzzle" id="typer" onmouseover="info('typer')"><h3 style="text-align: center;"><i class="fas fa-keyboard"></i>&#32;Typer</h3>
+            </div></a>
+        </div>
+        <div style="height: 200px">
+        </div>
+        <div class="info-block">
         <hr>
         <h2 style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 600;">Game Info</h2>
         <p style="text-align: center; color: #ffffff; font-family: 'Raleway', sans-serif; font-weight: 400; font-size: 20px;" id="info"><b>Hover over a game to see a brief description of it.</b></p>
+        </div>
         <script>
             const default_text = "<b>Hover over a game to see a brief description of it.</b>";
             const hextris_text = "<b><i class='fas fa-mobile-alt'></i>/<i class='fas fa-laptop'></i>&#32;-&#32;Hextris:</b> Stack 3 blocks of the same colour to make them disappear. Use left and right to rotate the hexagon.";
@@ -193,6 +231,34 @@
                     source.innerHTML = typer_text;
                 } else {console.log("Stop messing around and get out of ma console!");}
             }
+            </script>
+            <script>
+            var elem = document.querySelector('.link-list');
+            var iso = new Isotope( elem, {
+            // options
+            itemSelector: '.link-block',
+            });
+
+            function showall() {
+                
+            }
+            function showpuzzle() {
+                $grid.isotope({ filter: '.puzzle' });
+            }
+            function showarcade() {
+                $grid.isotope({ filter: '.arcade' });
+            }
+            function showsurvival() {
+                $grid.isotope({ filter: '.survival' });
+            }
+
+            iso.arrange({
+            // item element provided as argument
+            filter: function( itemElem ) {
+                var number = itemElem.querySelector('.number');
+                return parseInt( number, 10 ) > 50;
+            }
+            });
         </script>
     </body>
 </html>

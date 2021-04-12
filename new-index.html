@@ -4,8 +4,10 @@
         <title>New Index</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="new-index.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Train+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Galada&family=Kumar+One&family=Monoton&family=Press+Start+2P&family=Rye&family=Sail&family=UnifrakturMaguntia&family=Vast+Shadow&display=swap" rel="stylesheet">
         <meta property="og:title" content="GameDesert Studios | kotla.eu"/>
         <meta property="og:description" content="The official GameDesert Studios website."/>
         <meta property="og:url" content="http://kotla.eu/"/>
@@ -31,11 +33,14 @@
         <meta name="msapplication-config" content="/favicons/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
     </head>
+    <body id="gradient">
     <link rel="stylesheet" type="text/css" href="cookie_banner.min.css"/><script src="cookie_banner.min.js" defer></script><script>window.addEventListener("load", function(){window.wpcc.init({"colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#f9f9f9"},"button":{"background":"#f9f9f9","text":"#000000"}},"position":"top","pushdown":true,"padding":"large","fontsize":"large","content":{"href":"https://kotla.eu/cookie-policy","message":"This website uses necessary cookies to ensure proper functionality. By clicking 'OK' or by continuing to use this website, you acknowledge the existence of these cookies. If you wish not to be subject to these cookies, then do not access this website.","button":"OK","link":"Learn More."}})});</script>
     <div class="section sec-1">
-        <h1 class="heading">New</h1>
+        <h1 class="heading" style="font-family: 'Monoton', cursive; font-weight: 400;">Featured</h1>
         <br>
-        <a href="games/index.html">Games</a>
+        <p>Play a wide range of games.</p>
+        <br>
+        <a href="games/index.html" style="text-decoration: none;"><div class="game-button"><b style="padding: 5px; line-height: 1.6;">Games</b></div></a>
     </div>
     <div class="section sec-2">
         <h1 class="heading">Sec. 2</h1>
@@ -96,4 +101,66 @@
             </div>
         </div>
     </footer>
+    <script>
+        var colors = new Array(
+        [255,255,255],
+        [200,200,200],
+        [150,150,150],
+        [255,255,255],
+        [200,200,200],
+        [255,255,255]);
+
+        var step = 0;
+        //color table indices for: 
+        // current color left
+        // next color left
+        // current color right
+        // next color right
+        var colorIndices = [0,1,2,3];
+
+        //transition speed
+        var gradientSpeed = 0.002;
+
+        function updateGradient()
+        {
+        
+            if ( $===undefined ) return;
+        
+            var c0_0 = colors[colorIndices[0]];
+            var c0_1 = colors[colorIndices[1]];
+            var c1_0 = colors[colorIndices[2]];
+            var c1_1 = colors[colorIndices[3]];
+
+            var istep = 1 - step;
+            var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
+            var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
+            var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
+            var color1 = "rgb("+r1+","+g1+","+b1+")";
+
+            var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
+            var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
+            var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
+            var color2 = "rgb("+r2+","+g2+","+b2+")";
+
+            $('#gradient').css({
+            background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
+                background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
+            
+            step += gradientSpeed;
+            if ( step >= 1 )
+            {
+                step %= 1;
+                colorIndices[0] = colorIndices[1];
+                colorIndices[2] = colorIndices[3];
+                
+                //pick two new target color indices
+                //do not pick the same as the current one
+                colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+                colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+                
+            }
+        }
+    setInterval(updateGradient,10);
+    </script>
+</body>
 </html>

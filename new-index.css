@@ -27,13 +27,59 @@
     font-family: 'Ubuntu', sans-serif;
 
     300, 300I, 400, 400I, 500, 500I, 700, 700I
+
+    ================================================================
+
+    font-family: 'Bungee Shade', cursive;
+
+    Drop-Shadowed Line
+
+
+    font-family: 'Galada', cursive;
+
+    Cursive Brighton-Style
+
+
+    font-family: 'Kumar One', cursive;
+
+    Blocky and Angular
+
+
+    font-family: 'Rye', cursive;
+
+    Western-y
+
+
+    font-family: 'Sail', cursive;
+
+    Bold Cursive
+
+
+    font-family: 'UnifrakturMaguntia', cursive;
+
+    Fraktur
+
+
+    font-family: 'Vast Shadow', cursive;
+
+    Drop-Shadowed Serif
+
+    
+    font-family: 'Monoton', cursive;
+
+    Parallel Lines
+
+
+    font-family: 'Press Start 2P', cursive;
+
+    Pixels
 */
 
 body {
     /*padding: 0%;*/
     margin: 0%;
     background-color: #fff;
-    background-image: linear-gradient(#fff, rgb(114, 114, 114));
+    background-image: linear-gradient(to bottom right, #c7162d, #850042, #1b0677, #0f7dbd);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -56,24 +102,25 @@ body {
     font-size: 24px;
 }
 .sec-1 {
-    background-color: #323031;
-    background-image: linear-gradient(to bottom right, #c7162d, #850042, #1b0677, #0f7dbd);
-    color: #fff;
-}
-.sec-2 {
+    /*background-color: #323031;
+    background-image: linear-gradient(to bottom right, #c7162d, #850042, #1b0677, #0f7dbd);*/
     color: #323031;
 }
-.sec-3 {
-    background-color: #323031;
-    background-image: linear-gradient(to bottom right, #323031, #494748);
+.sec-2 {
     color: #fff;
+    background-color: #323031;
+}
+.sec-3 {
+    /*background-color: #323031;
+    background-image: linear-gradient(to bottom right, #323031, #494748);*/
+    color: #323031;
 }
 footer {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 24px;
     background-color: rgb(114, 114, 114);
-    background-image: linear-gradient(to bottom right, #fff, rgb(114, 114, 114));
+    background-image: linear-gradient(to bottom right, #fff, rgb(167, 167, 167));
     color: #323031;
     text-decoration: none;
     text-align: left;
@@ -98,4 +145,19 @@ footer .footer-nav a {
     color: #323031;
     text-decoration: none;
     text-align: left;
+}
+.game-button {
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    margin: auto;
+    width: 20%;
+    height: 35px;
+    text-align: center;
+    font-size: 24px;
+    background-image: linear-gradient(to top left, #c7162d, #850042);
+    border-radius: 4px;
+}
+.game-button:hover {
+    color: #fff;
+    background-image: linear-gradient(to top left, #961223, #640132);
 }
