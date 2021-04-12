@@ -2,6 +2,9 @@
 <html>
     <head>
         <meta encoding="UTF-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+        <!--<script src="../isotope.pkgd.js"></script>-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Games</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -146,6 +149,7 @@
             - Survival: Pcraft, Darkroom, Spacecompany
         -->
         <p class="info" style="text-align: center; font-size: 32px;"><i class="fas fa-chevron-down"></i>&#32;Scroll down to see more games...</p>
+        <p><b onclick="showall()">All</b> | <b onclick="showpuzzle()">Puzzle</b> | <b onclick="showarcade()">Arcade</b> | <b onclick="showsurvival()">Survival</b></p>
         <div class="linklist">
             <a href="Hextris/index.html"><div class="linkblock puzzle" id="hextris" onmouseover="info('hextris')">
                 <h3 style="text-align: center;"><i class="fas fa-asterisk"></i>&#32;Hextris</h3>
@@ -229,5 +233,33 @@
                 } else {console.log("Stop messing around and get out of ma console!");}
             }
             </script>
+            <script>
+            $('.linklist').isotope({
+            // options
+            itemSelector: '.linkblock',
+            layoutMode: 'vertical'
+            });
+
+            function showall() {
+                $(".linklist").isotope({ filter: '.linkblock' });
+            }
+            function showpuzzle() {
+                $(".linklist").isotope({ filter: '.puzzle' });
+            }
+            function showarcade() {
+                $(".linklist").isotope({ filter: '.arcade' });
+            }
+            function showsurvival() {
+                $(".linklist").isotope({ filter: '.survival' });
+            }
+
+            iso.arrange({
+            // item element provided as argument
+            filter: function( itemElem ) {
+                var number = itemElem.querySelector('.number');
+                return parseInt( number, 10 ) > 50;
+            }
+            });
+        </script>
     </body>
 </html>
