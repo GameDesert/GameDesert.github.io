@@ -45,6 +45,46 @@ gainNode.gain.value = 0;
     }, 40)
 }());
 
+function mute() {
+    if (mute) {            
+            gainNode.gain.value = volume;
+            mute = false;
+        } else {
+            gainNode.gain.value = 0;
+            mute = true;
+        }
+}
+function grossUp() {
+    frequency += 5;
+    oscillatorNode.frequency.value = frequency;       
+    document.getElementById('frequency').innerHTML = frequency.toFixed(2);
+}
+function grossDown() {
+    frequency -= 5;
+    oscillatorNode.frequency.value = frequency;       
+    document.getElementById('frequency').innerHTML = frequency.toFixed(2);
+}
+function mediumUp() {
+    frequency += 0.5;
+    oscillatorNode.frequency.value = frequency;       
+    document.getElementById('frequency').innerHTML = frequency.toFixed(2);
+}
+function mediumDown() {
+    frequency -= 0.5;
+    oscillatorNode.frequency.value = frequency;       
+    document.getElementById('frequency').innerHTML = frequency.toFixed(2);
+}
+function fineUp() {
+    frequency += 0.01;
+    oscillatorNode.frequency.value = frequency;       
+    document.getElementById('frequency').innerHTML = frequency.toFixed(2);
+}
+function fineDown() {
+    frequency -= 0.01;
+    oscillatorNode.frequency.value = frequency;       
+    document.getElementById('frequency').innerHTML = frequency.toFixed(2);
+}
+
 document.addEventListener('keydown', function(event) {
     if (event.keyCode == 32) { // space bar
         if (mute) {            
@@ -71,15 +111,16 @@ document.addEventListener('keyup', function(event) {
 
 <div>
     <ul>
-        <li>Space - on/off</li>
-        <li>Q - Frequency+++</li>
-        <li>W - Frequency---</li>
-        <li>E - Frequency++</li>
-        <li>R - Frequency--</li>
-        <li>T - Frequency+</li>
-        <li>Y - Frequency-</li>
+        <li onclick="mute()">Space - on/off</li>
+        <li onclick="grossUp()">Q - Frequency+++</li>
+        <li onclick="grossDown()">W - Frequency---</li>
+        <li onclick="mediumUp()">E - Frequency++</li>
+        <li onclick="mediumDown()">R - Frequency--</li>
+        <li onclick="fineUp()">T - Frequency+</li>
+        <li onclick="fineDown()">Y - Frequency-</li>
     </ul>
 </div>
+
 <p>Originally created by Steve Mould (<a href="https://gist.github.com/steventhebrave/7c16a72fb940b05b5e5218390418b5bf">GitHub</a>)</p>
 </body>
 </html>
