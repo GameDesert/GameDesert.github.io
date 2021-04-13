@@ -45,7 +45,7 @@ gainNode.gain.value = 0;
     }, 40)
 }());
 
-function mute() {
+function plause() {
     if (mute) {            
             gainNode.gain.value = volume;
             mute = false;
@@ -111,7 +111,7 @@ document.addEventListener('keyup', function(event) {
 
 <div>
     <ul>
-        <li onclick="mute()">Space - on/off</li>
+        <li onclick="plause()">Space - on/off</li>
         <li onclick="grossUp()">Q - Frequency+++</li>
         <li onclick="grossDown()">W - Frequency---</li>
         <li onclick="mediumUp()">E - Frequency++</li>
