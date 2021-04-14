@@ -1,6 +1,6 @@
 {
-    "name": "GameDesert",
-    "short_name": "GameDesert",
+    "name": "Delta Institute",
+    "short_name": "Delta Institute",
     "icons": [
         {
             "src": "/favicons/android-chrome-192x192.png",
@@ -8,13 +8,13 @@
             "type": "image/png"
         },
         {
-            "src": "/favicons/android-chrome-384x384.png",
-            "sizes": "384x384",
+            "src": "/favicons/android-chrome-512x512.png",
+            "sizes": "512x512",
             "type": "image/png"
         }
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "start_url": "kotla.eu",
+    "start_url": "https://kotla.eu/deltainstitute",
     "display": "standalone"
 }
