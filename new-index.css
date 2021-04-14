@@ -79,7 +79,7 @@ body {
     /*padding: 0%;*/
     margin: 0%;
     background-color: #fff;
-    background-image: linear-gradient(to bottom right, #c7162d, #850042, #1b0677, #0f7dbd);
+    background-image: linear-gradient(to bottom right, #c71660, #b11a65, #3415bb, #0f7dbd);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -94,6 +94,7 @@ body {
     font-weight: 800;
     text-align: center;
     font-size: 42px;
+    margin-top: 0%;
 }
 .section p {
     font-family: 'Source Sans Pro', sans-serif;
@@ -101,26 +102,50 @@ body {
     text-align: center;
     font-size: 24px;
 }
+.titlebreak {
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+.titlebreak::after {
+    background: #fff;
+    content: '§';
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+}
 .sec-1 {
-    /*background-color: #323031;
-    background-image: linear-gradient(to bottom right, #c7162d, #850042, #1b0677, #0f7dbd);*/
+    background-color: #fff;
     color: #323031;
+    padding: 0%;
+    margin: 0%;
 }
 .sec-2 {
     color: #fff;
-    background-color: #323031;
+    background-color: #00000000;
+    padding: 0%;
+    margin: 0%;
 }
 .sec-3 {
-    /*background-color: #323031;
-    background-image: linear-gradient(to bottom right, #323031, #494748);*/
+    background-color: #fff;
     color: #323031;
+    padding: 0%;
+    margin: 0%;
+}
+.sec-4 {
+    color: #fff;
+    background-color: #00000000;
+    padding: 0%;
+    margin: 0%;
 }
 footer {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 24px;
-    background-color: rgb(114, 114, 114);
-    background-image: linear-gradient(to bottom right, #fff, rgb(167, 167, 167));
+    background-color: #fff;
     color: #323031;
     text-decoration: none;
     text-align: left;
@@ -130,7 +155,7 @@ footer .footer-grid {
     grid-template-columns: auto auto auto;
     column-gap: 1px;
     grid-column-gap: 1px;
-    grid-template-columns: repeat(5, 1fr)
+    grid-template-columns: repeat(6, 1fr)
 }
 footer .column {
     display: inline-grid;
@@ -146,18 +171,7 @@ footer .footer-nav a {
     text-decoration: none;
     text-align: left;
 }
-.game-button {
-    font-family: 'Press Start 2P', cursive;
-    color: #fff;
-    margin: auto;
-    width: 20%;
-    height: 35px;
-    text-align: center;
-    font-size: 24px;
-    background-image: linear-gradient(to top left, #c7162d, #850042);
-    border-radius: 4px;
-}
-.game-button:hover {
-    color: #fff;
-    background-image: linear-gradient(to top left, #961223, #640132);
+footer .footer-nav a:hover {
+    color: #555154;
+    text-decoration: underline;
 }
