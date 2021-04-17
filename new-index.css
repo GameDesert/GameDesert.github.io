@@ -79,7 +79,7 @@ body {
     /*padding: 0%;*/
     margin: 0%;
     background-color: #fff;
-    background-image: linear-gradient(to bottom right, #c71660, #b11a65, #3415bb, #0f7dbd);
+    background-image: linear-gradient(to bottom right, #000, #323031);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
