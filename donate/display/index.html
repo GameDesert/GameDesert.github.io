@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Donate</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="qrcode.js">
+</script>
+    <script type="text/javascript" src="html5-qrcode.js">
+</script>
+    <style type="text/css">
+    /*
+    font-family: 'Ubuntu', sans-serif;
+    400+I, 700+I
+
+    font-family: 'Ubuntu Mono', monospace;
+    300+I, 400+I, 500+I, 700+I
+    */
+      body {
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 400;
+      }
+      .bch {
+        background-color: #0ac18e;
+        color: #fff;
+      }
+      .btc {
+        background-color: #f7931a;
+        color: #000;
+      }
+      #qrcode {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 195px;
+        height: 195px;
+        padding: 25px;
+        border-radius: 24px;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body class="btc" id="body">
+    <h1 id="title" style="font-weight: 700;">Donate</h1>
+    <!--<form name="QRform" id="QRform">
+      <textarea name="textField" rows="8" cols="70" onkeyup='updateQRCode(this.value)' onclick="this.focus();this.select();">Tutorialspoint.com.</textarea>
+    </form>-->
+    
+    <!-- This is where our QRCode will appear in. -->
+    <div class="logo">
+      <img id="logoimg" src="bitcoin.svg" style="width: 48px; height: auto;">
+    </div>
+    <br>
+    <div id="qrcode"></div>
+    <p>Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
+    <script type="text/javascript">
+      function updateQRCode(text) {
+
+        var element = document.getElementById("qrcode");
+
+        var bodyElement = document.body;
+        if(element.lastChild)
+          element.replaceChild(showQRCode(text), element.lastChild);
+        else
+          element.appendChild(showQRCode(text));
+
+      }
+      function bit() {
+        var title = document.getElementById("title");
+        title.innerHTML = "Donate Bitcoin";
+        var logo = document.getElementById("logoimg");
+        logo.setAttribute("src", "bitcoin.svg");
+        var body = document.getElementById("body");
+        body.setAttribute("class", "btc");
+      }
+      function bitcash() {
+        var title = document.getElementById("title");
+        title.innerHTML = "Donate Bitcoin Cash";
+        var logo = document.getElementById("logoimg");
+        logo.setAttribute("src", "bitcoincash.svg");
+        var body = document.getElementById("body");
+        body.setAttribute("class", "bch");
+      }
+      updateQRCode('www.tutorialspoint.com');
+    </script>
+  </body>
+</html>
