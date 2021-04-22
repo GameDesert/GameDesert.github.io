@@ -34,8 +34,8 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 195px;
-        height: 195px;
+        width: 235px;
+        height: 235px;
         padding: 25px;
         border-radius: 24px;
         background-color: #fff;
@@ -74,6 +74,7 @@
         logo.setAttribute("src", "bitcoin.svg");
         var body = document.getElementById("body");
         body.setAttribute("class", "btc");
+        updateQRCode('bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3');
       }
       function bitcash() {
         var title = document.getElementById("title");
@@ -82,8 +83,8 @@
         logo.setAttribute("src", "bitcoincash.svg");
         var body = document.getElementById("body");
         body.setAttribute("class", "bch");
+        updateQRCode('bitcoincash:qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr');
       }
-      updateQRCode('www.tutorialspoint.com');
     </script>
   </body>
 </html>
