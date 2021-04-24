@@ -130,7 +130,7 @@
     </style>
   </head>
   <body class="btc" id="body">
-    <nav>
+    <nav id="nav">
     <br>
     <p><span class="bchbutton" onclick="bitcash()"><abbr style="text-decoration: none;" title="Bitcoin Cash">BCH</abbr></span><span class="btcbutton" onclick="bit()"><abbr style="text-decoration: none;" title="Bitcoin">BTC</abbr></span></p>
     <br>
@@ -156,7 +156,7 @@
     <div id="qrcode"></div>
     <p style="font-size: 18px;" id="address">#ADDRESS#</p>
     </a>
-    <footer>
+    <footer id="foot">
     <hr>
     <p style="font-size: 18px;">Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
     </footer>
@@ -180,10 +180,14 @@
         var body = document.getElementById("body");
         body.setAttribute("class", "btc");
         updateQRCode('bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3');
-        var address = document.getElementById("address")
-        var addresslink = document.getElementById("addresslink")
+        var address = document.getElementById("address");
+        var addresslink = document.getElementById("addresslink");
         address.innerHTML = "bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3";
-        addresslink.setAttribute("href","bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3")
+        addresslink.setAttribute("href","bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3");
+        /*var foot = getElementById("foot");
+        foot.style.background-color = "#f7931a";
+        var nav = getElementById("nav");
+        nav.style.background-color = "#f7931a";*/
       }
       function bitcash() {
         var title = document.getElementById("title");
@@ -197,6 +201,10 @@
         var addresslink = document.getElementById("addresslink")
         address.innerHTML = "qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr";
         addresslink.setAttribute("href","bitcoincash:qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr")
+        /*var foot = getElementById("foot");
+        foot.style.background-color = "#0ac18e";
+        var nav = getElementById("nav");
+        nav.style.background-color = "#0ac18e";*/
       }
       bitcash();
     </script>
