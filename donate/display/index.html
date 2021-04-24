@@ -88,6 +88,12 @@
         color: #000;
         border-style: solid;
       }
+      .btc a {
+        color: #000;
+      }
+      .bch a {
+        color: #fff;
+      }
     </style>
   </head>
   <body class="btc" id="body">
@@ -99,15 +105,22 @@
     <!--<form name="QRform" id="QRform">
       <textarea name="textField" rows="8" cols="70" onkeyup='updateQRCode(this.value)' onclick="this.focus();this.select();">Tutorialspoint.com.</textarea>
     </form>-->
-    
     <!-- This is where our QRCode will appear in. -->
     <div class="logo">
       <img id="logoimg" src="bitcoin.svg" style="width: 48px; height: auto;">
     </div>
     <br>
+    <a id="addresslink" href="#" title="Donate" style="text-decoration: none; font-family: 'Ubuntu Mono', monospace;">
     <div id="qrcode"></div>
+    <p style="font-size: 18px;" id="address">#ADDRESS#</p>
+    </a>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
     <footer>
-    <p>Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
+    <p style="font-size: 20px;">Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
     </footer>
     <script type="text/javascript">
       function updateQRCode(text) {
@@ -116,9 +129,9 @@
 
         var bodyElement = document.body;
         if(element.lastChild)
-          element.replaceChild(showQRCode(text, currency), element.lastChild);
+          element.replaceChild(showQRCode(text), element.lastChild);
         else
-          element.appendChild(showQRCode(text, currency));
+          element.appendChild(showQRCode(text));
 
       }
       function bit() {
@@ -129,6 +142,10 @@
         var body = document.getElementById("body");
         body.setAttribute("class", "btc");
         updateQRCode('bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3');
+        var address = document.getElementById("address")
+        var addresslink = document.getElementById("addresslink")
+        address.innerHTML = "bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3";
+        addresslink.setAttribute("href","bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3")
       }
       function bitcash() {
         var title = document.getElementById("title");
@@ -138,6 +155,10 @@
         var body = document.getElementById("body");
         body.setAttribute("class", "bch");
         updateQRCode('bitcoincash:qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr');
+        var address = document.getElementById("address")
+        var addresslink = document.getElementById("addresslink")
+        address.innerHTML = "qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr";
+        addresslink.setAttribute("href","bitcoincash:qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr")
       }
       bitcash();
     </script>
