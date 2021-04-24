@@ -18,6 +18,7 @@
     300+I, 400+I, 500+I, 700+I
     */
       body {
+        margin: 0%;
         text-align: center;
         font-family: 'Ubuntu', sans-serif;
         font-weight: 400;
@@ -40,9 +41,60 @@
         border-radius: 24px;
         background-color: #fff;
       }
+      .btcbutton {
+        border: solid #fff;
+        padding: 8px;
+        margin: 14px;
+        font-size: 24px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .btcbutton:hover {
+        background-color: #f7931a;
+      }
+      .bchbutton {
+        border: solid #fff;
+        padding: 8px;
+        margin: 14px;
+        font-size: 24px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .bchbutton:hover {
+        background-color: #0ac18e;
+      }
+      .bch .btcbutton {
+        border-color: #fff;
+      }
+      .btc .btcbutton {
+        border-color: #000;
+        cursor: default;
+      }
+      .bch .bchbutton {
+        border-color: #fff;
+        cursor: default;
+      }
+      .btc .bchbutton {
+        border-color: #000;
+      }
+
+      .bch hr {
+        background-color: #fff;
+        color: #fff;
+        border-style: solid;
+      }
+      .btc hr {
+        background-color: #000;
+        color: #000;
+        border-style: solid;
+      }
     </style>
   </head>
   <body class="btc" id="body">
+    <br>
+    <p><span class="bchbutton" onclick="bitcash()">BCH</span><span class="btcbutton" onclick="bit()">BTC</span></p>
+    <br>
+    <hr>
     <h1 id="title" style="font-weight: 700;">Donate</h1>
     <!--<form name="QRform" id="QRform">
       <textarea name="textField" rows="8" cols="70" onkeyup='updateQRCode(this.value)' onclick="this.focus();this.select();">Tutorialspoint.com.</textarea>
@@ -64,9 +116,9 @@
 
         var bodyElement = document.body;
         if(element.lastChild)
-          element.replaceChild(showQRCode(text), element.lastChild);
+          element.replaceChild(showQRCode(text, currency), element.lastChild);
         else
-          element.appendChild(showQRCode(text));
+          element.appendChild(showQRCode(text, currency));
 
       }
       function bit() {
