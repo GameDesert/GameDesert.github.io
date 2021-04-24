@@ -38,7 +38,7 @@
         text-align: center;
         font-family: 'Ubuntu', sans-serif;
         font-weight: 400;
-        padding-bottom:90px;
+        padding-bottom: 100px;
       }
       nav {
         position: fixed;
@@ -121,7 +121,7 @@
         position: fixed;
         bottom:0;
         width:100%;
-        height:90px;
+        height:100px;
       }
       .btc nav {background-color: #f7931a;}
       .bch nav {background-color: #0ac18e;}
@@ -144,8 +144,6 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
     <h1 id="title" style="font-weight: 700;">Donate</h1>
     <!--<form name="QRform" id="QRform">
       <textarea name="textField" rows="8" cols="70" onkeyup='updateQRCode(this.value)' onclick="this.focus();this.select();">Tutorialspoint.com.</textarea>
@@ -162,9 +160,11 @@
     </a>
     <footer id="foot">
     <hr>
-    <p style="font-size: 14px;">An OpenAlias Address can be entered in place of a BTC or BCH address in an Electrum-based wallet such as Electrum or Electron Cash. It is insecure due to DNS hijacking, so make sure the automatically inserted address matches the full address on this page.</p>
-    <p style="font-size: 14px;">Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
-    </footer>
+    <div style="padding: 25px;">
+      <p style="font-size: 14px;">An OpenAlias Address can be entered in place of a BTC or BCH address in an Electrum-based wallet such as Electrum or Electron Cash. It is insecure due to DNS hijacking, so make sure the automatically inserted address matches the full address on this page.</p>
+      <p style="font-size: 14px;">Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
+    </div>
+  </footer>
     <script type="text/javascript">
       function updateQRCode(text) {
 
