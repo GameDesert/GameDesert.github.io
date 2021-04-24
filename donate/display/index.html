@@ -152,9 +152,10 @@
       <img id="logoimg" src="bitcoin.svg" style="width: 48px; height: auto;">
     </div>
     <br>
-    <a id="addresslink" href="#" title="Donate" style="text-decoration: none; font-family: 'Ubuntu Mono', monospace;">
+    <a id="addresslink" href="#" style="text-decoration: none; font-family: 'Ubuntu Mono', monospace;">
     <div id="qrcode"></div>
-    <p style="font-size: 32px;" id="address">#ADDRESS#</p>
+    <p style="font-size: 24px;" id="address">#ADDRESS#</p>
+    <p style="font-size: 24px;" id="openalias">#OPENALIAS#</p>
     </a>
     <footer id="foot">
     <hr>
@@ -182,8 +183,10 @@
         updateQRCode('bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3');
         var address = document.getElementById("address");
         var addresslink = document.getElementById("addresslink");
-        address.innerHTML = "bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3";
+        address.innerHTML = "<b>Bitcoin Address:</b> bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3";
         addresslink.setAttribute("href","bitcoin:bc1q7wqrnxtrg5ndn5pjcw3hn2vq9ev2uas792zeq3");
+        var openalias = document.getElementById("openalias");
+        openalias.innerHTML = "<b>OpenAlias Address:</b> btc.donate.kotla.eu";
         /*var foot = getElementById("foot");
         foot.style.background-color = "#f7931a";
         var nav = getElementById("nav");
@@ -199,8 +202,10 @@
         updateQRCode('bitcoincash:qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr');
         var address = document.getElementById("address")
         var addresslink = document.getElementById("addresslink")
-        address.innerHTML = "qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr";
+        address.innerHTML = "<b>Bitcoin Cash Address:</b> qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr";
         addresslink.setAttribute("href","bitcoincash:qpjud69mq03h5ndv7nwlhrjxjwqfgmqkku6dwtdydr")
+        var openalias = document.getElementById("openalias");
+        openalias.innerHTML = "<b>OpenAlias Address:</b> bch.donate.kotla.eu";
         /*var foot = getElementById("foot");
         foot.style.background-color = "#0ac18e";
         var nav = getElementById("nav");
