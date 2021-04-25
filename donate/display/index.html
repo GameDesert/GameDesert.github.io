@@ -133,9 +133,15 @@
       }
     </style>
   </head>
-  <body class="btc" id="body">
+  <body class="btc" id="body" onload="checkWiFi()" onoffline="document.getElementById('nonetwork').style.display = 'block'; document.getElementById('network').style.display = 'none';" ononline="document.getElementById('nonetwork').style.display = 'none'; document.getElementById('network').style.display = 'block';">
     <nav id="nav">
-    <p><span class="bchbutton" onclick="bitcash()"><abbr style="text-decoration: none;" title="Bitcoin Cash">BCH</abbr></span><span class="btcbutton" onclick="bit()"><abbr style="text-decoration: none;" title="Bitcoin">BTC</abbr></span></p>
+      <div style="background-color: white; width: 100%; padding-top: 7px; padding-bottom: 2px;" id="nonetwork">
+      <p><b style="color: red;">You are currently offline, prices will not update properly.</b>&#32;<i style="text-decoration: underline; color: blue; cursor: pointer;" onclick="document.getElementById('nonetwork').style.display = 'none';">Dismiss</i></p>
+      </div>
+      <div style="background-color: white; width: 100%; padding-top: 7px; padding-bottom: 2px;" id="network">
+        <p><b style="color: green;">You are back online, switch currencies to see updated prices.</b>&#32;<i style="text-decoration: underline; color: blue; cursor: pointer;" onclick="document.getElementById('network').style.display = 'none';">Dismiss</i></p>
+        </div>
+      <p><span class="bchbutton" onclick="bitcash()"><abbr style="text-decoration: none;" title="Bitcoin Cash">BCH</abbr></span><span class="btcbutton" onclick="bit()"><abbr style="text-decoration: none;" title="Bitcoin">BTC</abbr></span></p>
     <br>
     <hr>
     </nav>
@@ -252,6 +258,16 @@
         foot.style.background-color = "#0ac18e";
         var nav = getElementById("nav");
         nav.style.background-color = "#0ac18e";*/
+      }
+      function checkWiFi() {
+        if (navigator.onLine == false) {
+          document.getElementById('nonetwork').style.display = 'block';
+          document.getElementById('network').style.display = 'none';
+        } else {
+          document.getElementById('nonetwork').style.display = 'none';
+          document.getElementById('network').style.display = 'none';
+        };
+        console.log(navigator.onLine)
       }
 
       bitcash();
