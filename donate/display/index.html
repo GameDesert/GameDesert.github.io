@@ -143,7 +143,7 @@
     <br>
     <br>
     <br>
-    <h1 id="title" style="font-weight: 700;">Donate</h1>
+    <h1 id="title" style="font-weight: 700; font-size: 28px;">Donate</h1>
     <!--<form name="QRform" id="QRform">
       <textarea name="textField" rows="8" cols="70" onkeyup='updateQRCode(this.value)' onclick="this.focus();this.select();">Tutorialspoint.com.</textarea>
     </form>-->
@@ -156,12 +156,12 @@
     <div id="qrcode"></div>
     <p style="font-size: 20px;" id="address">#ADDRESS#</p>
     <p style="font-size: 20px;" id="openalias">#OPENALIAS#</p>
+    <p style="font-size: 20px;" id="Crypto_Price">#PRICE#</p>
     </a>
     <footer id="foot">
     <hr>
     <div style="padding-left: 25px; padding-right: 25px; padding-bottom: 10px; padding-top: 0px;">
-      <p style="font-size: 13px;">An OpenAlias Address can be entered in place of a BTC or BCH address in an Electrum-based wallet such as Electrum or Electron Cash. It is insecure due to DNS hijacking, so make sure the automatically inserted address matches the full address on this page.</p>
-      <p style="font-size: 13px;">Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
+      <p style="font-size: 13px;">Price data by CoinGecko. An OpenAlias Address can be entered in place of a BTC or BCH address in an Electrum-based wallet such as Electrum or Electron Cash. It is insecure due to DNS hijacking, so make sure the automatically inserted address matches the full address on this page. Donations are one-way and non-refundable. You may incur high transaction fees when using cryptocurrencies. Bitcoin Cash has lower transaction fees than standard Bitcoin.</p>
       <br>
     </div>
   </footer>
@@ -177,7 +177,44 @@
           element.appendChild(showQRCode(text));
 
       }
+      function update_bch() {
+        var bch_xmlhttp = new XMLHttpRequest();
+        var bch_url = "https://api.coingecko.com/api/v3/coins/bitcoin-cash";
+
+        bch_xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var bch_response_data = JSON.parse(this.responseText);
+            write_bch_price(bch_response_data);
+          }
+        };
+        bch_xmlhttp.open("GET", bch_url, true);
+        bch_xmlhttp.send();
+
+        function write_bch_price(bch_arr) {
+          document.getElementById("Crypto_Price").innerHTML = "1 <b>BCH</b> = " + bch_arr.market_data.current_price.gbp + " <b>GBP</b>";
+        }
+      };
+
+
+      function update_btc() {
+        var btc_xmlhttp = new XMLHttpRequest();
+        var btc_url = "https://api.coingecko.com/api/v3/coins/bitcoin";
+
+        btc_xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var btc_response_data = JSON.parse(this.responseText);
+            write_btc_price(btc_response_data);
+          }
+        };
+        btc_xmlhttp.open("GET", btc_url, true);
+        btc_xmlhttp.send();
+
+        function write_btc_price(btc_arr) {
+          document.getElementById("Crypto_Price").innerHTML = "1 <b>BTC</b> = " + btc_arr.market_data.current_price.gbp + " <b>GBP</b>";
+        }
+      };
       function bit() {
+        update_btc();
         var title = document.getElementById("title");
         title.innerHTML = "Donate Bitcoin";
         var logo = document.getElementById("logoimg");
@@ -197,6 +234,7 @@
         nav.style.background-color = "#f7931a";*/
       }
       function bitcash() {
+        update_bch();
         var title = document.getElementById("title");
         title.innerHTML = "Donate Bitcoin Cash";
         var logo = document.getElementById("logoimg");
@@ -215,6 +253,7 @@
         var nav = getElementById("nav");
         nav.style.background-color = "#0ac18e";*/
       }
+
       bitcash();
     </script>
   </body>
