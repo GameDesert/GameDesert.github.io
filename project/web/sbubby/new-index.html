@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="/isotope.pkgd.js"></script>
+        <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
+        <title>Sbubbies | GameDesert</title>
+        <base href="assets/">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        body {
+            margin: 0%;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            column-gap: 0px;
+            grid-column-gap: 0px;
+            row-gap: 0px;
+            grid-row-gap: 0px;
+            width: 50%;
+            margin: auto;
+            grid-template-columns: repeat(4, 1fr)
+        }
+        .container {
+        margin: -2px;
+        display: inline-grid;
+        position: relative;
+        width: 20%;
+        }
+
+        .image {
+        display: block;
+        width: 100%;
+        height: auto;
+        }
+
+        .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: #008CBA;
+        }
+
+        .container:hover .overlay {
+        opacity: 1;
+        }
+
+        .text {
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Sbubbies</h1>
+        <div class="grid"></div>
+        <div class="container">
+            <img src="aang.png" alt="Aang" class="image">
+            <div class="overlay">
+            <div class="text">
+                <p>Hello World</p>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="eyy.png" alt="Eyy" class="image">
+            <div class="overlay">
+            <div class="text">
+                <p>Hello World</p>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="adididididi.png" alt="Adididididi" class="image">
+            <div class="overlay">
+            <div class="text">
+                <p>Hello World</p>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="asbestos-inside.png" alt="Asbestos Inside" class="image">
+            <div class="overlay">
+            <div class="text">
+                <p>Hello World</p>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="cyberchonk.png" alt="Cyberchonk" class="image">
+            <div class="overlay">
+            <div class="text">
+                <p>Hello World</p>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="stopify.png" alt="Stopify" class="image">
+            <div class="overlay">
+            <div class="text">
+                <p>Hello World</p>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
