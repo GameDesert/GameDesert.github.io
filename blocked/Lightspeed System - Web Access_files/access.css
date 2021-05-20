@@ -2223,9 +2223,9 @@ body {
     margin: 0 auto;
     width: 66px; }
   .page-icon .page-icon--imgAccess {
-    background-image: url(/images/access/user_lock.png); }
+    background-image: url(images/access/user_lock.png); }
   .page-icon .page-icon--imgBrowse {
-    background-image: url(/images/access/browse.png);
+    background-image: url(images/access/browse.png);
     height: 95px; }
 
 .strip {
