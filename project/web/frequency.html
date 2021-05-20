@@ -84,6 +84,11 @@ function fineDown() {
     oscillatorNode.frequency.value = frequency;       
     document.getElementById('frequency').innerHTML = frequency.toFixed(2);
 }
+function freq(frequence) {
+    frequency = frequence;
+    oscillatorNode.frequency.value = frequency;       
+    document.getElementById('frequency').innerHTML = frequency.toFixed(2);
+}
 
 document.addEventListener('keydown', function(event) {
     if (event.keyCode == 32) { // space bar
