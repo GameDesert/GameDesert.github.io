@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Delta Institute | Main Entrance (Night Time)</title>
+        <!--<base href="https://kotla.eu/deltainstitute/">-->
+        <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">-->
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300;400;500;600;700&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/deltainstitute/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/deltainstitute/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="194x194" href="/deltainstitute/favicons/favicon-194x194.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/deltainstitute/favicons/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/deltainstitute/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/deltainstitute/favicons/site.webmanifest">
+        <link rel="mask-icon" href="/deltainstitute/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/deltainstitute/favicons/favicon.ico">
+        <meta name="apple-mobile-web-app-title" content="Delta Institute">
+        <meta name="application-name" content="Delta Institute">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-TileImage" content="/deltainstitute/favicons/mstile-144x144.png">
+        <meta name="msapplication-config" content="/deltainstitute/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <style>
+            /*
+                font-family: 'Courier Prime', monospace;
+
+                font-family: 'Quicksand', sans-serif;
+
+                font-family: 'Source Code Pro', monospace;
+
+                font-family: 'Source Sans Pro', sans-serif;
+
+                font-family: 'Source Serif Pro', serif;
+            */
+            body {
+                font-family: 'Source Code Pro', monospace;
+                margin: 5%;
+                /*background-image: url("/deltainstitute/assets/wood.jpg");
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: revert;
+                overflow-x: hidden;*/
+            }
+            .light {
+                background-color: #fff;
+                color: #000;
+            }
+            .dark {
+                background-color: #323031;
+                color: #fff;
+            }
+            p, a, li, span {
+                font-size: 24px;
+            }
+            figure {
+                padding: 15px;
+                border-radius: 8px;
+            }
+            figure img {
+                width: 100%;
+                height: auto;
+            }
+            figcaption, caption {
+                font-style: italic;
+                text-align: center;
+                font-family: 'Source Serif Pro', serif;
+                font-size: 18px;
+            }
+            .light figure:hover {
+                background-color: rgb(165, 165, 165);
+            }
+            .dark figure:hover {
+                background-color: #201f20;
+            }
+
+            .dark a {
+                background-color: #fff;
+                padding: 5px;
+                border-radius: 8px;
+            }
+        </style>
+    </head>
+    <body class="dark" id="body">
+        <h1>Main Entrance (Night Time)</h1>
+        <br>
+        <div class="text" id="text">
+            <p>A small van with blacked-out windows slows to a halt outside the ancient building.</p>
+            <p>You push the van's door forwards, slide it open, and step out onto the gravelled driveway with a <i>crunch</i>.</p>
+            <p>It's almost pitch-black outside, and under the cover of night, you walk towards the front door of the institute.</p>
+            <p>As you're walking, you notice a sliver of light coming from one of the windows and an eye watching you as you inch closer to the entrance.</p>
+            <p>You make eye contact with the figure and it disappears into the darkness of the institute.</p>
+            <a href="#" onclick="checkdoor();">Check the door.</a>
+        </div>
+        <script>
+            const text = document.getElementById("text");
+            function checkdoor() {
+                text.innerHTML = "<p>You clutch the solid brass doorknob and give it a rattle, <i>locked</i>.</p><p>You hear rapid footsteps darting towards the door.</p><p>To the left of the door is a small keypad, and to the right of the door is a large vase, there's some space to hide behind it.</p><a href='#'' onclick='hidebehindvase();'>Hide behind the vase.</a> <a href='#'' onclick='donthidebehindvase();'>Do nothing.</a>"
+            }
+            function donthidebehindvase() {
+                text.innerHTML = "<p>The door creaks open and you are frozen still.</p><p>A small, bespectacled man pokes his head out of the door, followed by the barrel of a large shotgun.</p><p><i><b>Bang.</b></i></p><a href='#'' onclick='checkdoor();'>Undo.</a>"
+            }
+            function hidebehindvase() {
+                text.innerHTML = "<p>You hide behind the vase and the door creaks open.</p><p>A small, bespectacled man pokes his head out of the door, followed by the barrel of a large shotgun.</p><p>You see a small slip of paper sticking out of his back pocket.</p><p>The note has 4 numbers on it, <i>1946</i></p><p>The man goes back inside and shuts the door.</p><a href='#'' onclick='returntovan();'>Return to the van (and go undercover).</a> <a href='#'' onclick='breakin();'>Enter the code into the keypad and break into the institute.</a>"
+            }
+        </script>
+    </body>
+</html>
