@@ -2,7 +2,7 @@
 <html>
 <head><title>SOUND</title></head>
 <body>
-<div>Frequence: <span id="frequency"></span></div>
+<script src="https://kit.fontawesome.com/4fe9d71bae.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -31,7 +31,7 @@ oscillatorNode.start();
 oscillatorNode.frequency.value = frequency;
 gainNode.gain.value = 0;
 
-(function manualLoop() {
+function manualLoop() {
     setTimeout(function() {
         manualLoop();         
         if (direction == "up"){
@@ -43,15 +43,19 @@ gainNode.gain.value = 0;
         oscillatorNode.frequency.value = frequency;       
         document.getElementById('frequency').innerHTML = frequency.toFixed(2);
     }, 40)
-}());
+};
 
 function plause() {
     if (mute) {            
             gainNode.gain.value = volume;
             mute = false;
+            document.getElementById("play-pause").innerHTML = '<i class="fas fa-pause-circle"></i>';
+            document.getElementById("volume").innerHTML = '<i class="fas fa-volume-up"></i>';
         } else {
             gainNode.gain.value = 0;
             mute = true;
+            document.getElementById("play-pause").innerHTML = '<i class="fas fa-play-circle"></i>';
+            document.getElementById("volume").innerHTML = '<i class="fas fa-volume-mute"></i>';
         }
 }
 function grossUp() {
@@ -114,6 +118,8 @@ document.addEventListener('keyup', function(event) {
 
 </script>
 
+<div id="volume" style="font-size: 32px; text-align: left; width: 100%;"><i class="fas fa-volume-mute"></i></div>
+<div>Frequence: <span id="frequency"></span></div>
 <div>
     <ul>
         <li onclick="plause()">Space - on/off</li>
@@ -125,6 +131,8 @@ document.addEventListener('keyup', function(event) {
         <li onclick="fineUp()">Y - Frequency-</li>
     </ul>
 </div>
+
+<div id="play-pause" style="font-size: 64px; text-align: center; width: 100%;" onclick="plause();"><i class="fas fa-play-circle"></i></div>
 
 <p>Originally created by Steve Mould (<a href="https://gist.github.com/steventhebrave/7c16a72fb940b05b5e5218390418b5bf">GitHub</a>)</p>
 </body>
