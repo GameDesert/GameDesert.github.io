@@ -15,7 +15,7 @@
 </head>
 <body>
     <img id="slide" src="Files/Musicianship-01.png" style="width: 100vw; height: auto;">
-    <div id="controls" style="position: absolute; bottom: 5vh; right: 5vw; background-color: #000; color: #fff; font-size: 3vw; cursor: default;"><span style="cursor: pointer;" onclick="previous();">&lt;</span>&MediumSpace;<span style="cursor: pointer;" onclick="next();">&gt;</span></div>
+    <div id="controls" style="position: absolute; bottom: 5vh; right: 5vw; background-color: #000; color: #fff; font-size: 3vw; cursor: default;"><span style="cursor: pointer;" onclick="previous();">&lt;</span>&MediumSpace;<span style="cursor: pointer;" onclick="toggleFullScreen();">&#x26F6;</span>&MediumSpace;<span style="cursor: pointer;" onclick="next();">&gt;</span></div>
     <script>
         const slide = document.getElementById("slide")
         function previous() {
@@ -70,6 +70,17 @@
                 slide.setAttribute("src","Files/Musicianship-11.png");
             }
         }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                }
+            }
+        }
+
     </script>
 </body>
 </html>
