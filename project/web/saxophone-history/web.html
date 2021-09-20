@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of the Saxophone</title>
+
+    <style>
+        html {
+            background-color: #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <img id="slide" src="Files/Musicianship-01.png" style="width: 100vw; height: auto;">
+    <div id="controls" style="position: absolute; bottom: 5vh; right: 5vw; background-color: #000; color: #fff; font-size: 3vw; cursor: default;"><span style="cursor: pointer;" onclick="previous();">&lt;</span>&MediumSpace;<span style="cursor: pointer;" onclick="next();">&gt;</span></div>
+    <script>
+        const slide = document.getElementById("slide")
+        function previous() {
+            var current_slide = slide.getAttribute("src")
+            if (current_slide == "Files/Musicianship-01.png") {
+                slide.setAttribute("src","Files/Musicianship-01.png");
+            } else if (current_slide == "Files/Musicianship-02.png"){
+                slide.setAttribute("src","Files/Musicianship-01.png");
+            } else if (current_slide == "Files/Musicianship-03.png") {
+                slide.setAttribute("src","Files/Musicianship-02.png");
+            } else if (current_slide == "Files/Musicianship-04.png") {
+                slide.setAttribute("src","Files/Musicianship-03.png");
+            } else if (current_slide == "Files/Musicianship-05.png") {
+                slide.setAttribute("src","Files/Musicianship-04.png");
+            } else if (current_slide == "Files/Musicianship-06.png") {
+                slide.setAttribute("src","Files/Musicianship-05.png");
+            } else if (current_slide == "Files/Musicianship-07.png"){
+                slide.setAttribute("src","Files/Musicianship-06.png");
+            } else if (current_slide == "Files/Musicianship-08.png") {
+                slide.setAttribute("src","Files/Musicianship-07.png");
+            } else if (current_slide == "Files/Musicianship-09.png") {
+                slide.setAttribute("src","Files/Musicianship-08.png");
+            } else if (current_slide == "Files/Musicianship-10.png") {
+                slide.setAttribute("src","Files/Musicianship-09.png");
+            } else if (current_slide == "Files/Musicianship-11.png") {
+                slide.setAttribute("src","Files/Musicianship-10.png");
+            }
+        }
+        function next() {
+            var current_slide = slide.getAttribute("src")
+            if (current_slide == "Files/Musicianship-01.png") {
+                slide.setAttribute("src","Files/Musicianship-02.png");
+            } else if (current_slide == "Files/Musicianship-02.png"){
+                slide.setAttribute("src","Files/Musicianship-03.png");
+            } else if (current_slide == "Files/Musicianship-03.png") {
+                slide.setAttribute("src","Files/Musicianship-04.png");
+            } else if (current_slide == "Files/Musicianship-04.png") {
+                slide.setAttribute("src","Files/Musicianship-05.png");
+            } else if (current_slide == "Files/Musicianship-05.png") {
+                slide.setAttribute("src","Files/Musicianship-06.png");
+            } else if (current_slide == "Files/Musicianship-06.png") {
+                slide.setAttribute("src","Files/Musicianship-07.png");
+            } else if (current_slide == "Files/Musicianship-07.png"){
+                slide.setAttribute("src","Files/Musicianship-08.png");
+            } else if (current_slide == "Files/Musicianship-08.png") {
+                slide.setAttribute("src","Files/Musicianship-09.png");
+            } else if (current_slide == "Files/Musicianship-09.png") {
+                slide.setAttribute("src","Files/Musicianship-10.png");
+            } else if (current_slide == "Files/Musicianship-10.png") {
+                slide.setAttribute("src","Files/Musicianship-11.png");
+            } else if (current_slide == "Files/Musicianship-11.png") {
+                slide.setAttribute("src","Files/Musicianship-11.png");
+            }
+        }
+    </script>
+</body>
+</html>
