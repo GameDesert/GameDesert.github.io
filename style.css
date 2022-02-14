@@ -47,6 +47,8 @@
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
+
+    overflow: auto;
 }
 
 .error_notification {
@@ -69,6 +71,8 @@
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
+
+    overflow: auto;
 }
 
 .success_notification {
@@ -91,15 +95,92 @@
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
+
+    overflow: auto;
 }
 
 /*Basic Page Styling*/
 body {
     background-image: linear-gradient(to bottom right, var(--coloured_dark), var(--coloured_mediumdark));
     color: #fff;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
+}
+
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+pre, code, samp {
+    display: inline-block;
+    padding: 2.5px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: var(--white);
+    background-color: var(--grey_mediumdark);
+    border: none;
+    border-radius: 8px;
+}
+
+var {
+    display: inline-block;
+    padding: 2.5px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: 'Source Serif Pro', serif;
+    font-style: italic;
+    font-weight: 300;
+
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: var(--white);
+    background-color: var(--grey_mediumdark);
+    border: none;
+    border-radius: 8px;
+}
+
+kbd {
+    display: inline-block;
+    padding: 2.5px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: var(--white);
+    background-color: var(--grey_mediumdark);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px var(--grey_medium);
+}
+
+footer {
+    padding-top: 5vh;
+    padding-left: 5vw;
+    bottom: 100%;
+    bottom: 20vh;
+    width: 100vw;
+    height: 20vh;
+    background-color: var(--coloured_dark);
+}
+
+.content {
+    padding-left: 1vw;
+    padding-top: 1vh;
 }

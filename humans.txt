@@ -1,0 +1,4 @@
+Welcome to kotla.eu! I'm Oliver and this is my website. You can find a lot of stuff here (for a full list, take a look at kotla.eu/sitemap.xml) including a bunch of different projects.
+
+If you've stumbled onto this page by accident and you're wondering why it's here, then read the "Alternatives" part of this Wikipedia article:
+https://en.wikipedia.org/wiki/Robots_exclusion_standard#Alternatives
