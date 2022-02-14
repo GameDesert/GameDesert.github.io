@@ -28,9 +28,56 @@
         }
     </script>
     <style>
+        .gridcontainer {
+            width: 100vw;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-gap: 0;
+            justify-items: start;
+            align-items: start;
+
+            justify-content: start;
+            align-content: start;
+
+            grid-auto-flow: row;
+        }
+        .griditem {
+            padding: 5px;
+            aspect-ratio: 1;
+            width: 100%;
+        }
+
+        .title {
+            grid-column-start: span 4;
+        }
+
+        .titletext {
+            font-size: 5vw;
+        }
     </style>
 </head>
 <body>
+    <div class="gridcontainer">
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+
+        <div class="griditem title" style="aspect-ratio: 4;"><h1 class="titletext">Oliver Kotla</h1></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+        <div class="griditem"></div>
+    </div>
    <footer>
       <p>&copy; 2021-<script>document.write(new Date().getFullYear())</script>, Oliver Kotla. All rights reserved.</p>
    </footer>
