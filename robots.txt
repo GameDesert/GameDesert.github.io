@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /template.html
+Sitemap: https://kotla.eu/sitemap.xml

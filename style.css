@@ -1,0 +1,105 @@
+@import url("fonts/fonts.css");
+
+:root {
+    --error_red_primary: #f95454;
+    --error_red_secondary: #590000;
+
+    --success_green_primary: #54f96d;
+    --success_green_secondary: #007100;
+
+    --warning_yellow_primary: #f9f154;
+    --warning_yellow_secondary: #736d00;
+
+    /*Palette*/
+    --coloured_dark: #000014;
+    --coloured_mediumdark: #323246;
+    --coloured_medium: #646478;
+    --coloured_mediumlight: #9696aa;
+    --coloured_light: #ebebff;
+
+    --grey_dark: #000000;
+    --grey_mediumdark: #323232;
+    --grey_medium: #646464;
+    --grey_mediumlight: #969696;
+    --grey_light: #ebebeb;
+
+    --white: #fff;
+}
+
+/*Dialogue Boxes*/
+.warning_notification {
+    display: block;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    height: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    background-color: var(--warning_yellow_primary);
+    color: var(--warning_yellow_secondary);
+
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+}
+
+.error_notification {
+    display: block;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    height: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    background-color: var(--error_red_primary);
+    color: var(--error_red_secondary);
+
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+}
+
+.success_notification {
+    display: block;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    height: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    background-color: var(--success_green_primary);
+    color: var(--success_green_secondary);
+
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+}
+
+/*Basic Page Styling*/
+body {
+    background-image: linear-gradient(to bottom right, var(--coloured_dark), var(--coloured_mediumdark));
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+}
