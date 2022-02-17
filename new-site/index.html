@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <title>Oliver Kotla</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="194x194" href="favicons/favicon-194x194.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-chrome-192x192.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png?v=2">
+    <link rel="manifest" href="favicons/site.webmanifest?v=2">
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg?v=2" color="#000000">
+    <link rel="shortcut icon" href="favicons/favicon.ico?v=2">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#000014">
+    <link rel="stylesheet" href="/style.css">
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        // Respect do not track for all browsers. Except for IE 10 and 11 where we ignore it
+        var dnt_isIe10or11 = (navigator.appVersion.indexOf("MSIE 10") !== -1) || (navigator.userAgent.indexOf("Trident") !== -1 && navigator.    userAgent.indexOf("rv:11") !== -1);
+        var DNT = (navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack);
+        DNT = !DNT || DNT == "unspecified" || DNT == "0" ? false : true;
+        if (!DNT || dnt_isIe10or11) {
+            null
+            // I don't use analytics, so... have fun not being tracked.
+        }
+
+        titles = ["Web&nbsp;Designer","Graphic&nbsp;Designer","Software&nbsp;Developer"]
+        
+        function change(to) {
+            document.getElementById("scrollingText").style.opacity = 0;
+            sleep(1000).then(() => {
+                document.getElementById("scrollingText").innerHTML = to;
+                document.getElementById("scrollingText").style.opacity = 1;
+            })
+        }
+
+        function progress_title() {
+            current_pos = titles.indexOf(document.getElementById("scrollingText").innerHTML);
+
+            if (current_pos == -1) {
+                console.log("Error")
+                return
+            }
+
+            next_pos = current_pos + 1
+
+            if (next_pos >= titles.length) {
+                next_pos = 0;
+            }
+
+            change(titles[next_pos]);
+        }
+
+        function regress_title() {
+            current_pos = titles.indexOf(document.getElementById("scrollingText").innerHTML);
+
+            if (current_pos == -1) {
+                console.log("Error")
+                return
+            }
+
+            next_pos = current_pos - 1
+
+            if (next_pos < 0) {
+                next_pos = titles.length-1;
+            }
+
+            change(titles[next_pos]);
+        }
+
+        document.onkeydown = KeyPressHappened;
+
+        function KeyPressHappened(e)
+        {
+            if (!e) e=window.event;
+            var code;
+            if ((e.charCode) && (e.keyCode==0))
+                code = e.charCode
+            else
+                code = e.keyCode;
+            if (code == 39) {progress_title()}
+            else if (code == 37) {regress_title()}
+        }
+
+        const autoProgress = setInterval(progress_title, 5000);
+    </script>
+
+    <style>
+        body {
+            touch-action: none;
+            overflow: hidden;
+        }
+
+        body {
+            background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000);
+            background-size: 800% 800%; /* Each of these values should be [number of colours] times 200 */
+
+            -webkit-animation: AnimationName 55s ease infinite;
+            -moz-animation: AnimationName 55s ease infinite;
+            -o-animation: AnimationName 55s ease infinite;
+            animation: AnimationName 55s ease infinite; /* Decrease seconds here for faster movement */
+        }
+
+        @-webkit-keyframes AnimationName {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+        @-moz-keyframes AnimationName {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+        @-o-keyframes AnimationName {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+        @keyframes AnimationName {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+
+        .scrollingText {
+            transition: opacity 1s;
+            background-image: linear-gradient(45deg, #9696aa, #ebebff, #fff, #ebebeb, #969696);
+            background-size: 1000% 1000%; /* Each of these values should be [number of colours] times 200 */
+
+            -webkit-animation: textBgAnim 15s ease infinite;
+            -moz-animation: textBgAnim 15s ease infinite;
+            -o-animation: textBgAnim 15s ease infinite;
+            animation: textBgAnim 15s ease infinite; /* Decrease seconds here for faster movement */
+        }
+
+        @-webkit-keyframes textBgAnim {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+        @-moz-keyframes textBgAnim {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+        @-o-keyframes textBgAnim {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+        @keyframes textBgAnim {
+            0%{background-position:100% 0%}
+            50%{background-position:0% 100%}
+            100%{background-position:100% 0%}
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            font-size: 20px;
+        }
+
+        .scrollingText {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-top: 0.5vh;
+            padding-bottom: 0.5vh;
+            padding-left: 0.5vw;
+            padding-right: 0.5vw;
+            /*background-image: linear-gradient(45deg, #9696aa, #fff);*/
+            color: #000014;
+            font-weight: 600;
+        }
+
+        .pflag {
+            width: 100vw;
+            height: 1vh;
+            background: linear-gradient(90deg, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787);
+            background-size: 600% 600%;
+
+            -webkit-animation: pflaganim 19s ease infinite;
+            -moz-animation: pflaganim 19s ease infinite;
+            -o-animation: pflaganim 19s ease infinite;
+            animation: pflaganim 19s ease infinite;
+        }
+
+        @-webkit-keyframes pflaganim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 51%}
+            100%{background-position:0% 50%}
+        }
+        @-moz-keyframes pflaganim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 51%}
+            100%{background-position:0% 50%}
+        }
+        @-o-keyframes pflaganim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 51%}
+            100%{background-position:0% 50%}
+        }
+        @keyframes pflaganim {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 51%}
+            100%{background-position:0% 50%}
+        }
+    </style>
+</head>
+<body id="body">
+    <div class="pflag"></div>
+    <div class="content">
+        <h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.</h1>
+    </div>
+</body>
+</html>
