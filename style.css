@@ -102,6 +102,9 @@
 /*Basic Page Styling*/
 body {
     background-image: linear-gradient(to bottom right, var(--coloured_dark), var(--coloured_mediumdark));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     color: #fff;
     margin: 0;
     overflow-x: hidden;
