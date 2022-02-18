@@ -1,3 +1,7 @@
 User-agent: *
 Disallow: /template.html
+Disallow: /fonts/
+Disallow: /blocked/
+Disallow: /.vscode/
+Disallow: /README.md
 Sitemap: https://kotla.eu/sitemap.xml
