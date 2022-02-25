@@ -234,10 +234,21 @@
             50%{background-position:100% 51%}
             100%{background-position:0% 50%}
         }
+
+        .uaflag {
+            width: 100vw;
+            height: 1vh;
+            /*background: linear-gradient(90deg, #005BBB, #FFD500);*/
+            background: -webkit-linear-gradient(to right, #005BBB 50%, #FFD500 50%);
+            background: -o-linear-gradient(to right, #005BBB 50%, #FFD500 50%);
+            background: linear-gradient(to right, #005BBB 50%, #FFD500 50%);
+            background: -moz-linear-gradient(to right, #005BBB 50%, #FFD500 50%);
+            background-size: 100% 100%;
+        }
     </style>
 </head>
 <body id="body">
-    <div class="pflag"></div>
+    <div class="uaflag"></div> <!-- FLAGS: Pride Flag [pflag], Ukraine Flag [uaflag]-->
     <div class="content">
         <h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.</h1>
     </div>
