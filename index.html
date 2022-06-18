@@ -29,7 +29,6 @@
     <title>Oliver Kotla | kotla.eu</title>
 
     <link rel="home" href="http://kotla.eu" />
-    <link rev="made" rel="me authn" href="http://kotla.eu" />
 
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png?v=2">
@@ -42,11 +41,18 @@
     <link rel="shortcut icon" href="favicons/favicon.ico?v=2">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#000014">
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <link rel="alternate stylesheet" href="index_secondary_default.css" type="text/css" title="Default Mode">
+    <link rel="alternate stylesheet" href="index_secondary_alternative_lightmode.css" type="text/css" title="Light Mode">
+    <link rel="alternate stylesheet" href="index_secondary_alternative_rainbow.css" type="text/css" title="Fabulous Mode">
+
+
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script>
         <!--
-        // That's to hide this from old browsers.
+        // That's to hide this from older, stupider browsers.
         ///////////////////////////////////////////BASIC BOILERPLATE///////////////////////////////////////////
 
         function sleep(ms) {
@@ -133,41 +139,39 @@
         const autoProgress = setInterval(progress_title, 7500);
         -->
     </script>
-
     <style>
-    <!--
-        /* Again, to hide this from older browsers */
+        <!--
         body {
             touch-action: none;
             overflow: hidden;
         }
 
         body {
-            background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000);
-            background-size: 800% 800%; /* Each of these values should be [number of colours] times 200 */
+            background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000) !important;
+            background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
 
-            -webkit-animation: AnimationName 55s ease infinite;
-            -moz-animation: AnimationName 55s ease infinite;
-            -o-animation: AnimationName 55s ease infinite;
-            animation: AnimationName 55s ease infinite; /* Decrease seconds here for faster movement */
+            -webkit-animation: backgroundAnimation 55s ease infinite;
+            -moz-animation: backgroundAnimation 55s ease infinite;
+            -o-animation: backgroundAnimation 55s ease infinite;
+            animation: backgroundAnimation 55s ease infinite; /* Decrease seconds here for faster movement */
         }
 
-        @-webkit-keyframes AnimationName {
+        @-webkit-keyframes backgroundAnimation {
             0%{background-position:100% 0%}
             50%{background-position:0% 100%}
             100%{background-position:100% 0%}
         }
-        @-moz-keyframes AnimationName {
+        @-moz-keyframes backgroundAnimation {
             0%{background-position:100% 0%}
             50%{background-position:0% 100%}
             100%{background-position:100% 0%}
         }
-        @-o-keyframes AnimationName {
+        @-o-keyframes backgroundAnimation {
             0%{background-position:100% 0%}
             50%{background-position:0% 100%}
             100%{background-position:100% 0%}
         }
-        @keyframes AnimationName {
+        @keyframes backgroundAnimation {
             0%{background-position:100% 0%}
             50%{background-position:0% 100%}
             100%{background-position:100% 0%}
@@ -304,14 +308,14 @@
             background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,175,200,1) 10%, rgba(116,215,238,1) 20%, rgba(97,57,21,1) 30%, rgba(0,0,0,1) 40%, rgba(228,3,3,1) 50%, rgba(255,140,0,1) 60%, rgba(255,237,0,1) 70%, rgba(0,128,38,1) 80%, rgba(0,77,255,1) 90%, rgba(117,7,135,1) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#750787",GradientType=1);
         }
-        -->
-        /**/
+    -->
+    /**/
     </style>
 </head>
 <body id="body" class="prideflag"> <!-- FLAGS: Scrolling Pride Flag [pflag], Ukraine Flag [uaflag], Platinum Jubilee Flag [jubileeflag], Progress Pride Flag [prideflag]-->
     <div id="banner" class="banner"></div>
     <div class="content">
-        <center><h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.</h1></center>
+        <center><h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;" id="mainText">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.</h1></center>
     </div>
 </body>
 </html> 

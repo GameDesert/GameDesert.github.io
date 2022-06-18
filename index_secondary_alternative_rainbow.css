@@ -1,0 +1,62 @@
+#body {
+    background-image: linear-gradient(45deg, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787) !important;
+    background-size: 600% 600% !important; /* Each of these values should be [number of colours] times 200 */
+
+    -webkit-animation: backgroundAnimation 33s ease infinite;
+    -moz-animation: backgroundAnimation 33s ease infinite;
+    -o-animation: backgroundAnimation 33s ease infinite;
+    animation: backgroundAnimation 33s ease infinite; /* Decrease seconds here for faster movement */
+}
+
+/*#scrollingText {
+    transition: opacity 1s;
+    background-image: linear-gradient(45deg, #9696aa, #ebebff, #fff, #ebebeb, #969696) !important;
+    background-size: 1000% 1000% !important; *//* Each of these values should be [number of colours] times 200 *//*
+
+    -webkit-animation: textBgAnim 15s ease infinite;
+    -moz-animation: textBgAnim 15s ease infinite;
+    -o-animation: textBgAnim 15s ease infinite;
+    animation: textBgAnim 15s ease infinite; *//* Decrease seconds here for faster movement *//*
+}*/
+
+@-webkit-keyframes backgroundAnimation {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
+@-moz-keyframes backgroundAnimation {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
+@-o-keyframes backgroundAnimation {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
+@keyframes backgroundAnimation {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
+
+@-webkit-keyframes textBgAnim {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
+@-moz-keyframes textBgAnim {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
+@-o-keyframes textBgAnim {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
+@keyframes textBgAnim {
+    0%{background-position:100% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:100% 0%}
+}
