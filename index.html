@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,8 +51,6 @@
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script>
-        <!--
-        // That's to hide this from older, stupider browsers.
         ///////////////////////////////////////////BASIC BOILERPLATE///////////////////////////////////////////
 
         function sleep(ms) {
@@ -137,13 +135,13 @@
         }
 
         const autoProgress = setInterval(progress_title, 7500);
-        -->
     </script>
     <style>
         <!--
         body {
             touch-action: none;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         body {
@@ -308,14 +306,27 @@
             background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,175,200,1) 10%, rgba(116,215,238,1) 20%, rgba(97,57,21,1) 30%, rgba(0,0,0,1) 40%, rgba(228,3,3,1) 50%, rgba(255,140,0,1) 60%, rgba(255,237,0,1) 70%, rgba(0,128,38,1) 80%, rgba(0,77,255,1) 90%, rgba(117,7,135,1) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#750787",GradientType=1);
         }
+
+        #links {
+            background-image: linear-gradient(45deg, #ebebff, #fff, #ebebff, #fff) !important;
+            background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
+
+            -webkit-animation: backgroundAnimation 55s ease infinite;
+            -moz-animation: backgroundAnimation 55s ease infinite;
+            -o-animation: backgroundAnimation 55s ease infinite;
+            animation: backgroundAnimation 55s ease infinite; /* Decrease seconds here for faster movement */
+        }
     -->
     /**/
     </style>
 </head>
 <body id="body" class="prideflag"> <!-- FLAGS: Scrolling Pride Flag [pflag], Ukraine Flag [uaflag], Platinum Jubilee Flag [jubileeflag], Progress Pride Flag [prideflag]-->
     <div id="banner" class="banner"></div>
-    <div class="content">
-        <center><h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;" id="mainText">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.</h1></center>
+    <div class="content" style="height: 99vh; width: 100vw;">
+        <h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;" id="mainText">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.<br><span onclick="document.getElementById('links').scrollIntoView();" style="cursor: pointer;" title="Scroll">&#129131;</span></h1>
+    </div>
+    <div class="links" id="links" style="text-align: center; color: #000014; width: 100vw; min-height: 100vh;">
+        <p></p>
     </div>
 </body>
 </html> 
