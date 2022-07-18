@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <script type="application/ld+json">
-        <!--
         {
           "@context": "https://schema.org",
           "@type": "Person",
@@ -16,14 +15,13 @@
           "url": "http://kotla.eu",
           "logo": "http://kotla.eu/favicons/ggllogo.png"
         }
-        -->
     </script>
     
 
     <meta name="msapplication-tap-highlight" content="no" />
 
     <meta name="description" content="Hi, I'm Oliver Kotla!">
-    <meta name="keywords" content="Web Developer, Designer, Graphic Designer, Oliver, Kotla">
+    <meta name="keywords" content="Web Developer, Designer, Graphic Designer, Oliver Kotla">
     <meta name="author" content="Oliver Kotla">
 
     <title>Oliver Kotla | kotla.eu</title>
@@ -48,8 +46,6 @@
     <link rel="alternate stylesheet" href="index_secondary_alternative_lightmode.css" type="text/css" title="Light Mode">
     <link rel="alternate stylesheet" href="index_secondary_alternative_rainbow.css" type="text/css" title="Fabulous Mode">
 
-
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script>
         ///////////////////////////////////////////BASIC BOILERPLATE///////////////////////////////////////////
 
@@ -141,7 +137,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
         body {
-            touch-action: none;
+            touch-action: pan-down, pan-up; /*Set to "none" to prevent manual scrolling*/
             overflow-x: hidden;
             overflow-y: auto;
         }
@@ -347,7 +343,25 @@
 <!--HERO SECTION-->    
     <div id="banner" class="banner"></div>
     <div class="content" style="height: 99vh; width: 100vw;">
-        <h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;" id="mainText">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.<br><span onclick="document.getElementById('links').scrollIntoView();" style="cursor: pointer; display: block;" title="Scroll to Content" class="scrollDownButton">&#129131;</span></h1>
+        <h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;" id="mainText">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Web&nbsp;Designer</span>.<br>
+            <span onclick="document.getElementById('links').scrollIntoView();" style="cursor: pointer; display: block; margin-top: 0.5em;" title="Scroll to Content" class="scrollDownButton">
+            <svg
+            width="1.139em"
+            height="1em"
+            viewBox="0 0 10.197475 11.616853"
+            version="1.1"
+            id="svg5"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:svg="http://www.w3.org/2000/svg">
+           <defs
+              id="defs2" />
+           <path
+              id="path3050"
+              style="font-size:14.1111px;line-height:1.75;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro, Normal';fill:#ffffff;stroke-width:0.999999"
+              d="M 16.431641 0 L 16.431641 32.759766 L 0 16.458984 L 0 24.634766 L 19.271484 43.90625 L 38.541016 24.634766 L 38.541016 16.458984 L 22.109375 32.759766 L 22.109375 0 L 16.431641 0 z "
+              transform="scale(0.26458334)" />
+            </svg>
+        </span></h1>
     </div>
 
 <!--PROJECT SECTION-->
