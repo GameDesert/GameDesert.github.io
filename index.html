@@ -131,6 +131,18 @@
         }
 
         const autoProgress = setInterval(progress_title, 7500);
+
+        ///////////////////////////////////////////FADING HERO TEXT///////////////////////////////////////////
+
+        function onScroll(event) {
+            var top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(top);
+            var opacity = 1-((top-180)/100); //1vh = 100 (I think)
+            console.log(opacity)
+            document.getElementById("mainText").style.opacity = opacity;
+        }
+
+        document.addEventListener('scroll', onScroll);
     </script>
     <style>
         <!--
