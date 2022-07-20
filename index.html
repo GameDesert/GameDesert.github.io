@@ -350,7 +350,22 @@
         }
 
         /*PORTFOLIO GRID (+ MEDIA QUERIES)*/
+        .gridParent {
+            display: grid;
+            grid-template-columns: repeat(8, 12.5vw);
+            grid-template-rows: auto;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            grid-auto-flow: row;
+        }
 
+        .gridObject {
+            width: 12.5vw;
+            height: 12.5vw;
+            background-color: #004dff;
+            text-align: center;
+            border: black solid;
+        }
     -->
     /**/
     </style>
@@ -384,6 +399,32 @@
     <div class="links" id="links" style="text-align: center; color: #000014; width: 100vw; min-height: 100vh;">
         <br>
         <p style="font-family: 'Abril Fatface', cursive; font-size: 2vw;">*crickets*</p>
+        <div class="gridParent">
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+            <div class="gridObject"></div>
+        </div>
     </div>
 </body>
 </html> 
