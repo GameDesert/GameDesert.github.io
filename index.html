@@ -148,8 +148,6 @@
     </script>
     <style>
         <!--
-        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-
         body {
             touch-action: pan-down, pan-up; /*Set to "none" to prevent manual scrolling*/
             overflow-x: hidden;
@@ -362,9 +360,28 @@
         .gridObject {
             width: 12.5vw;
             height: 12.5vw;
-            background-color: #004dff;
             text-align: center;
-            border: black solid;
+        }
+
+        .projectsTitle {
+            -webkit-text-fill-color: transparent;
+            background-size: 100% 100%;
+            font-weight: 600;
+
+            background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000) !important;
+            background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
+
+            -webkit-animation: backgroundAnimation 55s ease infinite;
+            -moz-animation: backgroundAnimation 55s ease infinite;
+            -o-animation: backgroundAnimation 55s ease infinite;
+            animation: backgroundAnimation 55s ease infinite;
+
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .arrowSymbol {
+            fill: #fff;
         }
     -->
     /**/
@@ -381,14 +398,13 @@
             height="1em"
             viewBox="0 0 10.197475 11.616853"
             version="1.1"
-            id="svg5"
+            id="arrowParent"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:svg="http://www.w3.org/2000/svg">
-           <defs
-              id="defs2" />
            <path
-              id="path3050"
-              style="font-size:14.1111px;line-height:1.75;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro, Normal';fill:#ffffff;stroke-width:0.999999"
+              id="arrowSymbol"
+              class="arrowSymbol"
+              style="font-size:14.1111px;line-height:1.75;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro, Normal';stroke-width:0.999999"
               d="M 16.431641 0 L 16.431641 32.759766 L 0 16.458984 L 0 24.634766 L 19.271484 43.90625 L 38.541016 24.634766 L 38.541016 16.458984 L 22.109375 32.759766 L 22.109375 0 L 16.431641 0 z "
               transform="scale(0.26458334)" />
             </svg>
@@ -398,31 +414,8 @@
 <!--PROJECT SECTION-->
     <div class="links" id="links" style="text-align: center; color: #000014; width: 100vw; min-height: 100vh;">
         <br>
-        <p style="font-family: 'Abril Fatface', cursive; font-size: 2vw;">*crickets*</p>
+        <h2 style="font-size: 3vw; font-weight: 600;" class="projectsTitle" id="projectsTitle">Projects</h2>
         <div class="gridParent">
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
-            <div class="gridObject"></div>
             <div class="gridObject"></div>
         </div>
     </div>

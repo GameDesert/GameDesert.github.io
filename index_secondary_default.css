@@ -8,6 +8,27 @@
     animation: backgroundAnimation 55s ease infinite; /* Decrease seconds here for faster movement */
 }
 
+#projectsTitle {
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 100%;
+    font-weight: 600;
+
+    background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000) !important;
+    background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
+
+    -webkit-animation: backgroundAnimation 55s ease infinite;
+    -moz-animation: backgroundAnimation 55s ease infinite;
+    -o-animation: backgroundAnimation 55s ease infinite;
+    animation: backgroundAnimation 55s ease infinite;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+#arrowSymbol {
+    fill: #fff;
+}
+
 @-webkit-keyframes backgroundAnimation {
     0%{background-position:100% 0%}
     50%{background-position:0% 100%}
