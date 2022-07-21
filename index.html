@@ -1,6 +1,6 @@
 <!--TODO: Add prefers-reduced-motion ack. -->
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -148,6 +148,10 @@
     </script>
     <style>
         <!--
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             touch-action: pan-down, pan-up; /*Set to "none" to prevent manual scrolling*/
             overflow-x: hidden;
@@ -385,6 +389,9 @@
         }
 
         @media (prefers-reduced-motion) {
+            html {
+                scroll-behavior: auto;
+            }
             .projectsTitle {
                 color: #000014 !important;
                 font-weight: 600;
