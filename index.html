@@ -383,6 +383,30 @@
         .arrowSymbol {
             fill: #fff;
         }
+
+        @media (prefers-reduced-motion) {
+            .projectsTitle {
+                color: #000014 !important;
+                font-weight: 600;
+                -webkit-text-fill-color: #000014 !important;
+                background-image: none !important;
+
+                -webkit-animation: none !important;
+                -moz-animation: none !important;
+                -o-animation: none !important;
+                animation: none !important;
+            }
+
+            body {
+                background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000) !important;
+                background-size: 300% 300% !important; /* Each of these values should be [number of colours] times 200 */
+
+                -webkit-animation: none !important;
+                -moz-animation: none !important;
+                -o-animation: none !important;
+                animation: none !important;
+            }
+        }
     -->
     /**/
     </style>
