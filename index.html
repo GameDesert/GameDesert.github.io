@@ -369,6 +369,24 @@
             --gridColumns: 6;
         }
 
+        @media screen and (max-width: 992px) {
+            .gridParent, .gridObject {
+                --gridColumns: 5;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .gridParent, .gridObject {
+                --gridColumns: 4;
+            }
+        }
+
+        @media screen and (max-width: 560px) {
+            .gridParent, .gridObject {
+                --gridColumns: 3;
+            }
+        }
+
         .gridParent {
             display: grid;
             grid-template-columns: repeat(var(--gridColumns), calc(100vw/var(--gridColumns)));
@@ -481,6 +499,12 @@
             </div>
             <div class="gridObject">
                 <img src="files/work/south.png" alt="South Dew logo on a laptop screen." title="South Dew">
+            </div>
+            <div class="gridObject">
+                <img src="files/work/gold.png" alt="Gold logo on a French language book." title="Gold">
+            </div>
+            <div class="gridObject">
+                <img src="files/work/octopus.png" alt="Octopus logo on a smartphone screen." title="Octopus">
             </div>
         </div>
     </div>
