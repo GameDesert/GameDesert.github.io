@@ -362,6 +362,75 @@
             58% {transform: translate(0vw, 0vw); opacity: 1;}
             100% {transform: translate(0vw, 0vw); opacity: 1;}
         }
+        /*MENU BAR*/
+        .menuParent, .menuObject {
+            --menuColumns: 3;
+        }
+
+        @media screen and (max-width: 992px) {
+            .menuParent, .menuObject {
+                --menuColumns: 3;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .menuParent, .menuObject {
+                --menuColumns: 1;
+            }
+        }
+
+        @media screen and (max-width: 560px) {
+            .menuParent, .menuObject {
+                --menuColumns: 1;
+            }
+        }
+
+        .menuParent {
+            display: grid;
+            grid-template-columns: repeat(var(--menuColumns), calc(100vw/var(--menuColumns)));
+            grid-template-rows: auto;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            grid-auto-flow: row;
+            background-image: linear-gradient(45deg, #ebebff, #fff, #ebebff, #fff) !important;
+            background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
+
+            -webkit-animation: backgroundAnimation 55s ease infinite;
+            -moz-animation: backgroundAnimation 55s ease infinite;
+            -o-animation: backgroundAnimation 55s ease infinite;
+            animation: backgroundAnimation 55s ease infinite;
+        }
+
+        .menuObject {
+            width: calc(100vw/var(--menuColumns));
+            text-align: center;
+        }
+        .menuObject:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .menuParent > a {
+            cursor: pointer;
+
+            font-size: 2vw;
+            -webkit-text-fill-color: transparent;
+            background-size: 100% 100%;
+            font-weight: 700;
+
+            background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000) !important;
+            background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
+
+            -webkit-animation: backgroundAnimation 55s ease infinite;
+            -moz-animation: backgroundAnimation 55s ease infinite;
+            -o-animation: backgroundAnimation 55s ease infinite;
+            animation: backgroundAnimation 55s ease infinite;
+
+            background-clip: text;
+            -webkit-background-clip: text;
+
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+        }
 
         /*PORTFOLIO GRID (+ MEDIA QUERIES)*/
 
@@ -402,8 +471,8 @@
             text-align: center;
         }
 
-        .gridObject:hover {
-        }
+        /*.gridObject:hover {
+        }*/
 
         .gridObject img {
             width:100%;
@@ -489,7 +558,11 @@
     </div>
 
 <!--MENU SECTION-->
-<div class="menu" id="menu"></div>
+<!--<div class="menuParent" id="menu">
+    <a><div class="menuObject">My Work</div></a>
+    <a><div class="menuObject">Pricing</div></a>
+    <a><div class="menuObject">Contact</div></a>
+</div>-->
 
 <!--PROJECT SECTION-->
     <div class="links" id="links" style="text-align: center; color: #000014; width: 100vw; min-height: 100vh;">
@@ -514,6 +587,9 @@
             </div>
             <div class="gridObject">
                 <img src="files/work/panther.png" alt="Panther logo on a cardboard tube." title="Panther">
+            </div>
+            <div class="gridObject">
+                <img src="files/work/zam.png" alt="Zam Company logo on a window." title="Zam Company">
             </div>
         </div>
     </div>
