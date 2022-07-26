@@ -364,9 +364,14 @@
         }
 
         /*PORTFOLIO GRID (+ MEDIA QUERIES)*/
+
+        .gridParent, .gridObject {
+            --gridColumns: 6;
+        }
+
         .gridParent {
             display: grid;
-            grid-template-columns: repeat(8, 12.5vw);
+            grid-template-columns: repeat(var(--gridColumns), calc(100vw/var(--gridColumns)));
             grid-template-rows: auto;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
@@ -374,15 +379,23 @@
         }
 
         .gridObject {
-            width: 12.5vw;
-            height: 12.5vw;
+            width: calc(100vw/var(--gridColumns));
+            height: calc(100vw/var(--gridColumns));
             text-align: center;
+        }
+
+        .gridObject img {
+            width:100%;
+            height:100%;
+            object-fit: cover;
+            overflow: hidden;
         }
 
         .projectsTitle {
             -webkit-text-fill-color: transparent;
             background-size: 100% 100%;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 3vw;
 
             background-image: linear-gradient(45deg, #000014, #000014, #323232, #000000) !important;
             background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
@@ -457,9 +470,14 @@
 <!--PROJECT SECTION-->
     <div class="links" id="links" style="text-align: center; color: #000014; width: 100vw; min-height: 100vh;">
         <br>
-        <h2 style="font-size: 3vw; font-weight: 600;" class="projectsTitle" id="projectsTitle">Projects</h2>
+        <h2 class="projectsTitle" id="projectsTitle">My Work</h2>
         <div class="gridParent">
-            <div class="gridObject"></div>
+            <div class="gridObject">
+                <img src="files/work/spot.png">
+            </div>
+            <div class="gridObject">
+                <img src="files/work/orange.png">
+            </div>
         </div>
     </div>
 </body>
