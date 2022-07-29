@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[TEMPLATE]</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        :root {
+            --primary-colour: #00ff;
+            --bg-colour: #000;
+            --text-colour: #fff;
+        }
+
+        html {
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            scroll-behavior: smooth;
+            background-color: var(--bg-colour);
+            color: var(--text-colour);
+        }
+        
+        .heroSection {
+            background-color: var(--primary-colour);
+            height: calc((100vh/3)*3);
+        }
+
+        /* Mockup + Grid */
+        .mockupSection, .mockupImageContainer {
+            --mockupGridColumns: 3;
+        }
+
+        @media screen and (max-width: 992px) {
+            .mockupSection, .mockupImageContainer {
+                --mockupGridColumns: 3;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .mockupSection, .mockupImageContainer {
+                --mockupGridColumns: 3;
+            }
+        }
+
+        @media screen and (max-width: 560px) {
+            .mockupSection, .mockupImageContainer {
+                --mockupGridColumns: 1;
+            }
+        }
+
+        .mockupSection {
+            background-color: #f00;
+            width: 100vw;
+            
+            display: grid;
+            column-gap: 0;
+            row-gap: 0;
+
+            grid-template-columns: repeat(var(--mockupGridColumns), calc(100vw/var(--mockupGridColumns)));
+            grid-template-rows: auto;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            grid-auto-flow: row;
+        }
+        .mockupImageContainer {
+            width: calc(100vw/var(--mockupGridColumns));
+            height: calc(100vw/var(--mockupGridColumns));
+        }
+
+        .mockupImageContainer > img {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="heroSection">
+        <!--Include centered <img>/SVG here (n.b.: <img> sources can be SVGs too).-->
+    </div>
+    <div class="mockupSection">
+        <!-- This section should use CSS grid to have 3 images side-by-side (exceptions on mobile apply) -->
+        <div class="mockupImageContainer" style="background-color: rgb(183, 255, 0);"><img src="" alt="First image description"></div>
+        <div class="mockupImageContainer" style="background-color: rgb(0, 247, 255);"><img src="" alt="Second image description"></div>
+        <div class="mockupImageContainer" style="background-color: rgb(208, 0, 255);"><img src="" alt="Third image description"></div>
+    </div>
+    <div class="briefSection">
+        <p>[BRIEF GOES HERE]</p>
+    </div>
+</body>
+</html>
