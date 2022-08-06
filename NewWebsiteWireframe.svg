@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1920.0001"
+   height="4319.9995"
+   viewBox="0 0 508.00004 1142.9999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="NewWebsiteWireframe.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.61319416"
+     inkscape:cx="805.61758"
+     inkscape:cy="452.54834"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:object-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient13864">
+      <stop
+         style="stop-color:#000014;stop-opacity:1;"
+         offset="0"
+         id="stop13860" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1"
+         offset="1"
+         id="stop13862" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13864"
+       id="linearGradient13866"
+       x1="13.119554"
+       y1="24.408438"
+       x2="521.11957"
+       y2="310.15842"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-13.119554,-24.408438)">
+    <rect
+       style="font-variation-settings:'wght' 700;fill:url(#linearGradient13866);stroke:none;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000;fill-opacity:1"
+       id="rect846"
+       width="508.00003"
+       height="285.74997"
+       x="13.119554"
+       y="24.408438" />
+    <rect
+       style="font-variation-settings:'wght' 700;fill:#ff0000;stroke:none;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect950"
+       width="508.00003"
+       height="285.74997"
+       x="13.119554"
+       y="310.15842" />
+    <rect
+       style="font-variation-settings:'wght' 700;fill:#ffff00;stroke:none;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect970"
+       width="508.00003"
+       height="285.74997"
+       x="13.119554"
+       y="595.90839" />
+    <rect
+       style="font-variation-settings:'wght' 700;fill:#800080;stroke:none;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect990"
+       width="508.00003"
+       height="285.74997"
+       x="13.119554"
+       y="881.65833" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 500.67751,24.408438 V 1167.4083"
+       id="path13207" />
+    <text
+       xml:space="preserve"
+       style="font-size:51.7785px;line-height:0;font-family:'Roboto Slab';-inkscape-font-specification:'Roboto Slab';fill:#ffffff;stroke-width:0.264583"
+       x="59.570507"
+       y="108.69262"
+       id="text1306"><tspan
+         sodipodi:role="line"
+         id="tspan1304"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;line-height:0.95;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Semi-Bold';fill:#ffffff;stroke-width:0.264583"
+         x="59.570507"
+         y="108.69262">Oliver</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;line-height:0.95;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Semi-Bold';fill:#ffffff;stroke-width:0.264583"
+         sodipodi:role="line"
+         id="tspan10589"
+         x="59.570507"
+         y="157.88219">Kotla</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5778px;line-height:1.75;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';fill:#808080;stroke-width:0.264583"
+         sodipodi:role="line"
+         id="tspan10591"
+         x="59.570507"
+         y="194.93239">Graphic Designer</tspan></text>
+    <g
+       id="g13172"
+       transform="matrix(5.2574923,0,0,5.2574923,-943.73547,191.04382)"
+       style="stroke-width:0.190205">
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="path12675"
+         cx="274.70905"
+         cy="-7.322495"
+         r="1.6399586" />
+      <rect
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="rect12804"
+         width="3.2798817"
+         height="5.6063075"
+         x="273.06912"
+         y="-7.322495" />
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle12886"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="1.6399586" />
+      <circle
+         style="fill:#ff0000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="path12932"
+         cx="274.70905"
+         cy="-7.322495"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13140"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13142"
+         cx="274.70905"
+         cy="-5.4537258"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13144"
+         cx="274.70905"
+         cy="-3.5849566"
+         r="0.66145837" />
+    </g>
+    <g
+       id="g13369"
+       transform="matrix(5.2574923,0,0,5.2574923,-943.73547,476.79379)"
+       style="stroke-width:0.190205">
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13355"
+         cx="274.70905"
+         cy="-7.322495"
+         r="1.6399586" />
+      <rect
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="rect13357"
+         width="3.2798817"
+         height="5.6063075"
+         x="273.06912"
+         y="-7.322495" />
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13359"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="1.6399586" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13361"
+         cx="274.70905"
+         cy="-7.322495"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13363"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="0.66145837" />
+      <circle
+         style="fill:#ff0000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13365"
+         cx="274.70905"
+         cy="-5.4537258"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13367"
+         cx="274.70905"
+         cy="-3.5849566"
+         r="0.66145837" />
+    </g>
+    <g
+       id="g13385"
+       transform="matrix(5.2574923,0,0,5.2574923,-943.73547,762.54373)"
+       style="stroke-width:0.190205">
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13371"
+         cx="274.70905"
+         cy="-7.322495"
+         r="1.6399586" />
+      <rect
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="rect13373"
+         width="3.2798817"
+         height="5.6063075"
+         x="273.06912"
+         y="-7.322495" />
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13375"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="1.6399586" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13377"
+         cx="274.70905"
+         cy="-7.322495"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13379"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13381"
+         cx="274.70905"
+         cy="-5.4537258"
+         r="0.66145837" />
+      <circle
+         style="fill:#ff0000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13383"
+         cx="274.70905"
+         cy="-3.5849566"
+         r="0.66145837" />
+    </g>
+    <g
+       id="g13401"
+       transform="matrix(5.2574923,0,0,5.2574923,-943.73547,1048.2937)"
+       style="stroke-width:0.190205">
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13387"
+         cx="274.70905"
+         cy="-7.322495"
+         r="1.6399586" />
+      <rect
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="rect13389"
+         width="3.2798817"
+         height="5.6063075"
+         x="273.06912"
+         y="-7.322495" />
+      <circle
+         style="fill:#00ff00;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13391"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="1.6399586" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13393"
+         cx="274.70905"
+         cy="-7.322495"
+         r="0.66145837" />
+      <circle
+         style="fill:#ff0000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13395"
+         cx="274.70905"
+         cy="-1.7161875"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13397"
+         cx="274.70905"
+         cy="-5.4537258"
+         r="0.66145837" />
+      <circle
+         style="fill:#800000;stroke:none;stroke-width:0.402601;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke;stop-color:#000000"
+         id="circle13399"
+         cx="274.70905"
+         cy="-3.5849566"
+         r="0.66145837" />
+    </g>
+  </g>
+</svg>
