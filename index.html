@@ -333,6 +333,24 @@
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#750787",GradientType=1);
         }
 
+        .rip .banner {
+            width: 100vw;
+            height: 1vh;
+
+            background: rgb(0, 0, 0);
+        }
+
+        .rip .scrollingText {
+            transition: opacity 1s;
+            background-image: linear-gradient(90deg, #000, rgb(19, 19, 19), rgb(32, 32, 32), rgb(32, 32, 32), rgb(19, 19, 19), #000);
+            background-size: 1000% 1000%; /* Each of these values should be [number of colours] times 200 */
+
+            -webkit-animation: textBgAnim 8s ease infinite;
+            -moz-animation: textBgAnim 8s ease infinite;
+            -o-animation: textBgAnim 8s ease infinite;
+            animation: textBgAnim 8s ease infinite; /* Decrease seconds here for faster movement */
+        }
+
         #links {
             background-image: linear-gradient(45deg, #ebebff, #fff, #ebebff, #fff) !important;
             background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
@@ -535,7 +553,7 @@
     /**/
     </style>
 </head>
-<body id="body" class="prideflag"> <!-- FLAGS: Scrolling Pride Flag [pflag], Ukraine Flag [uaflag], Platinum Jubilee Flag [jubileeflag], Progress Pride Flag [prideflag]-->
+<body id="body" class="rip"> <!-- FLAGS: Scrolling Pride Flag [pflag], Ukraine Flag [uaflag], Platinum Jubilee Flag [jubileeflag], Progress Pride Flag [prideflag], Mourning [rip]-->
 <!--HERO SECTION-->    
     <div id="banner" class="banner"></div>
     <div class="content" style="height: 99vh; width: 100vw;">
