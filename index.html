@@ -369,7 +369,7 @@
             animation: textBgAnim 8s ease infinite; /* Decrease seconds here for faster movement */
         }
 
-        #links {
+        #projects {
             background-image: linear-gradient(45deg, #ebebff, #fff, #ebebff, #fff) !important;
             background-size: 800% 800% !important; /* Each of these values should be [number of colours] times 200 */
 
@@ -590,8 +590,8 @@
             display: grid;
             row-gap: 2vh;
             display: grid;
-            margin-top: 12vh;
-            margin-bottom: 12vh;
+            /* margin-top: 12vh;
+            margin-bottom: 12vh; */
             padding-top: 2vh;
             padding-bottom: 2vh;
             align-items: center;
@@ -606,7 +606,10 @@
             padding-right: 1vh;
             background-color: #fff;
             height: fit-content;
-            border-radius: 8px;
+            /* border-radius: 8px; */
+        }
+        .social-link-container {
+            background-color: #fff;
         }
 
         .grid-link {
@@ -618,7 +621,7 @@
         }
 
         :root {
-            --link-icon-count: 5;
+            --link-icon-count: /*5*/ 2;
         }
 
         @media (orientation: landscape) {
@@ -639,13 +642,13 @@
 
         @media (orientation: portrait) {
             .sociallinks {
-                grid-template-columns: repeat(1, 1fr);
-                grid-template-rows: repeat(var(--link-icon-count), 1fr);
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(calc(var(--link-icon-count)/3), 1fr);
             }
             .grid-link {
-                width: 3vh;
-                height: 3vh;
-                max-height: 3vh;
+                width: 4vh;
+                height: 4vh;
+                max-height: 4vh;
                 padding: 1vh;
             }
             /* .grid-link:hover {
@@ -684,7 +687,7 @@
     <div id="banner" class="banner" onclick="changeDisplayMode('bw');" ondblclick="changeDisplayMode('rainbow');"></div>
     <div class="content" style="height: 99vh; width: 100vw;">
         <h1 style="font-family: 'Source Sans Pro', sans-serif; font-weight: 300;" id="mainText">Hi,&#32;my&nbsp;name&nbsp;is&#32;<span style="font-weight: 700;">Oliver&nbsp;Kotla</span>&#32;and&nbsp;I&nbsp;am&nbsp;a&#32;<span class="scrollingText" id="scrollingText">Graphic&nbsp;Designer</span>.<br>
-            <span onclick="document.getElementById('links').scrollIntoView();" style="cursor: pointer; display: block; margin-top: 0.5em;" title="Scroll to Content" class="scrollDownButton">
+            <span onclick="document.getElementById('links').scrollIntoView();" style="cursor: pointer; display: block; margin-top: 0.5em; margin-top: 10vh;" title="Scroll to Content" class="scrollDownButton">
             <svg
             width="1.139em"
             height="1em"
@@ -740,36 +743,37 @@
 </div>-->
 
     <!--LINKS SECTION-->
-    <div class="sociallinks" id="sociallinks">
-        <a href="https://www.behance.net/oliverkotla" target="_blank" title="Oliver Kotla - Behance">
-            <div class="grid-link behance-link" id="behance-link">
-                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Behance</title><path d="M0 4.4804V19.243h7.1554c.6613 0 1.3078-.0832 1.9297-.248.6288-.1654 1.1905-.4203 1.6792-.7661.485-.3431.8784-.788 1.1677-1.3369.2862-.542.4294-1.187.4294-1.9354 0-.9232-.219-1.7109-.6675-2.369-.446-.6542-1.1187-1.1139-2.0274-1.3746.6674-.3161 1.1658-.7227 1.506-1.2177.3371-.4967.5058-1.1174.5058-1.8607 0-.6873-.1127-1.2677-.3375-1.7318-.2306-.4709-.552-.8452-.9632-1.1266-.4176-.2808-.912-.4857-1.4912-.6085-.5827-.1261-1.22-.1872-1.9264-.1872zm15.6674.9903v1.4567h5.9844V5.4707zM3.2509 6.9947h3.0407c.2873 0 .5683.0204.8359.0731.2728.0466.508.134.716.2595.2096.1205.3754.293.501.5132.1208.2203.1806.5038.1806.8474 0 .6189-.1811 1.0702-.5551 1.3426-.3778.2775-.8543.4147-1.4304.4147H3.2509zm15.545 1.2564c-.819 0-1.5587.1462-2.2294.436-.6705.2904-1.2463.6875-1.7318 1.1915-.4846.5011-.8535 1.0986-1.12 1.7909-.2612.69-.3942 1.4366-.3942 2.236 0 .8268.1284 1.5891.3835 2.2786.258.6923.6198 1.2822 1.0856 1.781.478.4967 1.046.8784 1.726 1.1497.6806.269 1.4382.4048 2.2803.4048 1.208 0 2.2446-.2771 3.0949-.8326.8599-.5528 1.4902-1.471 1.9058-2.7574h-2.585c-.1.3307-.359.649-.784.9467-.4295.2988-.9417.4492-1.534.4492-.8233 0-1.4588-.2168-1.8985-.6462-.4412-.4294-.7267-1.2289-.7267-2.0742h7.713c.0552-.8291-.0122-1.6218-.2045-2.3797-.1938-.7601-.5033-1.4365-.9393-2.029-.4355-.5931-.9904-1.0667-1.667-1.4165-.6788-.3543-1.4703-.5288-2.3747-.5288zm-.0887 2.217c.7209 0 1.3126.2092 1.6612.5954.3503.389.6065.9432.6766 1.6915h-4.7766c.0136-.2085.058-.4444.1339-.7045.0749-.2668.2039-.5164.3933-.753.1905-.2326.4402-.431.744-.5896.3109-.1608.6986-.2397 1.1676-.2397zM3.251 12.664h3.5334c.6996 0 1.2682.1602 1.6948.4836.4259.328.6405.8685.6405 1.6292 0 .3885-.0632.7094-.1946.9566-.131.2495-.3106.4466-.528.5896-.2172.1491-.4753.2498-.7661.3137-.2862.0639-.5905.092-.9115.092H3.2509z"/></svg>
-            </div>
-        </a>
-        <a href="https://github.com/GameDesert" target="_blank" title="GitHub">
-            <div class="grid-link github-link" id="github-link">
-                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            </div>
-        </a>
-        <a href="donate/index.html" target="_blank" title="Donate">
-            <div class="grid-link donate-link" id="donate-link">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Donate</title><path d="M16 12C18.76 12 21 9.76 21 7S18.76 2 16 2 11 4.24 11 7 13.24 12 16 12M21.45 17.6C21.06 17.2 20.57 17 20 17H13L10.92 16.27L11.25 15.33L13 16H15.8C16.15 16 16.43 15.86 16.66 15.63S17 15.12 17 14.81C17 14.27 16.74 13.9 16.22 13.69L8.95 11H7V20L14 22L22.03 19C22.04 18.47 21.84 18 21.45 17.6M5 11H.984V22H5V11Z" /></svg>
-            </div>
-        </a>
-        <a href="keys/index.html" target="_blank" title="PGP Public Key">
-            <div class="grid-link pgp-link" id="pgp-link">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>PGP Public Key</title><path d="M17.8 19C17.4 17.8 16.3 17 15 17C13.3 17 12 18.3 12 20S13.3 23 15 23C16.3 23 17.4 22.2 17.8 21H19V23H21V21H23V19H17.8M15 21.3C14.3 21.3 13.7 20.7 13.7 20S14.3 18.7 15 18.7 16.3 19.3 16.3 20 15.7 21.3 15 21.3M15 15C16.1 15 17.2 15.4 18 16V5C18 4.4 18.4 4 19 4S20 4.4 20 5V6H22V5C22 3.3 20.7 2 19 2H8C6.3 2 5 3.3 5 5V16H12C12.8 15.4 13.9 15 15 15M8 6H15V8H8V6M8 10H14V12H8V10M10.4 22H5C3.3 22 2 20.7 2 19V18H10.4C10.1 18.6 10 19.3 10 20S10.1 21.4 10.4 22" /></svg>
-            </div>
-        </a>
-        <a href="https://frustratle.kotla.eu/" target="_blank" title="Play Frustratle">
-            <div class="grid-link frustratle-link" id="frustratle-link">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Play Frustratle</title><path d="M6,7H18A5,5 0 0,1 23,12A5,5 0 0,1 18,17C16.36,17 14.91,16.21 14,15H10C9.09,16.21 7.64,17 6,17A5,5 0 0,1 1,12A5,5 0 0,1 6,7M19.75,9.5A1.25,1.25 0 0,0 18.5,10.75A1.25,1.25 0 0,0 19.75,12A1.25,1.25 0 0,0 21,10.75A1.25,1.25 0 0,0 19.75,9.5M17.25,12A1.25,1.25 0 0,0 16,13.25A1.25,1.25 0 0,0 17.25,14.5A1.25,1.25 0 0,0 18.5,13.25A1.25,1.25 0 0,0 17.25,12M5,9V11H3V13H5V15H7V13H9V11H7V9H5Z" /></svg>
-            </div>
-        </a>
-    </div>    
-    <br>
+    <div class="social-link-container" id="links">
+        <div class="sociallinks" id="sociallinks">
+            <a href="https://www.behance.net/oliverkotla" target="_blank" title="Oliver Kotla - Behance">
+                <div class="grid-link behance-link" id="behance-link">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Behance</title><path d="M0 4.4804V19.243h7.1554c.6613 0 1.3078-.0832 1.9297-.248.6288-.1654 1.1905-.4203 1.6792-.7661.485-.3431.8784-.788 1.1677-1.3369.2862-.542.4294-1.187.4294-1.9354 0-.9232-.219-1.7109-.6675-2.369-.446-.6542-1.1187-1.1139-2.0274-1.3746.6674-.3161 1.1658-.7227 1.506-1.2177.3371-.4967.5058-1.1174.5058-1.8607 0-.6873-.1127-1.2677-.3375-1.7318-.2306-.4709-.552-.8452-.9632-1.1266-.4176-.2808-.912-.4857-1.4912-.6085-.5827-.1261-1.22-.1872-1.9264-.1872zm15.6674.9903v1.4567h5.9844V5.4707zM3.2509 6.9947h3.0407c.2873 0 .5683.0204.8359.0731.2728.0466.508.134.716.2595.2096.1205.3754.293.501.5132.1208.2203.1806.5038.1806.8474 0 .6189-.1811 1.0702-.5551 1.3426-.3778.2775-.8543.4147-1.4304.4147H3.2509zm15.545 1.2564c-.819 0-1.5587.1462-2.2294.436-.6705.2904-1.2463.6875-1.7318 1.1915-.4846.5011-.8535 1.0986-1.12 1.7909-.2612.69-.3942 1.4366-.3942 2.236 0 .8268.1284 1.5891.3835 2.2786.258.6923.6198 1.2822 1.0856 1.781.478.4967 1.046.8784 1.726 1.1497.6806.269 1.4382.4048 2.2803.4048 1.208 0 2.2446-.2771 3.0949-.8326.8599-.5528 1.4902-1.471 1.9058-2.7574h-2.585c-.1.3307-.359.649-.784.9467-.4295.2988-.9417.4492-1.534.4492-.8233 0-1.4588-.2168-1.8985-.6462-.4412-.4294-.7267-1.2289-.7267-2.0742h7.713c.0552-.8291-.0122-1.6218-.2045-2.3797-.1938-.7601-.5033-1.4365-.9393-2.029-.4355-.5931-.9904-1.0667-1.667-1.4165-.6788-.3543-1.4703-.5288-2.3747-.5288zm-.0887 2.217c.7209 0 1.3126.2092 1.6612.5954.3503.389.6065.9432.6766 1.6915h-4.7766c.0136-.2085.058-.4444.1339-.7045.0749-.2668.2039-.5164.3933-.753.1905-.2326.4402-.431.744-.5896.3109-.1608.6986-.2397 1.1676-.2397zM3.251 12.664h3.5334c.6996 0 1.2682.1602 1.6948.4836.4259.328.6405.8685.6405 1.6292 0 .3885-.0632.7094-.1946.9566-.131.2495-.3106.4466-.528.5896-.2172.1491-.4753.2498-.7661.3137-.2862.0639-.5905.092-.9115.092H3.2509z"/></svg>
+                </div>
+            </a>
+            <a href="https://github.com/GameDesert" target="_blank" title="GitHub">
+                <div class="grid-link github-link" id="github-link">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </div>
+            </a>
+            <!-- <a href="donate/index.html" target="_blank" title="Donate">
+                <div class="grid-link donate-link" id="donate-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Donate</title><path d="M16 12C18.76 12 21 9.76 21 7S18.76 2 16 2 11 4.24 11 7 13.24 12 16 12M21.45 17.6C21.06 17.2 20.57 17 20 17H13L10.92 16.27L11.25 15.33L13 16H15.8C16.15 16 16.43 15.86 16.66 15.63S17 15.12 17 14.81C17 14.27 16.74 13.9 16.22 13.69L8.95 11H7V20L14 22L22.03 19C22.04 18.47 21.84 18 21.45 17.6M5 11H.984V22H5V11Z" /></svg>
+                </div>
+            </a>
+            <a href="keys/index.html" target="_blank" title="PGP Public Key">
+                <div class="grid-link pgp-link" id="pgp-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>PGP Public Key</title><path d="M17.8 19C17.4 17.8 16.3 17 15 17C13.3 17 12 18.3 12 20S13.3 23 15 23C16.3 23 17.4 22.2 17.8 21H19V23H21V21H23V19H17.8M15 21.3C14.3 21.3 13.7 20.7 13.7 20S14.3 18.7 15 18.7 16.3 19.3 16.3 20 15.7 21.3 15 21.3M15 15C16.1 15 17.2 15.4 18 16V5C18 4.4 18.4 4 19 4S20 4.4 20 5V6H22V5C22 3.3 20.7 2 19 2H8C6.3 2 5 3.3 5 5V16H12C12.8 15.4 13.9 15 15 15M8 6H15V8H8V6M8 10H14V12H8V10M10.4 22H5C3.3 22 2 20.7 2 19V18H10.4C10.1 18.6 10 19.3 10 20S10.1 21.4 10.4 22" /></svg>
+                </div>
+            </a>
+            <a href="https://frustratle.kotla.eu/" target="_blank" title="Play Frustratle">
+                <div class="grid-link frustratle-link" id="frustratle-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Play Frustratle</title><path d="M6,7H18A5,5 0 0,1 23,12A5,5 0 0,1 18,17C16.36,17 14.91,16.21 14,15H10C9.09,16.21 7.64,17 6,17A5,5 0 0,1 1,12A5,5 0 0,1 6,7M19.75,9.5A1.25,1.25 0 0,0 18.5,10.75A1.25,1.25 0 0,0 19.75,12A1.25,1.25 0 0,0 21,10.75A1.25,1.25 0 0,0 19.75,9.5M17.25,12A1.25,1.25 0 0,0 16,13.25A1.25,1.25 0 0,0 17.25,14.5A1.25,1.25 0 0,0 18.5,13.25A1.25,1.25 0 0,0 17.25,12M5,9V11H3V13H5V15H7V13H9V11H7V9H5Z" /></svg>
+                </div>
+            </a> -->
+        </div>
+    </div>
     <!--PROJECT SECTION-->
-    <div class="links" id="links" style="text-align: center; color: #000014; width: 100vw;">
+    <div class="links" id="projects" style="text-align: center; color: #000014; width: 100vw;">
         <!-- <br>
         <h2 class="projectsTitle" id="projectsTitle">My Work</h2>
         <br> -->
