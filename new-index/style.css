@@ -17,3 +17,15 @@ noscript > div.noscript-container {
     padding-top: 1vh;
     padding-bottom: 1vh;
 }
+
+#initials {
+    width: 10vw;
+    height: auto; 
+    fill:none;
+}
+
+#initial-k, #initial-o {
+    fill: none;
+    stroke:#000000;
+    stroke-width:2.64584vw;
+}
