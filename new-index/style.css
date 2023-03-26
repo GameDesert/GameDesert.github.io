@@ -151,6 +151,7 @@ noscript > div.noscript-container {
     top: -10vw;
     display: grid;
     grid-template-columns: repeat(2, auto);
+    row-gap: 0;
     align-items: center;
     justify-items: center;
 }
@@ -183,7 +184,7 @@ noscript > div.noscript-container {
     margin-top: 0.5vw;
     font-size: 1.5vw;
     color: #fff;
-    transform: translateZ(20px);
+    transform: translateZ(30px);
 }
 
 .work-tile-description {
@@ -222,6 +223,7 @@ noscript > div.noscript-container {
     text-decoration: none;
     width: 20vw;
 }
+
 
 .work-link:hover {
     cursor: pointer;
