@@ -1,6 +1,10 @@
+@import url(/fonts/fonts.css);
+
 :root {}
 
-html {}
+html {
+    background-image: linear-gradient(#000014, #323232);
+}
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
@@ -18,14 +22,88 @@ noscript > div.noscript-container {
     padding-bottom: 1vh;
 }
 
+
+
+.hero {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+}
+.hero .intro {
+    padding-left: 3vw;
+}
+.hero .intro h1 {
+    margin-top: 20vh;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 4vw;
+    color: #fff;
+}
+
+.signature-rotation-container {
+    display: flex;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+}
+
 #initials {
-    width: 10vw;
-    height: auto; 
+    display: block;
     fill:none;
+    width: 15vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    stroke: #fff;
 }
 
 #initial-k, #initial-o {
+    stroke-linecap:round;
     fill: none;
-    stroke:#000000;
-    stroke-width:2.64584vw;
+    stroke-width:0.25vw;
+}
+
+#initial-o {
+    stroke-dasharray: 398;
+    animation: write-o 1s ease-in-out 2s both;
+    -o-animation: write-o 1s ease-in-out 2s both;
+    -moz-animation: write-o 1s ease-in-out 2s both;
+    -webkit-animation: write-o 1s ease-in-out 2s both;
+}
+
+#initial-k {
+    stroke-dasharray: 348;
+    animation: write-k 1s ease-in-out 2s both;
+    -o-animation: write-k 1s ease-in-out 2s both;
+    -moz-animation: write-k 1s ease-in-out 2s both;
+    -webkit-animation: write-k 1s ease-in-out 2s both;
+}
+
+
+@keyframes write-o {
+    0% {
+        stroke-dashoffset: 398;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes write-k {
+    0% {
+        stroke-dashoffset: 348;
+    }
+    50% {
+        stroke-dashoffset: 348;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+.hero-subsection {
+    width: 50vw;
+    height: 100vh;
 }
