@@ -135,3 +135,97 @@ noscript > div.noscript-container {
     width: 100vw;
     background-color: #fff;
 }
+
+.work-container {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -10vw;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    justify-items: center;
+}
+
+.work-tile {
+    height: 20vw;
+    width: 15vw;
+    border-radius: 16px;
+    
+    background: rgb(0,0,20);
+    background: -moz-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000014",endColorstr="#000000",GradientType=1);
+    background-attachment: fixed;
+}
+
+.work-tile-image {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 16px 16px 0 0;
+}
+
+.work-tile-title {
+    font-family: 'Source Serif Pro', serif;
+    margin-left: 0.75vw;
+    margin-top: 0.5vw;
+    font-size: 1.5vw;
+    color: #fff;
+}
+
+.work-tile-description {
+    font-family: 'Source Serif Pro', serif;
+    margin-left: 0.75vw;
+    margin-top: -1.5vw;
+    font-size: 1vw;
+    color: #fff;
+}
+
+.work-link {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 1.25vw;
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-bottom: 0.1vw;
+    border-radius: 20px;
+    position: relative;
+    color: #fff;
+    fill: #fff;
+    padding-top: 0.15vw;
+    padding-bottom: 0.25vw;
+
+    background: rgb(0,0,20);
+
+    transition: 0.5s;
+}
+
+.work-link-a {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-decoration: none;
+    width: 20vw;
+}
+
+.work-link:hover {
+    cursor: pointer;
+    background: #9696aa;
+}
+
+
+
+.behanceicon svg {
+    height: 1.75vw;
+    width: auto;
+}
+
+.behanceicon {
+    display: inline-block;
+    position: relative;
+    top: 0.4vw;
+    margin-right: 0.5vw;
+}
