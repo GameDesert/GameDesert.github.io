@@ -3,7 +3,6 @@
 :root {}
 
 html {
-    background-image: linear-gradient(#000014, #323232);
 }
 
 body {
@@ -11,6 +10,13 @@ body {
     margin: 0;
     overflow-x: hidden;
     overflow-y: scroll;
+
+    background: rgb(0,0,20);
+    background: -moz-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000014",endColorstr="#000000",GradientType=1);
+    background-attachment: fixed;
 }
 
 noscript > div.noscript-container {
@@ -32,7 +38,7 @@ noscript > div.noscript-container {
     padding-left: 3vw;
 }
 .hero .intro h1 {
-    margin-top: 20vh;
+    margin-top: 17.5vh;
     font-family: 'Source Serif Pro', serif;
     font-size: 4vw;
     color: #fff;
@@ -106,4 +112,26 @@ noscript > div.noscript-container {
 .hero-subsection {
     width: 50vw;
     height: 100vh;
+}
+
+
+
+
+
+.work-upper-wave {
+    width: 100vw;
+    height: auto;
+    margin-bottom: -1vh;
+}
+
+.work-lower-wave {
+    width: 100vw;
+    height: auto;
+    margin-top: -1vh;
+}
+
+.work {
+    min-height: 50vh;
+    width: 100vw;
+    background-color: #fff;
 }
