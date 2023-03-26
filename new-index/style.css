@@ -115,7 +115,14 @@ noscript > div.noscript-container {
 }
 
 
-
+.section-title {
+    font-family: 'Source Serif Pro', serif;
+    color: #fff;
+    text-align: center;
+    font-size: 4vw;
+    position: relative;
+    bottom: -2vw;
+}
 
 
 .work-upper-wave {
@@ -159,6 +166,9 @@ noscript > div.noscript-container {
     background: linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000014",endColorstr="#000000",GradientType=1);
     background-attachment: fixed;
+
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
 }
 
 .work-tile-image {
@@ -173,6 +183,7 @@ noscript > div.noscript-container {
     margin-top: 0.5vw;
     font-size: 1.5vw;
     color: #fff;
+    transform: translateZ(20px);
 }
 
 .work-tile-description {
@@ -181,6 +192,7 @@ noscript > div.noscript-container {
     margin-top: -1.5vw;
     font-size: 1vw;
     color: #fff;
+    transform: translateZ(20px);
 }
 
 .work-link {
