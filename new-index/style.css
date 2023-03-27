@@ -5,18 +5,48 @@
 html {
 }
 
+
 body {
+    background: linear-gradient(131deg, #0a0a19, #11121f, #171824, #1c1d2a, #323343);
+    background-size: 300% 300%;
+
+    -webkit-animation: DARK-BG-GRADIENT 31s ease infinite;
+    -moz-animation: DARK-BG-GRADIENT 31s ease infinite;
+    -o-animation: DARK-BG-GRADIENT 31s ease infinite;
+    animation: DARK-BG-GRADIENT 31s ease infinite;
+
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     overflow-x: hidden;
     overflow-y: scroll;
 
-    background: rgb(0,0,20);
+    /* background: rgb(0,0,20);
     background: -moz-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
     background: -webkit-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
     background: linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000014",endColorstr="#000000",GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000014",endColorstr="#000000",GradientType=1);*/
     background-attachment: fixed;
+}
+
+@-webkit-keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@-moz-keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@-o-keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
 }
 
 noscript > div.noscript-container {
@@ -264,6 +294,49 @@ noscript > div.noscript-container {
     margin-right: 0.5vw;
 }
 
+.social-container {
+    margin-top: 5vw;
+    margin-bottom: 10vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15vw;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto auto;
+}
+
+.social-container .social-button {
+    /* background-color: #fff; */
+    border-radius: 100%;
+    padding: 1.5vw;
+    width: 3.5vw;
+    height: 3.5vw;
+
+    background:#FFFFFF;
+    transition: 0.25s;
+}
+
+.social-container .social-button .social-icon {
+    width: 3.5vw;
+    height: auto;
+    fill: #161616;
+    mix-blend-mode: multiply;
+    transition: 0.5s;
+}
+
+.social-container .social-button:hover > .social-icon {
+    fill: #ffffff;
+    mix-blend-mode: lighten;
+    transition: 0.5s;
+}
+
+.social-container .social-button:hover {
+    /* background-color: #fff; */
+    cursor: pointer;
+
+    background: #9696AA;
+}
+
 /*======================================================================*//*RESPONSIVE DESIGN*/
 /* Large desktop */
  
@@ -370,4 +443,55 @@ noscript > div.noscript-container {
     .section-title {
         font-size: 7vw;
     }
+
+
+    .social-container {
+        margin-top: 5vw;
+        margin-bottom: 10vw;
+        width: 15vw;
+        row-gap: 3vw;
+        grid-template-columns: auto;
+    }
+    
+    .social-container .social-button {
+        padding: 3vw;
+        width: 8vw;
+        height: 8vw;
+    }
+    
+    .social-container .social-button .social-icon {
+        width: 8vw;
+        height: auto;
+    }
+
+    .work-link {
+        font-size: 3vw;
+        width: 50vw;
+        padding-bottom: 1vw;
+        border-radius: 20px;
+        padding-top: 0.15vw;
+    }
+    
+    .work-link-a {
+        width: 50vw;
+    }
+
+    .behanceicon svg {
+        height: 5vw;
+        width: auto;
+    }
+    
+    .behanceicon {
+        top: 1vw;
+        margin-right: 0.5vw;
+        margin-left: 1vw;
+    }
 }
+
+/*
+TODO:
+- Dark and light mode (button and media queries)
+DONE:
+- Responsive
+- Prefers-reduced-motion
+*/
