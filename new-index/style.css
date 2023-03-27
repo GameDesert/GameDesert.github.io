@@ -59,6 +59,14 @@ noscript > div.noscript-container {
 }
 
 
+nav {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    width: 100vw;
+    height: 8vh;
+    background-color: #fff;
+}
+
 
 .hero {
     display: grid;
@@ -319,14 +327,12 @@ noscript > div.noscript-container {
 .social-container .social-button .social-icon {
     width: 3.5vw;
     height: auto;
-    fill: #161616;
-    mix-blend-mode: multiply;
+    fill: #000000;
     transition: 0.5s;
 }
 
 .social-container .social-button:hover > .social-icon {
     fill: #ffffff;
-    mix-blend-mode: lighten;
     transition: 0.5s;
 }
 
