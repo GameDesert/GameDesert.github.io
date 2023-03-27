@@ -40,9 +40,29 @@ noscript > div.noscript-container {
 .hero .intro h1 {
     margin-top: 17.5vh;
     font-family: 'Source Serif Pro', serif;
-    font-size: 4vw;
+    font-size: 3vw;
+    color: #fff;
+    font-weight: 700;
+}
+
+.hero .intro .name {
+    margin-top: 17.5vh;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 6vw;
+    color: #fff;
+    background: linear-gradient(to bottom right, #9696AA, #EBEBFF, #FFFFFF);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+
+.hero .intro .description {
+    margin-top: 6vh;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 2vw;
     color: #fff;
 }
+
 
 .signature-rotation-container {
     display: flex;
@@ -242,4 +262,112 @@ noscript > div.noscript-container {
     position: relative;
     top: 0.4vw;
     margin-right: 0.5vw;
+}
+
+/*======================================================================*//*RESPONSIVE DESIGN*/
+/* Large desktop */
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    .hero .intro h1 {
+        font-size: 6vw !important;
+    }
+    
+    .hero .intro .name {
+        font-size: 8vw !important;
+    }
+    
+    .hero .intro .description {
+        font-size: 4vw !important;
+    }
+    
+    .work-tile {
+        height: 31vw;
+        width: 25vw;
+        border-radius: 22px;
+    }
+
+    .work-tile-image {
+        width: 25vw;
+        height: 25vw;
+        border-radius: 22px 22px 0 0;
+    }
+
+    .work-tile-title, .work-tile-description {
+        margin-left: 2vw;
+    }
+
+    .section-title {
+        font-size: 7vw;
+    }
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (min-width: 481px) and (max-width: 767px) {
+    .hero .intro h1 {
+        font-size: 7vw !important;
+    }
+    
+    .hero .intro .name {
+        font-size: 10vw !important;
+    }
+    
+    .hero .intro .description {
+        font-size: 5vw !important;
+    }
+        
+    .work-tile {
+        height: 28vw;
+        width: 22vw;
+        border-radius: 12px;
+    }
+
+    .work-tile-image {
+        width: 22vw;
+        height: 22vw;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .work-tile-title, .work-tile-description {
+        margin-left: 2vw;
+    }
+
+    .section-title {
+        font-size: 6vw;
+    }
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+    .hero .intro h1 {
+        font-size: 6vw !important;
+    }
+    
+    .hero .intro .name {
+        font-size: 12vw !important;
+    }
+    
+    .hero .intro .description {
+        font-size: 6vw !important;
+    }
+    
+    .work-tile {
+        height: 27vw;
+        width: 20vw;
+        border-radius: 6px;
+    }
+
+    .work-tile-image {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 6px 6px 0 0;
+    }
+
+    .work-tile-title, .work-tile-description {
+        margin-left: 2vw;
+    }
+
+    .section-title {
+        font-size: 7vw;
+    }
 }
