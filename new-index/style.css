@@ -63,8 +63,33 @@ nav {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     width: 100vw;
-    height: 8vh;
-    background-color: #fff;
+    height: 10vh;
+    background-color: none;
+}
+
+.link {
+    background-color: none;
+    width: 22.5vw;
+}
+
+/* .link:hover{
+    background-color: #9696AA;
+} */
+
+.logo {
+    width: 10vw;
+    background-color: none;
+}
+
+.ok-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 6vh;
+    width: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    fill: #fff;
 }
 
 
