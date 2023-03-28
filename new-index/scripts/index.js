@@ -13,3 +13,45 @@ function disableTilt() {
         tiltable[i].vanillaTilt.destroy();
     }
 }
+
+
+
+
+document.getElementById("lang-asterisk").innerHTML = "*";
+
+langs = ["es", "fr", "de", "it", "se", "fi", "dk", "cz", "no"]
+
+lang_phrases = {
+    "es":"Hola",
+    "fr":"Bonjour",
+    "de":"Hallo",
+    "it":"Ciao",
+    "se":"Hej",
+    "fi":"Hei",
+    "dk":"Hej",
+    "cz":"Ahoj",
+    "no":"Hei",
+    "nl":"Hallo",
+    "eu":"Kaixo"
+}
+
+lang_names = {
+    "es":"Spanish",
+    "fr":"French",
+    "de":"German",
+    "it":"Italian",
+    "se":"Swedish",
+    "fi":"Finnish",
+    "dk":"Danish",
+    "cz":"Czech",
+    "no":"Norwegian",
+    "nl":"Dutch",
+    "eu":"Basque"
+}
+
+var randomLang = langs[Math.floor(Math.random() * langs.length)];
+
+var langexplainer = "* That's hello in " + lang_names[randomLang] + "!"
+document.getElementById("lang-explain").innerHTML = langexplainer;
+
+document.getElementById("hello").innerHTML = lang_phrases[randomLang];
