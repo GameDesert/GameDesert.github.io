@@ -16,7 +16,7 @@ function disableTilt() {
 
 
 
-if (window.matchMedia("(min-device-width: 320px)").matches && window.matchMedia("(max-device-width: 479px)").matches && window.matchMedia("(orientation: portrait)").matches) {
+if (window.matchMedia("(max-device-width: 320px)").matches && window.matchMedia("(orientation: portrait)").matches) {
     console.log("Mobile, no languages.");
 } else {
 
