@@ -449,16 +449,16 @@ nav {
  
 /* Landscape phone to portrait tablet */
 @media (min-width: 481px) and (max-width: 767px) {
-    .hero .intro h1 {
-        font-size: 7vw !important;
+    .hero .intro h1 .intro-text {
+        font-size: 6vw !important;
     }
     
     .hero .intro .name {
-        font-size: 10vw !important;
+        font-size: 12vw !important;
     }
     
     .hero .intro .description {
-        font-size: 5vw !important;
+        font-size: 4vw !important;
     }
         
     .work-tile {
@@ -480,16 +480,58 @@ nav {
     .section-title {
         font-size: 6vw;
     }
+
+    .social-container {
+        margin-top: 5vw;
+        margin-bottom: 10vw;
+        width: 15vw;
+        row-gap: 3vw;
+        grid-template-columns: auto;
+    }
+    
+    .social-container .social-button {
+        padding: 3vw;
+        width: 8vw;
+        height: 8vw;
+    }
+    
+    .social-container .social-button .social-icon {
+        width: 8vw;
+        height: auto;
+    }
+
+    .work-link {
+        font-size: 3vw;
+        width: 50vw;
+        padding-bottom: 1vw;
+        border-radius: 20px;
+        padding-top: 0.15vw;
+    }
+    
+    .work-link-a {
+        width: 50vw;
+    }
+
+    .behanceicon svg {
+        height: 5vw;
+        width: auto;
+    }
+    
+    .behanceicon {
+        top: 1vw;
+        margin-right: 0.5vw;
+        margin-left: 1vw;
+    }
 }
  
 /* Landscape phones and down */
 @media (max-width: 480px) { 
-    .hero .intro h1 {
-        font-size: 6vw !important;
+    .hero .intro h1 .intro-text {
+        font-size: 8vw !important;
     }
     
     .hero .intro .name {
-        font-size: 12vw !important;
+        font-size: 14vw !important;
     }
     
     .hero .intro .description {
@@ -513,7 +555,7 @@ nav {
     }
 
     .section-title {
-        font-size: 7vw;
+        font-size: 10vw;
     }
 
 

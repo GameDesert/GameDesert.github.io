@@ -48,6 +48,10 @@
     .hero .intro h1 {
         font-size: 6px !important;
     }
+
+    .hero .intro h1::after {
+        content: "hi";
+    }
     
     .hero .intro .name {
         font-size: 6px !important;

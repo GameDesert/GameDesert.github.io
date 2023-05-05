@@ -16,42 +16,46 @@ function disableTilt() {
 
 
 
+if (window.matchMedia("(min-device-width: 320px)").matches && window.matchMedia("(max-device-width: 479px)").matches && window.matchMedia("(orientation: portrait)").matches) {
+    console.log("Mobile, no languages.");
+} else {
 
-document.getElementById("lang-asterisk").innerHTML = "*";
+    document.getElementById("lang-asterisk").innerHTML = "*";
 
-langs = ["es", "fr", "de", "it", "se", "fi", "dk", "cz", "no"]
+    langs = ["es", "fr", "de", "it", "se", "fi", "dk", "cz", "no"]
 
-lang_phrases = {
-    "es":"Hola",
-    "fr":"Bonjour",
-    "de":"Hallo",
-    "it":"Ciao",
-    "se":"Hej",
-    "fi":"Hei",
-    "dk":"Hej",
-    "cz":"Ahoj",
-    "no":"Hei",
-    "nl":"Hallo",
-    "eu":"Kaixo"
+    lang_phrases = {
+        "es":"Hola",
+        "fr":"Bonjour",
+        "de":"Hallo",
+        "it":"Ciao",
+        "se":"Hej",
+        "fi":"Hei",
+        "dk":"Hej",
+        "cz":"Ahoj",
+        "no":"Hei",
+        "nl":"Hallo",
+        "eu":"Kaixo"
+    }
+
+    lang_names = {
+        "es":"Spanish",
+        "fr":"French",
+        "de":"German",
+        "it":"Italian",
+        "se":"Swedish",
+        "fi":"Finnish",
+        "dk":"Danish",
+        "cz":"Czech",
+        "no":"Norwegian",
+        "nl":"Dutch",
+        "eu":"Basque"
+    }
+
+    var randomLang = langs[Math.floor(Math.random() * langs.length)];
+
+    var langexplainer = "* That's hello in " + lang_names[randomLang] + "!"
+    document.getElementById("lang-explain").innerHTML = langexplainer;
+
+    document.getElementById("hello").innerHTML = lang_phrases[randomLang];
 }
-
-lang_names = {
-    "es":"Spanish",
-    "fr":"French",
-    "de":"German",
-    "it":"Italian",
-    "se":"Swedish",
-    "fi":"Finnish",
-    "dk":"Danish",
-    "cz":"Czech",
-    "no":"Norwegian",
-    "nl":"Dutch",
-    "eu":"Basque"
-}
-
-var randomLang = langs[Math.floor(Math.random() * langs.length)];
-
-var langexplainer = "* That's hello in " + lang_names[randomLang] + "!"
-document.getElementById("lang-explain").innerHTML = langexplainer;
-
-document.getElementById("hello").innerHTML = lang_phrases[randomLang];
