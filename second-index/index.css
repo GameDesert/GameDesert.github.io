@@ -7,6 +7,10 @@ body {
     overflow-y: scroll;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 header nav {
     display: flex;
     flex-direction: row;
@@ -37,6 +41,10 @@ header nav a:hover {
     color: #000014;
 }
 
+header {
+    border-bottom: #fff solid 2px;
+}
+
 main {
     min-height: 90vw;
     width: 100vh;
@@ -46,3 +54,133 @@ section {
     min-height: 100vh;
     width: 100vw;
 }
+
+
+
+.emailbutton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aqua;
+    text-align: center;
+    clear: left;
+    transition: 0.3s;
+    padding: 8px;
+}
+
+.emailbutton:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+}
+
+
+
+.emailbutton {
+    width: 2.5%;
+    overflow-x: hidden;
+    height: 5vh;
+    overflow: hidden;
+}
+
+.emailbutton:hover {
+    animation-name: emailhover-widen;
+    animation-duration: 3s;
+}
+
+.emailbutton:hover .emailtext {
+    animation-name: emailhover-textin;
+    animation-duration: 3s;
+}
+
+.emailbutton .emailtext {
+    opacity: 1;
+    width: 0vw;
+    display: inline;
+    transition: 0.3s;
+}
+
+.emailbutton .emailicon {
+    display: inline;
+}
+
+.emailbutton::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@keyframes emailhover-widen {
+    0% {
+        width: 2.5%;
+    }
+    100% {
+        width: 15%;
+    }
+}
+
+@keyframes emailhover-textin {
+    0% {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes emailhover-textin {
+    0% {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+
+
+.pricinginfo {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.pricingtable {
+    float: left;
+    width: 50%;
+    padding: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price {
+    list-style-type: none;
+    border: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.price li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+}
+
+.price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+}
+
+@media only screen and (max-width: 600px) {
+    .pricingtable {
+      width: 100%;
+    }
+    .pricinginfo {
+        width: 100%;
+    }
+  }
