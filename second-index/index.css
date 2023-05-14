@@ -5,6 +5,7 @@ body {
     margin: 0;
     overflow-x: hidden;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -61,20 +62,63 @@ section {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: aqua;
-    text-align: center;
+    /* background-color: aqua;
+    text-align: center; */
     clear: left;
-    transition: 0.3s;
-    padding: 8px;
+    /* transition: 0.3s;
+    padding: 8px; */
 }
 
 .emailbutton:hover {
     box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
 }
 
-
+.emailbutton {
+    transition: all 0.2s linear 0s;
+  }
+  .emailbutton:before {
+    content: "\F01EE";
+    font-family: 'Material Design Icons';
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0px 6px 6px 0px;
+    transition: all 0.2s linear 0s;
+    text-align: center;
+  }
+  .emailbutton:hover {
+    text-indent: -30px;
+  }
+  .emailbutton:hover:before {
+    right: 0;
+    text-indent: 0px;
+  }
 
 .emailbutton {
+    text-align: center;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    background-color: #000014;
+    font-family: 'Source Serif Pro', serif;
+    /* put your font-family */
+    font-size: 16px;
+    padding: 20px 0px;
+    width: 150px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+
+/* .emailbutton {
     width: 2.5%;
     overflow-x: hidden;
     height: 5vh;
@@ -137,7 +181,7 @@ section {
         opacity: 1;
         transform: translateX(0px);
     }
-}
+} */
 
 
 
