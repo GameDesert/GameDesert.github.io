@@ -5,11 +5,29 @@ body {
     margin: 0;
     overflow-x: hidden;
     overflow-y: scroll;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
+
+    background-color:hsla(240,100%,3%,1);
+    background-image:
+    radial-gradient(at 100% 0%, hsla(236,14%,22%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(235,20%,13%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(235,22%,11%,1) 0px, transparent 50%),
+    radial-gradient(at 50% 49%, hsla(240,42%,6%,1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(235,29%,9%,1) 0px, transparent 50%);
+    background-attachment: fixed;
 }
 
 * {
     box-sizing: border-box;
+}
+
+section {
+    min-height: 100vh;
+}
+
+h2 {
+    font-family: 'Source Serif Pro', serif;
+    text-align: center;
 }
 
 header nav {
