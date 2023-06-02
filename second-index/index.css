@@ -5,16 +5,11 @@ body {
     margin: 0;
     overflow-x: hidden;
     overflow-y: scroll;
-    /* scroll-behavior: smooth; */
-
-    background-color:hsla(240,100%,3%,1);
-    background-image:
-    radial-gradient(at 100% 0%, hsla(236,14%,22%,1) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(235,20%,13%,1) 0px, transparent 50%),
-    radial-gradient(at 0% 0%, hsla(235,22%,11%,1) 0px, transparent 50%),
-    radial-gradient(at 50% 49%, hsla(240,42%,6%,1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(235,29%,9%,1) 0px, transparent 50%);
+    scroll-behavior: smooth;
     background-attachment: fixed;
+
+    background-color: rgba(0,0,20,1);
+    color: #fff;
 }
 
 * {
@@ -37,12 +32,12 @@ header nav {
     justify-content: flex-start;
     padding-left: 0;
     margin-top: 0;
-    background-color: #000014;
+    background-color: rgba(0,0,20,0);
 }
 
 header nav a {
     display: inline;
-    background-color: #000014;
+    background-color: rgba(0,0,20,0);
     width: 10%;
     height: 5vh;
     line-height: 5vh;
@@ -51,7 +46,7 @@ header nav a {
     font-weight: 600;
     text-decoration: none;
     color: #fff;
-    transition: 0.5s;
+    transition: 0.4s;
 }
 
 header nav a:hover {
@@ -60,13 +55,17 @@ header nav a:hover {
     color: #000014;
 }
 
-header {
+/* header {
     border-bottom: #fff solid 2px;
-}
+} */
 
 main {
     min-height: 90vw;
     width: 100vh;
+}
+
+main p {
+    font-size: 100%;
 }
 
 section {
