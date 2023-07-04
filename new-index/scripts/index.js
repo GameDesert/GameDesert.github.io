@@ -1,5 +1,6 @@
 Mousetrap.bind('up up down down left right left right b a enter', function() {
-    alert("Hello world!")
+    // alert("Hello world!")
+    document.getElementById("body").className = "secret";
 });
 
 AOS.init({
@@ -16,7 +17,7 @@ function disableTilt() {
 
 
 
-if (window.matchMedia("(max-device-width: 320px)").matches && window.matchMedia("(orientation: portrait)").matches) {
+if (window.matchMedia("(max-device-width: 534px)").matches && window.matchMedia("(orientation: portrait)").matches) {
     console.log("Mobile, no languages.");
 } else {
 
