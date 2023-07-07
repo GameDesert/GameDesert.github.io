@@ -178,6 +178,12 @@ nav {
     font-weight: 900;
 }
 
+.hero .intro .hello {
+    background: linear-gradient(to bottom right, #9696AA, #EBEBFF, #FFFFFF);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .hero .intro .description {
     margin-top: 6vh;
     font-family: 'Source Serif Pro', serif;

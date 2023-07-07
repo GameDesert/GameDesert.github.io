@@ -23,7 +23,7 @@ if (window.matchMedia("(max-device-width: 534px)").matches && window.matchMedia(
 
     document.getElementById("lang-asterisk").innerHTML = "*";
 
-    langs = ["es", "fr", "de", "it", "se", "fi", "dk", "cz", "no"]
+    langs = ["es", "fr", "de", "it", "se", "fi", "dk", "cz", "no", "nl", "eu", "eo", "hr", "ha", "kw", "gv", "mt", "mi", "sz", "cs", "wy"]
 
     lang_phrases = {
         "es":"Hola",
@@ -36,7 +36,17 @@ if (window.matchMedia("(max-device-width: 534px)").matches && window.matchMedia(
         "cz":"Ahoj",
         "no":"Hei",
         "nl":"Hallo",
-        "eu":"Kaixo"
+        "eu":"Kaixo",
+        "eo":"Saluton",
+        "hr":"Zdravo",
+        "ha":"Aloha",
+        "kw":"Dydh da",
+        "gv":"Moghrey mie",
+        "mt":"Bongu",
+        "mi":"Kia ora",
+        "sz":"Witej",
+        "cs":"Witéj",
+        "wy":"Sgiöekumt"
     }
 
     lang_names = {
@@ -50,7 +60,17 @@ if (window.matchMedia("(max-device-width: 534px)").matches && window.matchMedia(
         "cz":"Czech",
         "no":"Norwegian",
         "nl":"Dutch",
-        "eu":"Basque"
+        "eu":"Basque",
+        "eo":"Esperanto",
+        "hr":"Croatian",
+        "ha":"Hawaiian",
+        "kw":"Cornish",
+        "gv":"Manx",
+        "mt":"Maltese",
+        "mi":"Māori",
+        "sz":"Silesian",
+        "cs":"Kashubian",
+        "wy":"Wymysorys"
     }
 
     var randomLang = langs[Math.floor(Math.random() * langs.length)];
@@ -59,4 +79,5 @@ if (window.matchMedia("(max-device-width: 534px)").matches && window.matchMedia(
     document.getElementById("lang-explain").innerHTML = langexplainer;
 
     document.getElementById("hello").innerHTML = lang_phrases[randomLang];
+    // document.getElementById("hello").style.fontWeight = 800;
 }
