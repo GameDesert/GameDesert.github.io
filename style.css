@@ -1,191 +1,768 @@
-@import url("fonts/fonts.css");
+@import url(/fonts/fonts.css);
 
-:root {
-    --error_red_primary: #f95454;
-    --error_red_secondary: #590000;
+:root {}
 
-    --success_green_primary: #54f96d;
-    --success_green_secondary: #007100;
-
-    --warning_yellow_primary: #f9f154;
-    --warning_yellow_secondary: #736d00;
-
-    /*Palette*/
-    --coloured_dark: #000014;
-    --coloured_mediumdark: #323246;
-    --coloured_medium: #646478;
-    --coloured_mediumlight: #9696aa;
-    --coloured_light: #ebebff;
-
-    --grey_dark: #000000;
-    --grey_mediumdark: #323232;
-    --grey_medium: #646464;
-    --grey_mediumlight: #969696;
-    --grey_light: #ebebeb;
-
-    --white: #fff;
+html {
+    scroll-behavior: smooth;
 }
 
-/*Dialogue Boxes*/
-.warning_notification {
-    display: block;
-    border: none;
-    border-radius: 10px;
-    width: 20vw;
-    height: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-
-    background-color: var(--warning_yellow_primary);
-    color: var(--warning_yellow_secondary);
-
-    text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
-
-    overflow: auto;
-}
-
-.error_notification {
-    display: block;
-    border: none;
-    border-radius: 10px;
-    width: 20vw;
-    height: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-
-    background-color: var(--error_red_primary);
-    color: var(--error_red_secondary);
-
-    text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
-
-    overflow: auto;
-}
-
-.success_notification {
-    display: block;
-    border: none;
-    border-radius: 10px;
-    width: 20vw;
-    height: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-
-    background-color: var(--success_green_primary);
-    color: var(--success_green_secondary);
-
-    text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
-
-    overflow: auto;
-}
-
-/*Basic Page Styling*/
 body {
-    background-image: linear-gradient(to bottom right, var(--coloured_dark), var(--coloured_mediumdark));
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: #fff;
+    background: linear-gradient(131deg, #0a0a19, #11121f, #171824, #1c1d2a, #323343);
+    background-size: 300% 300%;
+
+    -webkit-animation: DARK-BG-GRADIENT 31s ease infinite;
+    -moz-animation: DARK-BG-GRADIENT 31s ease infinite;
+    -o-animation: DARK-BG-GRADIENT 31s ease infinite;
+    animation: DARK-BG-GRADIENT 31s ease infinite;
+
+    font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
+
+    /* background: rgb(0,0,20);
+    background: -moz-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000014",endColorstr="#000000",GradientType=1);*/
+    background-attachment: fixed;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.secret {
+    background:
+    conic-gradient(at 14% 50%, #0000 221.25deg, white 222deg 318deg, #0000 318.25deg),
+    conic-gradient(at 23% 50%, #0000 221.25deg, #ffa6b9 222deg 318deg, #0000 318.25deg),
+    conic-gradient(at 32% 50%, #0000 221.25deg, #00d2ff 222deg 318deg, #0000 318.25deg),
+    conic-gradient(at 41% 50%, #0000 221.25deg, #753000 222deg 318deg, #0000 318.25deg),
+    conic-gradient(at 50% 50%, #0000 221.25deg, black 222deg 318deg, #0000 318.25deg),
+    linear-gradient(red 0 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0);
+
+    background-size: 100% 100%;
+
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 800;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    background-attachment: fixed;
 }
 
-p, li {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
+@media (prefers-reduced-motion) {
+    body {
+        background: linear-gradient(131deg, #0a0a19, #11121f, #171824, #1c1d2a, #323343);
+        background-size: 100% 100% !important;
+
+        background-attachment: scroll !important;
+    }
+    
+    .secret {
+        background:
+        conic-gradient(at 14% 50%, #0000 221.25deg, white 222deg 318deg, #0000 318.25deg),
+        conic-gradient(at 23% 50%, #0000 221.25deg, #ffa6b9 222deg 318deg, #0000 318.25deg),
+        conic-gradient(at 32% 50%, #0000 221.25deg, #00d2ff 222deg 318deg, #0000 318.25deg),
+        conic-gradient(at 41% 50%, #0000 221.25deg, #753000 222deg 318deg, #0000 318.25deg),
+        conic-gradient(at 50% 50%, #0000 221.25deg, black 222deg 318deg, #0000 318.25deg),
+        linear-gradient(red 0 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0);
+    
+        background-size: 100% 100% !important;
+        background-attachment: scroll !important;
+    }
+
+    * {transition: none !important;}
 }
 
-pre, code, samp {
-    display: inline-block;
-    padding: 2.5px 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 300;
+@media (prefers-reduced-transparency) {
+    body {
+        background: #000014 !important;
+        background-size: 100% 100% !important;
 
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: var(--white);
-    background-color: var(--grey_mediumdark);
-    border: none;
-    border-radius: 8px;
+        background-attachment: scroll !important;
+    }
+    
+    .secret {
+        background: #000014 !important;
+    
+        background-size: 100% 100% !important;
+        background-attachment: scroll !important;
+    }
 }
 
-var {
-    display: inline-block;
-    padding: 2.5px 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-family: 'Source Serif Pro', serif;
-    font-style: italic;
-    font-weight: 300;
+@media (prefers-contrast: more) {
+    body {
+        background: #000 !important;
+        background-size: 100% 100% !important;
 
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: var(--white);
-    background-color: var(--grey_mediumdark);
-    border: none;
-    border-radius: 8px;
+        background-attachment: scroll !important;
+    }
+    
+    .secret {
+        background: #000 !important;
+    
+        background-size: 100% 100% !important;
+        background-attachment: scroll !important;
+    }
 }
 
-kbd {
-    display: inline-block;
-    padding: 2.5px 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 300;
+@media (prefers-contrast: less) {
+    body {
+        background: #929292 !important;
+        background-size: 100% 100% !important;
 
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: var(--white);
-    background-color: var(--grey_mediumdark);
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px var(--grey_medium);
+        background-attachment: scroll !important;
+    }
+    
+    .secret {
+        background: #929292 !important;
+    
+        background-size: 100% 100% !important;
+        background-attachment: scroll !important;
+    }
 }
 
-footer {
-    padding-top: 5vh;
-    padding-left: 5vw;
-    bottom: 100%;
-    bottom: 20vh;
+@-webkit-keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@-moz-keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@-o-keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@keyframes DARK-BG-GRADIENT {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+
+noscript > div.noscript-container {
+    background-color: black;
+    color: #ffffff;
     width: 100vw;
-    height: 20vh;
-    background-color: var(--coloured_dark);
+    text-align: center;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 
-.content {
-    padding-left: 1vw;
-    padding-top: 1vh;
+
+nav {
+    display: grid;
+    grid-template-columns: 10vw 15vw 15vw 15vw 15vw 30vw;
+    width: 100vw;
+    height: 6vh;
+    background-color: none;
 }
+
+.nav-filler {
+    width: 30vw;
+    background-color: aqua;
+}
+
+.link {
+    background-color: none;
+    width: 15vw;
+    height: 6vh;
+}
+
+.link:hover{
+    background-color: #9696AA;
+}
+
+.logo {
+    width: 10vw;
+    background-color: none;
+}
+
+.ok-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 3vw;
+    max-height: 6vh;
+    width: auto;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    fill: #fff;
+}
+
+
+.hero {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+}
+.hero .intro {
+    padding-left: 3vw;
+}
+.hero .intro h1 {
+    margin-top: 17.5vh;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 3vw;
+    color: #fff;
+    font-weight: 700;
+}
+
+.hero .intro h1 .intro-text {
+    margin-top: 17.5vh;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 3vw;
+    color: #fff;
+    font-weight: 600;
+}
+
+.hero .intro .lang-explain {
+    font-family: 'Source Sans Pro', serif;
+    font-size: 1.5vw;
+    color: #fff;
+    font-weight: 600;
+}
+
+#lang-asterisk {font-size: 1.5vw;}
+
+/* .hero .intro h1 .intro-text .hello {
+    background: rgb(131,58,180);
+    background: -moz-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1);
+    background-attachment: fixed;
+
+    padding-top: 0.1vw;
+    padding-bottom: 0.1vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+} */
+
+
+.hero .intro .name {
+    margin-top: 17.5vh;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 6vw;
+    color: #fff;
+    background: linear-gradient(to bottom right, #9696AA, #EBEBFF, #FFFFFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+
+.hero .intro .hello {
+    background: linear-gradient(to bottom right, #9696AA, #EBEBFF, #FFFFFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero .intro .description {
+    margin-top: 6vh;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 2vw;
+    color: #fff;
+}
+
+
+.signature-rotation-container {
+    display: flex;
+    align-items: center;
+    width: 50vw;
+    height: 100vh;
+}
+
+#initials {
+    display: block;
+    fill:none;
+    width: 15vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    stroke: #fff;
+}
+
+#initial-k, #initial-o {
+    stroke-linecap:round;
+    fill: none;
+    stroke-width:0.25vw;
+}
+
+#initial-o {
+    stroke-dasharray: 398;
+    animation: write-o 1s ease-in-out 2s both;
+    -o-animation: write-o 1s ease-in-out 2s both;
+    -moz-animation: write-o 1s ease-in-out 2s both;
+    -webkit-animation: write-o 1s ease-in-out 2s both;
+}
+
+#initial-k {
+    stroke-dasharray: 348;
+    animation: write-k 1s ease-in-out 2s both;
+    -o-animation: write-k 1s ease-in-out 2s both;
+    -moz-animation: write-k 1s ease-in-out 2s both;
+    -webkit-animation: write-k 1s ease-in-out 2s both;
+}
+
+
+@keyframes write-o {
+    0% {
+        stroke-dashoffset: 398;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes write-k {
+    0% {
+        stroke-dashoffset: 348;
+    }
+    50% {
+        stroke-dashoffset: 348;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+.hero-subsection {
+    width: 10vw;
+    height: 100vh;
+}
+
+.intro {width: 90vw !important;}
+
+
+.section-title {
+    font-family: 'Source Serif Pro', serif;
+    color: #fff;
+    text-align: center;
+    font-size: 4vw;
+    position: relative;
+    bottom: -2vw;
+}
+
+
+.work-upper-wave {
+    width: 100vw;
+    height: auto;
+    margin-bottom: -1vh;
+}
+
+.work-lower-wave {
+    width: 100vw;
+    height: auto;
+    margin-top: -1vh;
+}
+
+.work {
+    min-height: 50vh;
+    width: 100vw;
+    background-color: #fff;
+}
+
+.work-container {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -10vw;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    row-gap: 0;
+    align-items: center;
+    justify-items: center;
+}
+
+.work-tile {
+    height: 20vw;
+    width: 15vw;
+    border-radius: 16px;
+    
+    background: rgb(0,0,20);
+    background: -moz-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(135deg, rgba(0,0,20,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000014",endColorstr="#000000",GradientType=1);
+    background-attachment: fixed;
+
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.work-tile-image {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 16px 16px 0 0;
+}
+
+.work-tile-title {
+    font-family: 'Source Serif Pro', serif;
+    margin-left: 0.75vw;
+    margin-top: 0.5vw;
+    font-size: 1.5vw;
+    color: #fff;
+    transform: translateZ(30px);
+}
+
+.work-tile-description {
+    font-family: 'Source Serif Pro', serif;
+    margin-left: 0.75vw;
+    margin-top: -1.5vw;
+    font-size: 1vw;
+    color: #fff;
+    transform: translateZ(20px);
+}
+
+.work-link {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 1.25vw;
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-bottom: 0.1vw;
+    border-radius: 20px;
+    position: relative;
+    color: #fff;
+    fill: #fff;
+    padding-top: 0.15vw;
+    padding-bottom: 0.25vw;
+
+    background: rgb(0,0,20);
+
+    transition: 0.5s;
+}
+
+.work-link-a {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-decoration: none;
+    width: 20vw;
+}
+
+
+.work-link:hover {
+    cursor: pointer;
+    background: #9696aa;
+}
+
+
+
+.behanceicon svg {
+    height: 1.75vw;
+    width: auto;
+}
+
+.behanceicon {
+    display: inline-block;
+    position: relative;
+    top: 0.4vw;
+    margin-right: 0.5vw;
+}
+
+.social-container {
+    margin-top: 5vw;
+    margin-bottom: 10vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35vw;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto auto auto auto;
+}
+
+.social-container .social-button {
+    /* background-color: #fff; */
+    border-radius: 100%;
+    padding: 1.5vw;
+    width: 3.5vw;
+    height: 3.5vw;
+
+    background:#FFFFFF;
+    transition: 0.25s;
+}
+
+.social-container .social-button .social-icon {
+    width: 3.5vw;
+    height: auto;
+    fill: #000000;
+    transition: 0.5s;
+}
+
+.social-container .social-button:hover > .social-icon {
+    fill: #ffffff;
+    transition: 0.5s;
+}
+
+.social-container .social-button:hover {
+    /* background-color: #fff; */
+    cursor: pointer;
+
+    background: #9696AA;
+}
+
+/*======================================================================*//*RESPONSIVE DESIGN*/
+/* Large desktop */
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    .hero .intro h1 {
+        font-size: 6vw !important;
+    }
+    
+    .hero .intro .name {
+        font-size: 8vw !important;
+    }
+    
+    .hero .intro .description {
+        font-size: 4vw !important;
+    }
+    
+    .work-tile {
+        height: 31vw;
+        width: 25vw;
+        border-radius: 22px;
+    }
+
+    .work-tile-image {
+        width: 25vw;
+        height: 25vw;
+        border-radius: 22px 22px 0 0;
+    }
+
+    .work-tile-title, .work-tile-description {
+        margin-left: 2vw;
+    }
+
+    .section-title {
+        font-size: 7vw;
+    }
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (min-width: 481px) and (max-width: 767px) {
+    .hero .intro h1 .intro-text {
+        font-size: 6vw !important;
+    }
+    
+    .hero .intro .name {
+        font-size: 12vw !important;
+    }
+    
+    .hero .intro .description {
+        font-size: 4vw !important;
+    }
+        
+    .work-tile {
+        height: 28vw;
+        width: 22vw;
+        border-radius: 12px;
+    }
+
+    .work-tile-image {
+        width: 22vw;
+        height: 22vw;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .work-tile-title, .work-tile-description {
+        margin-left: 2vw;
+    }
+
+    .section-title {
+        font-size: 6vw;
+    }
+
+    .social-container {
+        margin-top: 5vw;
+        margin-bottom: 10vw;
+        width: 15vw;
+        row-gap: 3vw;
+        grid-template-columns: auto;
+    }
+    
+    .social-container .social-button {
+        padding: 3vw;
+        width: 8vw;
+        height: 8vw;
+    }
+    
+    .social-container .social-button .social-icon {
+        width: 8vw;
+        height: auto;
+    }
+
+    .work-link {
+        font-size: 3vw;
+        width: 50vw;
+        padding-bottom: 1vw;
+        border-radius: 20px;
+        padding-top: 0.15vw;
+    }
+    
+    .work-link-a {
+        width: 50vw;
+    }
+
+    .behanceicon svg {
+        height: 5vw;
+        width: auto;
+    }
+    
+    .behanceicon {
+        top: 1vw;
+        margin-right: 0.5vw;
+        margin-left: 1vw;
+    }
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+    .hero .intro h1 .intro-text {
+        font-size: 8vw !important;
+    }
+    
+    .hero .intro .name {
+        font-size: 14vw !important;
+    }
+    
+    .hero .intro .description {
+        font-size: 6vw !important;
+    }
+    
+    .work-tile {
+        height: 27vw;
+        width: 20vw;
+        border-radius: 6px;
+    }
+
+    .work-tile-image {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 6px 6px 0 0;
+    }
+
+    .work-tile-title, .work-tile-description {
+        margin-left: 2vw;
+    }
+
+    .section-title {
+        font-size: 10vw;
+    }
+
+
+    .social-container {
+        margin-top: 5vw;
+        margin-bottom: 10vw;
+        width: 15vw;
+        row-gap: 3vw;
+        grid-template-columns: auto;
+    }
+    
+    .social-container .social-button {
+        padding: 3vw;
+        width: 8vw;
+        height: 8vw;
+    }
+    
+    .social-container .social-button .social-icon {
+        width: 8vw;
+        height: auto;
+    }
+
+    .work-link {
+        font-size: 3vw;
+        width: 50vw;
+        padding-bottom: 1vw;
+        border-radius: 20px;
+        padding-top: 0.15vw;
+    }
+    
+    .work-link-a {
+        width: 50vw;
+    }
+
+    .behanceicon svg {
+        height: 5vw;
+        width: auto;
+    }
+    
+    .behanceicon {
+        top: 1vw;
+        margin-right: 0.5vw;
+        margin-left: 1vw;
+    }
+}
+
+
+
+.nav-links-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 19vw;
+}
+.nav-links-container div {
+    width: 5vw;
+    height: 5vw;
+    margin-top: 10vh;
+}
+.nav-links-container div span {
+    font-size: 5vw;
+    color: #EBEBFF;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.nav-links-container div a:hover > span {
+    font-size: 5.25vw;
+    color: #fff;
+    text-shadow: #fff 1px 1px 1px;
+}
+
+.addr {
+    background-color: #EBEBFF;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 2.25vw;
+    width: 20vw;
+    border-radius: 32px;
+    padding: 8px;
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 600;
+    line-height: 2.25vw;
+    transition: 0.5s;
+}
+
+.addr:hover {
+    background-color: #323343;
+}
+
+.addr:hover a {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.addr a {
+    transition: 0.5s;
+    text-decoration: none;
+    color: #000014;
+}
+
+/*
+TODO:
+- Dark and light mode (button and media queries)
+DONE:
+- Responsive
+- Prefers-reduced-motion
+*/

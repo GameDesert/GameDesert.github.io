@@ -1,0 +1,191 @@
+@import url("fonts/fonts.css");
+
+:root {
+    --error_red_primary: #f95454;
+    --error_red_secondary: #590000;
+
+    --success_green_primary: #54f96d;
+    --success_green_secondary: #007100;
+
+    --warning_yellow_primary: #f9f154;
+    --warning_yellow_secondary: #736d00;
+
+    /*Palette*/
+    --coloured_dark: #000014;
+    --coloured_mediumdark: #323246;
+    --coloured_medium: #646478;
+    --coloured_mediumlight: #9696aa;
+    --coloured_light: #ebebff;
+
+    --grey_dark: #000000;
+    --grey_mediumdark: #323232;
+    --grey_medium: #646464;
+    --grey_mediumlight: #969696;
+    --grey_light: #ebebeb;
+
+    --white: #fff;
+}
+
+/*Dialogue Boxes*/
+.warning_notification {
+    display: block;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    height: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    background-color: var(--warning_yellow_primary);
+    color: var(--warning_yellow_secondary);
+
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+
+    overflow: auto;
+}
+
+.error_notification {
+    display: block;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    height: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    background-color: var(--error_red_primary);
+    color: var(--error_red_secondary);
+
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+
+    overflow: auto;
+}
+
+.success_notification {
+    display: block;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    height: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    background-color: var(--success_green_primary);
+    color: var(--success_green_secondary);
+
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+
+    overflow: auto;
+}
+
+/*Basic Page Styling*/
+body {
+    background-image: linear-gradient(to bottom right, var(--coloured_dark), var(--coloured_mediumdark));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+p, li {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+pre, code, samp {
+    display: inline-block;
+    padding: 2.5px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: var(--white);
+    background-color: var(--grey_mediumdark);
+    border: none;
+    border-radius: 8px;
+}
+
+var {
+    display: inline-block;
+    padding: 2.5px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: 'Source Serif Pro', serif;
+    font-style: italic;
+    font-weight: 300;
+
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: var(--white);
+    background-color: var(--grey_mediumdark);
+    border: none;
+    border-radius: 8px;
+}
+
+kbd {
+    display: inline-block;
+    padding: 2.5px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: var(--white);
+    background-color: var(--grey_mediumdark);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px var(--grey_medium);
+}
+
+footer {
+    padding-top: 5vh;
+    padding-left: 5vw;
+    bottom: 100%;
+    bottom: 20vh;
+    width: 100vw;
+    height: 20vh;
+    background-color: var(--coloured_dark);
+}
+
+.content {
+    padding-left: 1vw;
+    padding-top: 1vh;
+}
