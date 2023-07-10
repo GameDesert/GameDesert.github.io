@@ -245,6 +245,7 @@ nav {
     color: #fff;
     background: linear-gradient(to bottom right, #9696AA, #EBEBFF, #FFFFFF);
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
 }
@@ -252,6 +253,7 @@ nav {
 .hero .intro .hello {
     background: linear-gradient(to bottom right, #9696AA, #EBEBFF, #FFFFFF);
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
