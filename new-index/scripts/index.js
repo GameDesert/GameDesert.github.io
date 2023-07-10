@@ -15,7 +15,9 @@ function disableTilt() {
     }
 }
 
-
+if (window.matchMedia('(prefers-reduced-motion: reduce)')["matches"] == true) {
+    disableTilt();
+}
 
 if (window.matchMedia("(max-device-width: 534px)").matches && window.matchMedia("(orientation: portrait)").matches) {
     console.log("Mobile, no languages.");
