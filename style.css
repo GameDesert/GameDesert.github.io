@@ -472,10 +472,10 @@ nav {
     margin-bottom: 10vw;
     margin-left: auto;
     margin-right: auto;
-    width: 35vw;
+    width: 45vw;
     display: grid;
     justify-items: center;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
 }
 
 .social-container .social-button {
@@ -501,11 +501,48 @@ nav {
     transition: 0.5s;
 }
 
-.social-container .social-button:hover {
-    /* background-color: #fff; */
+/* .social-container .social-button:hover {
     cursor: pointer;
 
     background: #9696AA;
+} */
+
+.social-container .instagram {background:radial-gradient(circle at 30% 107%, #fff 0%, #fff 5%, #fff 45%,#fff 60%,#fff 90%); transition: 0.25s;}
+
+.social-container .instagram:hover {
+    /* background-color: #fff; */
+    cursor: pointer;
+
+    background: #f09433; 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+.social-container .pinterest:hover {
+    /* background-color: #fff; */
+    cursor: pointer;
+
+    background: #E60023; 
+}
+
+.social-container .unsplash:hover {
+    /* background-color: #fff; */
+    cursor: pointer;
+
+    background: #000; 
+}
+
+.social-container .github:hover {
+    /* background-color: #fff; */
+    cursor: pointer;
+
+    background: #000; 
+}
+
+.social-container .behance:hover {
+    /* background-color: #fff; */
+    cursor: pointer;
+
+    background: #0177ff; 
 }
 
 /*======================================================================*//*RESPONSIVE DESIGN*/
