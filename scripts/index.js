@@ -3,6 +3,11 @@ Mousetrap.bind('up up down down left right left right b a enter', function() {
     document.getElementById("body").className = "secret";
 });
 
+Mousetrap.bind('0 1 1 8 9 9 9 8 8 1 9 9 9 1 1 9 7 2 5 3', function() {
+    // alert("Hello world!")
+    document.getElementById("body").className = "secret";
+});
+
 AOS.init({
     disable: window.matchMedia('(prefers-reduced-motion: reduce)')["matches"]
 });
