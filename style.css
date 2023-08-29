@@ -143,38 +143,47 @@ body {
 noscript > div.noscript-container {
     background-color: black;
     color: #ffffff;
-    width: 100vw;
+    width: 100%;
     text-align: center;
     padding-top: 1vh;
     padding-bottom: 1vh;
 }
 
 
-nav {
+.topbar {
     display: grid;
-    grid-template-columns: 10vw 15vw 15vw 15vw 15vw 30vw;
+    grid-template-columns: 10vw 60vw 15vw 15vw;
     width: 100vw;
     height: 6vh;
     background-color: none;
+    /* box-shadow: #000014 1px 1px 75px; */
 }
 
 .nav-filler {
     width: 30vw;
-    background-color: aqua;
+    background-color: none;
 }
 
 .link {
+    display: flexbox;
+    line-height: 1.5vh;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
     background-color: none;
+    color: #fff;
     width: 15vw;
     height: 6vh;
+    transition: 0.25s;
 }
 
 .link:hover{
-    background-color: #9696AA;
+    background-color: #fff;
+    color: #000014;
 }
 
 .logo {
-    width: 10vw;
+    width: 14vw;
     background-color: none;
 }
 
@@ -185,7 +194,7 @@ nav {
     height: 3vw;
     max-height: 6vh;
     width: auto;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
     margin-bottom: 1vh;
     fill: #fff;
 }
