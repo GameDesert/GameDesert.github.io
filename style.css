@@ -484,7 +484,7 @@ noscript > div.noscript-container {
     width: 45vw;
     display: grid;
     justify-items: center;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto;
 }
 
 .social-container .social-button {
